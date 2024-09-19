@@ -261,9 +261,9 @@ class MathSchedule:
         })
 
         # test loaded schedule
-        all_phycians = self._get_all_physicians()
+        all_physicians = self._get_all_physicians()
         for physician, task_list in schedule.items():
-            assert physician in all_phycians, f"Physician {physician} is not recognized!"
+            assert physician in all_physicians, f"Physician {physician} is not recognized!"
             for task_index, task_dict in enumerate(task_list):
                 task = task_dict['task']
                 start_date = task_dict['start_date']
@@ -325,12 +325,12 @@ class MathSchedule:
         if use_initial_schedule:
             assert self.schedule, f"No initial schedule was provided to start the search!"
 
-        logging.debug("Generating schedule")
+        logging.info("Starting schedule generation...")
         extended_end_date = self._extend_scheduling_period()
         logging.debug(f"Scheduling period extended to {extended_end_date}")
 
         periods = self.calendar.determine_periods()
-        relevant_periods = self._filter_relevant_periods(periods, extended_end_date)
+        relevant_periods = self._filter_relevant_periods(periods, self.scheduling_period[0], extended_end_date)
         logging.debug(f"Filtered relevant periods: {relevant_periods}")
 
         # create mathematical model
@@ -341,15 +341,21 @@ class MathSchedule:
         self._math_create_constraints(periods=relevant_periods)
         self._math_create_objective_function()  # TODO: adapt scores to the objective function
 
+        logging.debug("Variables and constraints added to the model.")
+
         if use_initial_schedule:
+            logging.info("Loading initial schedule...")
             self._math_load_initial_schedule()
 
         # Creates the solver and solve
         self.math_solver = cp_model.CpSolver()
         status = self.math_solver.solve(self.math_model)
 
+        logging.info(f"Solver status: {self.math_solver.StatusName(status)}")
+
         # test the solution/schedule
         if status == cp_model.OPTIMAL or status == cp_model.FEASIBLE:
+            logging.info("Solution found.")
             logging.info(f"Schedule solved with status: {cp_model.CpSolver.status_name(self.math_solver)}")
             self._math_set_solution(periods=relevant_periods)
         else:
@@ -767,13 +773,33 @@ class MathSchedule:
         extended_end_date = self.scheduling_period[1] + timedelta(weeks=max_task_duration)
         return extended_end_date
 
-    def _filter_relevant_periods(self, periods: Dict[str, List[Dict[str, Any]]], end_date: date) -> Dict[
-        str, List[Dict[str, Any]]]:
-        return {
-            week_start: week_periods
-            for week_start, week_periods in periods.items()
-            if date.fromisoformat(week_start) <= end_date
-        }
+    def _filter_relevant_periods(self, periods: Dict[str, List[Dict[str, Any]]], start_date: date, end_date: date) -> \
+    Dict[str, List[Dict[str, Any]]]:
+        """
+        Filter periods based on the given start and end dates using date.fromisoformat().
+
+        Args:
+            periods (Dict[str, List[Dict[str, Any]]]): Dictionary of periods with week start dates as keys.
+            start_date (date): The start date for filtering.
+            end_date (date): The end date for filtering.
+
+        Returns:
+            Dict[str, List[Dict[str, Any]]]: Filtered periods dictionary.
+
+        Raises:
+            ValueError: If an invalid date format is encountered in the periods dictionary.
+        """
+        filtered_periods = {}
+
+        for week_start, week_periods in periods.items():
+            try:
+                week_date = date.fromisoformat(week_start)
+                if start_date <= week_date <= end_date:
+                    filtered_periods[week_start] = week_periods
+            except ValueError:
+                raise ValueError(f"Invalid ISO format date in periods dictionary: {week_start}")
+
+        return filtered_periods
 
     def _assign_tasks_for_period(self, week_start: date, periods: List[Dict[str, Any]]):
         for task in self.task_manager.data['tasks']:
@@ -899,6 +925,8 @@ class MathSchedule:
             for physician in self.physician_manager.data['physicians']
         ]
 
+    def _get_all_tasks(self):
+        return [t for t in self.task_manager.data['tasks']]
     def _add_to_schedule(self, physician: str, task: Any, period: Dict[str, Any], score: float):
         self.schedule[physician].append({
             'task': task,
