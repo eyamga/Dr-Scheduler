@@ -175,7 +175,7 @@ class Schedule:
         logging.debug(f"Scheduling period extended to {extended_end_date}")
 
         periods = self.calendar.determine_periods()
-        relevant_periods = self._filter_relevant_periods(periods, extended_end_date)
+        relevant_periods = self._filter_relevant_periods(periods, self.scheduling_period[0], extended_end_date)
         logging.debug(f"Filtered relevant periods: {relevant_periods}")
 
         for week_start, week_periods in relevant_periods.items():
@@ -206,13 +206,33 @@ class Schedule:
         extended_end_date = self.scheduling_period[1] + timedelta(weeks=max_task_duration)
         return extended_end_date
 
-    def _filter_relevant_periods(self, periods: Dict[str, List[Dict[str, Any]]], end_date: date) -> Dict[
-        str, List[Dict[str, Any]]]:
-        return {
-            week_start: week_periods
-            for week_start, week_periods in periods.items()
-            if date.fromisoformat(week_start) <= end_date
-        }
+    def _filter_relevant_periods(self, periods: Dict[str, List[Dict[str, Any]]], start_date: date, end_date: date) -> \
+    Dict[str, List[Dict[str, Any]]]:
+        """
+        Filter periods based on the given start and end dates using date.fromisoformat().
+
+        Args:
+            periods (Dict[str, List[Dict[str, Any]]]): Dictionary of periods with week start dates as keys.
+            start_date (date): The start date for filtering.
+            end_date (date): The end date for filtering.
+
+        Returns:
+            Dict[str, List[Dict[str, Any]]]: Filtered periods dictionary.
+
+        Raises:
+            ValueError: If an invalid date format is encountered in the periods dictionary.
+        """
+        filtered_periods = {}
+
+        for week_start, week_periods in periods.items():
+            try:
+                week_date = date.fromisoformat(week_start)
+                if start_date <= week_date <= end_date:
+                    filtered_periods[week_start] = week_periods
+            except ValueError:
+                raise ValueError(f"Invalid ISO format date in periods dictionary: {week_start}")
+
+        return filtered_periods
 
     def _assign_tasks_for_period(self, week_start: date, periods: List[Dict[str, Any]]):
         for task in self.task_manager.data['tasks']:

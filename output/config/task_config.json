@@ -1,0 +1,200 @@
+{
+  "categories": [
+    {
+      "name": "CTU",
+      "days_parameter": "Multi-week",
+      "number_of_weeks": 2,
+      "weekday_revenue": 2000,
+      "call_revenue": 4000,
+      "restricted": false
+    },
+    {
+      "name": "ER",
+      "days_parameter": "Continuous",
+      "number_of_weeks": 1,
+      "weekday_revenue": 2500,
+      "call_revenue": 5000,
+      "restricted": true
+    },
+    {
+      "name": "CONSULT",
+      "days_parameter": "Continuous",
+      "number_of_weeks": 1,
+      "weekday_revenue": 2000,
+      "call_revenue": 3000,
+      "restricted": true
+    },
+    {
+      "name": "PREOP",
+      "days_parameter": "Continuous",
+      "number_of_weeks": 1,
+      "weekday_revenue": 2000,
+      "call_revenue": 0,
+      "restricted": true
+    },
+    {
+      "name": "AMBU",
+      "days_parameter": "Continuous",
+      "number_of_weeks": 1,
+      "weekday_revenue": 1000,
+      "call_revenue": 0,
+      "restricted": true
+    },
+    {
+      "name": "MOG",
+      "days_parameter": "Continuous",
+      "number_of_weeks": 1,
+      "weekday_revenue": 1500,
+      "call_revenue": 0,
+      "restricted": true
+    },
+    {
+      "name": "VASC",
+      "days_parameter": "Continuous",
+      "number_of_weeks": 1,
+      "weekday_revenue": 2000,
+      "call_revenue": 2500,
+      "restricted": true
+    }
+  ],
+  "tasks": [
+    {
+      "category": "CTU",
+      "type": "Main",
+      "name": "CTU_A",
+      "week_offset": 0,
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "category": "CTU",
+      "type": "Main",
+      "name": "CTU_B",
+      "week_offset": 1,
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "category": "CTU",
+      "type": "Main",
+      "name": "CTU_C",
+      "week_offset": 0,
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "category": "CTU",
+      "type": "Main",
+      "name": "CTU_D",
+      "week_offset": 1,
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "category": "ER",
+      "type": "Main",
+      "name": "ER_1",
+      "week_offset": 0,
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "category": "ER",
+      "type": "Main",
+      "name": "ER_2",
+      "week_offset": 0,
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "category": "CONSULT",
+      "type": "Main",
+      "name": "CONSULT_1",
+      "week_offset": 0,
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "category": "CONSULT",
+      "type": "Main",
+      "name": "CONSULT_2",
+      "week_offset": 0,
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "category": "PREOP",
+      "type": "Main",
+      "name": "PREOP_1",
+      "week_offset": 0,
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "category": "PREOP",
+      "type": "Main",
+      "name": "PREOP_2",
+      "week_offset": 0,
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "category": "AMBU",
+      "type": "Main",
+      "name": "AMBU_1",
+      "week_offset": 0,
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "category": "AMBU",
+      "type": "Main",
+      "name": "AMBU_2",
+      "week_offset": 0,
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "category": "CTU",
+      "type": "Call",
+      "name": "CTU_AB_CALL",
+      "week_offset": 0,
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "category": "CTU",
+      "type": "Call",
+      "name": "CTU_CD_CALL",
+      "week_offset": 0,
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "category": "ER",
+      "type": "Call",
+      "name": "ER_CALL",
+      "week_offset": 0,
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "category": "CONSULT",
+      "type": "Call",
+      "name": "CONSULT_CALL",
+      "week_offset": 0,
+      "heaviness": 5,
+      "mandatory": true
+    }
+  ],
+  "linkage_manager": {
+    "CTU_A": "CTU_AB_CALL",
+    "CTU_B": "CTU_AB_CALL",
+    "CTU_C": "CTU_CD_CALL",
+    "CTU_D": "CTU_CD_CALL",
+    "ER_1": "ER_CALL",
+    "ER_2": "ER_CALL",
+    "CONSULT_1": "CONSULT_CALL",
+    "CONSULT_2": "CONSULT_CALL"
+  }
+}
