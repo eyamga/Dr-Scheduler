@@ -1,5 +1,5 @@
 {
-  "Jane Smith": [
+  "Eric Yamga": [
     {
       "task": "CTU_A",
       "days": [
@@ -49,16 +49,6 @@
       "score": 0
     },
     {
-      "task": "CTU_A_CALL",
-      "days": [
-        "2023-01-21",
-        "2023-01-22"
-      ],
-      "start_date": "2023-01-21",
-      "end_date": "2023-01-22",
-      "score": 0
-    },
-    {
       "task": "CTU_A",
       "days": [
         "2023-01-23",
@@ -72,7 +62,17 @@
       "score": 0
     },
     {
-      "task": "CTU_B",
+      "task": "CTU_A_CALL",
+      "days": [
+        "2023-01-28",
+        "2023-01-29"
+      ],
+      "start_date": "2023-01-28",
+      "end_date": "2023-01-29",
+      "score": 0
+    },
+    {
+      "task": "CTU_A",
       "days": [
         "2023-01-30"
       ],
@@ -152,9 +152,18 @@
       "start_date": "2023-01-28",
       "end_date": "2023-01-29",
       "score": 0
+    },
+    {
+      "task": "ER_1",
+      "days": [
+        "2023-01-30"
+      ],
+      "start_date": "2023-01-30",
+      "end_date": "2023-01-30",
+      "score": 0
     }
   ],
-  "Eric Yamga": [
+  "Jane Smith": [
     {
       "task": "ER_1",
       "days": [
@@ -247,7 +256,7 @@
       "score": 0
     },
     {
-      "task": "ER_1",
+      "task": "CTU_B",
       "days": [
         "2023-01-30"
       ],
@@ -258,7 +267,7 @@
   ],
   "John Doe": [
     {
-      "task": "CTU_A",
+      "task": "CTU_B",
       "days": [
         "2023-01-30"
       ],

@@ -376,7 +376,8 @@ class MathSchedule:
         # test the solution/schedule
         if status == cp_model.OPTIMAL or status == cp_model.FEASIBLE:
             logging.info("Solution found.")
-            logging.info(f"Schedule solved with status: {cp_model.CpSolver.StatusName(status)}")
+            status_str = "OPTIMAL" if status == cp_model.OPTIMAL else "FEASIBLE"
+            logging.info(f"Schedule solved with status: {status_str}")  # cp_model.CpSolver.StatusName(status)
             self._math_set_solution(periods=relevant_periods)
         else:
             logging.info(f"Schedule infeasible")
