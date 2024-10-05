@@ -6,16 +6,12 @@
       "name": "Eric Yamga",
       "initials": "EY",
       "preferred_tasks": [
-        "ER",
         "CTU"
       ],
       "discontinuity_preference": true,
       "desired_working_weeks": 0.5,
       "restricted_tasks": [],
-      "exclusion_tasks": [
-        "MOG",
-        "VASC"
-      ]
+      "exclusion_tasks": []
     },
     {
       "first_name": "Justine",
@@ -23,16 +19,12 @@
       "name": "Justine Munger",
       "initials": "JM",
       "preferred_tasks": [
-        "ER",
         "CTU"
       ],
       "discontinuity_preference": true,
       "desired_working_weeks": 0.75,
       "restricted_tasks": [],
-      "exclusion_tasks": [
-        "MOG",
-        "VASC"
-      ]
+      "exclusion_tasks": []
     },
     {
       "first_name": "Audrey",

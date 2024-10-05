@@ -1,6 +1,7 @@
 from enum import Enum
 from typing import Optional, Dict, Set
 from datetime import date
+import json
 
 class TaskType(Enum):
     """Defines the type of tasks available."""
@@ -134,6 +135,9 @@ class Task:
     def is_discontinuous(self) -> bool:
         return self.category.days_parameter == TaskDaysParameter.DISCONTINUOUS
 
+    def __str__(self):
+        return json.dumps(self.to_dict())
+
 class LinkageManager:
     """
     Manages the linkage of tasks.
@@ -173,6 +177,8 @@ class LinkageManager:
         manager.links = data
         return manager
 
+    def __str__(self):
+        return json.dumps(self.to_dict())
 
 # Example usage
 ctu_category = TaskCategory(

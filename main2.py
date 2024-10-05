@@ -18,79 +18,79 @@ def initialize_task_manager():
     # Add categories
     ctu_category = TaskCategory(name="CTU", days_parameter=TaskDaysParameter.MULTI_WEEK, number_of_weeks=2,
                                 weekday_revenue=2000, call_revenue=4000, restricted=False)
-    # er_category = TaskCategory(name="ER", days_parameter=TaskDaysParameter.CONTINUOUS, number_of_weeks=1,
-    #                            weekday_revenue=2500, call_revenue=5000, restricted=True)
-    #
-    # consult_category = TaskCategory(name="CONSULT", days_parameter=TaskDaysParameter.CONTINUOUS, number_of_weeks=1,
-    #                            weekday_revenue=2000, call_revenue=3000, restricted=True)
-    #
-    # preop_category = TaskCategory(name="PREOP", days_parameter=TaskDaysParameter.CONTINUOUS, number_of_weeks=1,
-    #                            weekday_revenue=2000, call_revenue=0, restricted=True)
-    #
-    # ambu_category = TaskCategory(name="AMBU", days_parameter=TaskDaysParameter.CONTINUOUS, number_of_weeks=1,
-    #                      weekday_revenue=1000, call_revenue=0, restricted=True)
-    #
-    # mog_category = TaskCategory(name="MOG", days_parameter=TaskDaysParameter.CONTINUOUS, number_of_weeks=1,
-    #                      weekday_revenue=1500, call_revenue=0, restricted=True)
-    #
-    # vasc_category = TaskCategory(name="VASC", days_parameter=TaskDaysParameter.CONTINUOUS, number_of_weeks=1,
-    #                      weekday_revenue=2000, call_revenue=2500, restricted=True)
+    er_category = TaskCategory(name="ER", days_parameter=TaskDaysParameter.CONTINUOUS, number_of_weeks=1,
+                               weekday_revenue=2500, call_revenue=5000, restricted=True)
+
+    consult_category = TaskCategory(name="CONSULT", days_parameter=TaskDaysParameter.CONTINUOUS, number_of_weeks=1,
+                               weekday_revenue=2000, call_revenue=3000, restricted=True)
+
+    preop_category = TaskCategory(name="PREOP", days_parameter=TaskDaysParameter.CONTINUOUS, number_of_weeks=1,
+                               weekday_revenue=2000, call_revenue=0, restricted=True)
+
+    ambu_category = TaskCategory(name="AMBU", days_parameter=TaskDaysParameter.CONTINUOUS, number_of_weeks=1,
+                         weekday_revenue=1000, call_revenue=0, restricted=True)
+
+    mog_category = TaskCategory(name="MOG", days_parameter=TaskDaysParameter.CONTINUOUS, number_of_weeks=1,
+                         weekday_revenue=1500, call_revenue=0, restricted=True)
+
+    vasc_category = TaskCategory(name="VASC", days_parameter=TaskDaysParameter.CONTINUOUS, number_of_weeks=1,
+                         weekday_revenue=2000, call_revenue=2500, restricted=True)
 
     task_manager.add_category(ctu_category)
-    # task_manager.add_category(er_category)
-    # task_manager.add_category(consult_category)
-    #
-    # task_manager.add_category(preop_category)
-    # task_manager.add_category(ambu_category)
-    #
-    # task_manager.add_category(mog_category)
-    # task_manager.add_category(vasc_category)
+    task_manager.add_category(er_category)
+    task_manager.add_category(consult_category)
+
+    task_manager.add_category(preop_category)
+    task_manager.add_category(ambu_category)
+
+    task_manager.add_category(mog_category)
+    task_manager.add_category(vasc_category)
 
 
     # Add tasks
     task_manager.add_task(Task.create(ctu_category, 'Main', 'CTU_A', heaviness=4, mandatory=True))
     task_manager.add_task(Task.create(ctu_category, 'Main', 'CTU_B', week_offset=1, heaviness=4, mandatory=True))
-    # task_manager.add_task(Task.create(ctu_category, 'Main', 'CTU_C', heaviness=4, mandatory=True))
-    # task_manager.add_task(Task.create(ctu_category, 'Main', 'CTU_D', week_offset=1, heaviness=4, mandatory=True))
+    task_manager.add_task(Task.create(ctu_category, 'Main', 'CTU_C', heaviness=4, mandatory=True))
+    task_manager.add_task(Task.create(ctu_category, 'Main', 'CTU_D', week_offset=1, heaviness=4, mandatory=True))
+
+    task_manager.add_task(Task.create(er_category, 'Main', 'ER_1', heaviness=5, mandatory=True))
+    task_manager.add_task(Task.create(er_category, 'Main', 'ER_2', heaviness=5, mandatory=True))
+
+    task_manager.add_task(Task.create(consult_category, 'Main', 'CONSULT_1', heaviness=5, mandatory=True))
+    task_manager.add_task(Task.create(consult_category, 'Main', 'CONSULT_2', heaviness=5, mandatory=True))
     #
-    # task_manager.add_task(Task.create(er_category, 'Main', 'ER_1', heaviness=5, mandatory=True))
-    # task_manager.add_task(Task.create(er_category, 'Main', 'ER_2', heaviness=5, mandatory=True))
+    task_manager.add_task(Task.create(preop_category, 'Main', 'PREOP_1', heaviness=5, mandatory=True))
+    task_manager.add_task(Task.create(preop_category, 'Main', 'PREOP_2', heaviness=5, mandatory=True))
     #
-    # task_manager.add_task(Task.create(consult_category, 'Main', 'CONSULT_1', heaviness=5, mandatory=True))
-    # task_manager.add_task(Task.create(consult_category, 'Main', 'CONSULT_2', heaviness=5, mandatory=True))
-    #
-    # task_manager.add_task(Task.create(preop_category, 'Main', 'PREOP_1', heaviness=5, mandatory=True))
-    # task_manager.add_task(Task.create(preop_category, 'Main', 'PREOP_2', heaviness=5, mandatory=True))
-    #
-    # task_manager.add_task(Task.create(ambu_category, 'Main', 'AMBU_1', heaviness=5, mandatory=True))
-    # task_manager.add_task(Task.create(ambu_category, 'Main', 'AMBU_2', heaviness=5, mandatory=True))
-    #
-    # task_manager.add_task(Task.create(mog_category, 'Main', 'MOG', heaviness=5, mandatory=False))
-    # task_manager.add_task(Task.create(vasc_category, 'Main', 'VASC', heaviness=5, mandatory=False))
+    task_manager.add_task(Task.create(ambu_category, 'Main', 'AMBU_1', heaviness=5, mandatory=True))
+    task_manager.add_task(Task.create(ambu_category, 'Main', 'AMBU_2', heaviness=5, mandatory=True))
+
+    ## task_manager.add_task(Task.create(mog_category, 'Main', 'MOG', heaviness=5, mandatory=False))
+    ## task_manager.add_task(Task.create(vasc_category, 'Main', 'VASC', heaviness=5, mandatory=False))
 
     task_manager.add_task(Task.create(ctu_category, 'Call', 'CTU_AB_CALL', heaviness=5, mandatory=True))
-    # task_manager.add_task(Task.create(ctu_category, 'Call', 'CTU_CD_CALL', heaviness=5, mandatory=True))
-    # task_manager.add_task(Task.create(er_category, 'Call', 'ER_CALL', heaviness=5, mandatory=True))
-    # task_manager.add_task(Task.create(consult_category, 'Call', 'CONSULT_CALL', heaviness=5, mandatory=True))
-    #
-    # task_manager.add_task(Task.create(mog_category, 'Call', 'MOG_CALL', heaviness=5, mandatory=False))
-    # task_manager.add_task(Task.create(vasc_category, 'Call', 'VASC_CALL', heaviness=5, mandatory=False))
+    task_manager.add_task(Task.create(ctu_category, 'Call', 'CTU_CD_CALL', heaviness=5, mandatory=True))
+    task_manager.add_task(Task.create(er_category, 'Call', 'ER_CALL', heaviness=5, mandatory=True))
+    task_manager.add_task(Task.create(consult_category, 'Call', 'CONSULT_CALL', heaviness=5, mandatory=True))
+
+    ## task_manager.add_task(Task.create(mog_category, 'Call', 'MOG_CALL', heaviness=5, mandatory=False))
+    ## task_manager.add_task(Task.create(vasc_category, 'Call', 'VASC_CALL', heaviness=5, mandatory=False))
 
     # Link tasks
     task_manager.link_tasks('CTU_A', 'CTU_AB_CALL')
     task_manager.link_tasks('CTU_B', 'CTU_AB_CALL')
-    # task_manager.link_tasks('CTU_C', 'CTU_CD_CALL')
-    # task_manager.link_tasks('CTU_D', 'CTU_CD_CALL')
-    #
-    # task_manager.link_tasks('ER_1', 'ER_CALL')
-    # task_manager.link_tasks('ER_2', 'ER_CALL')
-    #
-    # task_manager.link_tasks('CONSULT_1', 'CONSULT_CALL')
-    # task_manager.link_tasks('CONSULT_2', 'CONSULT_CALL')
-    #
-    # task_manager.link_tasks('VASC', 'VASC_CALL')
-    # task_manager.link_tasks('MOG', 'MOG_CALL')
-    #
+    task_manager.link_tasks('CTU_C', 'CTU_CD_CALL')
+    task_manager.link_tasks('CTU_D', 'CTU_CD_CALL')
+
+    task_manager.link_tasks('ER_1', 'ER_CALL')
+    task_manager.link_tasks('ER_2', 'ER_CALL')
+
+    task_manager.link_tasks('CONSULT_1', 'CONSULT_CALL')
+    task_manager.link_tasks('CONSULT_2', 'CONSULT_CALL')
+
+    ## task_manager.link_tasks('VASC', 'VASC_CALL')
+    ## task_manager.link_tasks('MOG', 'MOG_CALL')
+
 
     return task_manager
 
@@ -102,29 +102,29 @@ def initialize_physician_manager(task_manager):
     physicians = [
         Physician("Eric", "Yamga", ["CTU"], True, 0.5, [], []),
         Physician("Justine", "Munger", ["CTU"], True, 0.75, [], []),
-        # Physician("Audrey", "Lacasse", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-        # Physician("Diem-Quyen", "Nguyen", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-        # Physician("Mikhael", "Laskine", ["ER", "CTU"], False, 1.0, [], ["MOG", "VASC"]),
-        # Physician("Benoit", "Deligne", ["ER", "CTU"], False, 0.25, [], ["MOG", "VASC"]),
-        # Physician("Michèle", "Mahone", ["ER", "CTU"], False, 0.75, ["MOG"], ["VASC"]),
-        # Physician("Robert", "Wistaff", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-        # Physician("Nazila", "Bettache", ["ER", "CTU"], False, 0.5, ["MOG"], ["VASC"]),
-        # Physician("Vincent", "Williams", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-        # Physician("Maxime", "Lamarre-Cliche", ["ER", "CTU"], False, 1.0, [], ["MOG", "VASC"]),
-        # Physician("Julien", "D'Astous", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-        # Physician("Jean-Pascal", "Costa", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-        # Physician("J.Manuel", "Dominguez", ["ER", "CTU"], False, 1.0, ["VASC"], ["MOG"]),
-        # Physician("Camille", "Laflamme", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-        # Physician("Florence", "Weber", ["ER", "CTU"], False, 0.75, ["MOG"], ["VASC"]),
-        # Physician("Sophie", "Grandmaison", ["ER", "CTU"], False, 0.75, ["MOG"], ["MOG", "VASC"]),
-        # Physician("Marie-Jose", "Miron", ["ER", "CTU"], False, 0.75, ["VASC"], ["MOG", "CTU", "ER", "PREOP", "AMBU"]),
-        # Physician("Emmanuelle", "Duceppe", ["PREOP", "CTU"], False, 0.5, [], ["MOG", "VASC"]),
-        # Physician("Michel", "Bertrand", ["ER", "CTU"], False, 1.0, [], ["MOG", "VASC"]),
-        # Physician("André", "Roussin", ["ER", "CTU"], False, 0.75, ["VASC"], ["CTU", "CONSULT", "ER", "PREOP", "AMBU"]),
-        # Physician("Madeleine", "Durand", ["ER", "CTU"], False, 1.0, [], ["MOG", "VASC"]),
-        # Physician("Gabriel", "Dion", ["PREOP", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-        # Physician("Brigitte", "Benard", ["ER", "CTU"], False, 0.25, [], ["MOG", "VASC"]),
-        # Physician("Christopher Oliver", "Clapperton", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
+        Physician("Audrey", "Lacasse", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
+        Physician("Diem-Quyen", "Nguyen", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
+        Physician("Mikhael", "Laskine", ["ER", "CTU"], False, 1.0, [], ["MOG", "VASC"]),
+        Physician("Benoit", "Deligne", ["ER", "CTU"], False, 0.25, [], ["MOG", "VASC"]),
+        Physician("Michèle", "Mahone", ["ER", "CTU"], False, 0.75, ["MOG"], ["VASC"]),
+        Physician("Robert", "Wistaff", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
+        Physician("Nazila", "Bettache", ["ER", "CTU"], False, 0.5, ["MOG"], ["VASC"]),
+        Physician("Vincent", "Williams", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
+        Physician("Maxime", "Lamarre-Cliche", ["ER", "CTU"], False, 1.0, [], ["MOG", "VASC"]),
+        Physician("Julien", "D'Astous", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
+        Physician("Jean-Pascal", "Costa", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
+        Physician("J.Manuel", "Dominguez", ["ER", "CTU"], False, 1.0, ["VASC"], ["MOG"]),
+        Physician("Camille", "Laflamme", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
+        Physician("Florence", "Weber", ["ER", "CTU"], False, 0.75, ["MOG"], ["VASC"]),
+        Physician("Sophie", "Grandmaison", ["ER", "CTU"], False, 0.75, ["MOG"], ["MOG", "VASC"]),
+        Physician("Marie-Jose", "Miron", ["ER", "CTU"], False, 0.75, ["VASC"], ["MOG", "CTU", "ER", "PREOP", "AMBU"]),
+        Physician("Emmanuelle", "Duceppe", ["PREOP", "CTU"], False, 0.5, [], ["MOG", "VASC"]),
+        Physician("Michel", "Bertrand", ["ER", "CTU"], False, 1.0, [], ["MOG", "VASC"]),
+        Physician("André", "Roussin", ["ER", "CTU"], False, 0.75, ["VASC"], ["CTU", "CONSULT", "ER", "PREOP", "AMBU"]),
+        Physician("Madeleine", "Durand", ["ER", "CTU"], False, 1.0, [], ["MOG", "VASC"]),
+        Physician("Gabriel", "Dion", ["PREOP", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
+        Physician("Brigitte", "Benard", ["ER", "CTU"], False, 0.25, [], ["MOG", "VASC"]),
+        Physician("Christopher Oliver", "Clapperton", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
     ]
     # # Add physicians
     # physicians = [

@@ -51,6 +51,12 @@ class TaskManager(ConfigurableManager):
     def add_task(self, task: Task):
         self.data['tasks'].append(task)
 
+    def get_task(self, task: str):
+        for t in self.data['tasks']:
+            if t.name == task:
+                return t
+        return None
+
     def link_tasks(self, main_task_name: str, call_task_name: str):
         main_task = next((t for t in self.data['tasks'] if t.name == main_task_name), None)
         call_task = next((t for t in self.data['tasks'] if t.name == call_task_name), None)
