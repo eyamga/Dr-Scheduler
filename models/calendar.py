@@ -90,7 +90,11 @@ class Calendar:
             self.holidays.append(holiday)
             self.holidays.sort()
             if holiday.weekday() < 5:  # If the holiday is a weekday
-                self.working_days.remove(holiday)
+                # Verify that holiday is among working days if is then remove the holiday
+                if holiday in self.working_days:
+                    self.working_days.remove(holiday)
+                else:
+                    pass
             self.call_days = self.get_call_days()
 
     def remove_holiday(self, holiday: date):

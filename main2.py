@@ -126,34 +126,7 @@ def initialize_physician_manager(task_manager):
         Physician("Brigitte", "Benard", ["ER", "CTU"], False, 0.25, [], ["MOG", "VASC"]),
         Physician("Christopher Oliver", "Clapperton", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
     ]
-    # # Add physicians
-    # physicians = [
-    #     Physician("Eric", "Yamga", ["ER", "CTU"], True, 0.5, [], ["MOG", "VASC"]),
-    #     Physician("Justine", "Munger", ["ER", "CTU"], True, 0.75, [], ["MOG", "VASC"]),
-    #     Physician("Audrey", "Lacasse", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-    #     Physician("Diem-Quyen", "Nguyen", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-    #     Physician("Mikhael", "Laskine", ["ER", "CTU"], False, 1.0, [], ["MOG", "VASC"]),
-    #     Physician("Benoit", "Deligne", ["ER", "CTU"], False, 0.25, [], ["MOG", "VASC"]),
-    #     Physician("Michèle", "Mahone", ["ER", "CTU"], False, 0.75, ["MOG"], ["VASC"]),
-    #     Physician("Robert", "Wistaff", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-    #     Physician("Nazila", "Bettache", ["ER", "CTU"], False, 0.5, ["MOG"], ["VASC"]),
-    #     Physician("Vincent", "Williams", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-    #     Physician("Maxime", "Lamarre-Cliche", ["ER", "CTU"], False, 1.0, [], ["MOG", "VASC"]),
-    #     Physician("Julien", "D'Astous", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-    #     Physician("Jean-Pascal", "Costa", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-    #     Physician("J.Manuel", "Dominguez", ["ER", "CTU"], False, 1.0, ["VASC"], ["MOG"]),
-    #     Physician("Camille", "Laflamme", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-    #     Physician("Florence", "Weber", ["ER", "CTU"], False, 0.75, ["MOG"], ["VASC"]),
-    #     Physician("Sophie", "Grandmaison", ["ER", "CTU"], False, 0.75, ["MOG"], ["MOG", "VASC"]),
-    #     Physician("Marie-Jose", "Miron", ["ER", "CTU"], False, 0.75, ["VASC"], ["MOG", "CTU", "ER", "PREOP", "AMBU"]),
-    #     Physician("Emmanuelle", "Duceppe", ["PREOP", "CTU"], False, 0.5, [], ["MOG", "VASC"]),
-    #     Physician("Michel", "Bertrand", ["ER", "CTU"], False, 1.0, [], ["MOG", "VASC"]),
-    #     Physician("André", "Roussin", ["ER", "CTU"], False, 0.75, ["VASC"], ["CTU", "CONSULT", "ER", "PREOP", "AMBU"]),
-    #     Physician("Madeleine", "Durand", ["ER", "CTU"], False, 1.0, [], ["MOG", "VASC"]),
-    #     Physician("Gabriel", "Dion", ["PREOP", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-    #     Physician("Brigitte", "Benard", ["ER", "CTU"], False, 0.25, [], ["MOG", "VASC"]),
-    #     Physician("Christopher Oliver", "Clapperton", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-    # ]
+
     for physician in physicians:
         physician_manager.add_physician(physician)
 
@@ -185,7 +158,7 @@ def initialize_calendar():
     return calendar
 
 
-def generate_schedules(physician_manager, task_manager, calendar, schedule_type='both'):
+def generate_schedules(physician_manager, task_manager, calendar):
     start_date = date(2025, 1, 12)
     end_date = date(2025, 2, 6)
     task_splits = {
@@ -204,28 +177,20 @@ def generate_schedules(physician_manager, task_manager, calendar, schedule_type=
         "ER": [date(2023, 7, 4)]
     }
 
-    schedules = {}
+    schedule = MathSchedule(physician_manager, task_manager, calendar)
 
-    if schedule_type in ['math', 'both']:
-        schedules['math'] = MathSchedule(physician_manager, task_manager, calendar)
-
-    if schedule_type in ['old', 'both']:
-        schedules['old'] = Schedule(physician_manager, task_manager, calendar)
-
-    for name, schedule in schedules.items():
-        schedule.set_scheduling_period(start_date, end_date)
-        schedule.set_task_splits(task_splits)
-        #schedule.set_off_days(off_days)
+    schedule.set_scheduling_period(start_date, end_date)
+    schedule.set_task_splits(task_splits)
+    schedule.set_off_days(off_days)
 
 
-        # schedule.load_schedule("initial_schedule.json")
-        schedule.generate_schedule(use_initial_schedule=False)
-        schedule.export_model("model.txt")
-        schedule.print_schedule()
-        schedule.generate_ics_calendar(f"output/schedule/{name}_generated_calendar.ics")
-        schedule.save_schedule(f"output/schedule/{name}_generated_schedule.json")
+    # schedule.load_schedule("initial_schedule.json")
+    schedule.generate_schedule(use_initial_schedule=False)
+    schedule.export_model("model.txt")
+    schedule.print_schedule()
+    schedule.generate_ics_calendar(f"output/schedule/math_generated_calendar.ics")
+    schedule.save_schedule(f"output/schedule/math_generated_schedule.json")
 
-    return schedules
 
 
 def main():
@@ -244,12 +209,9 @@ def main():
     loaded_calendar = Calendar.load_calendar("output/config/calendar.json")
 
     # Generate both schedules (default behavior)
-    all_schedules = generate_schedules(loaded_physician_manager, loaded_task_manager, loaded_calendar, "math")
+    schedule = generate_schedules(loaded_physician_manager, loaded_task_manager, loaded_calendar)
 
-    # Uncomment the following lines to generate only one type of schedule
-    # math_schedules = generate_schedules(loaded_physician_manager, loaded_task_manager, loaded_calendar, schedule_type='both')
-    # old_schedules = generate_schedules(loaded_physician_manager, loaded_task_manager, loaded_calendar, schedule_type='old')
-
+    schedule
 
 if __name__ == "__main__":
     main()

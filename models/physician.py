@@ -13,7 +13,6 @@ class Physician:
         restricted_tasks (list): The restricted task categories for the physician.
         exclusion_tasks (list): The excluded task categories for the physician.
     """
-    ALLOWED_WORKING_WEEKS = {0, 0.25, 0.5, 0.75, 1}
 
     def __init__(self, first_name: str, last_name: str, preferred_tasks: List[str],
                  discontinuity_preference: bool, desired_working_weeks: float,
@@ -24,8 +23,6 @@ class Physician:
         self.initials = ""  # Will be set by PhysicianManager
         self.preferred_tasks = preferred_tasks[:3]  # Limit to top 3
         self.discontinuity_preference = discontinuity_preference
-        if desired_working_weeks not in self.ALLOWED_WORKING_WEEKS:
-            raise ValueError(f"Invalid desired working weeks: {desired_working_weeks}. Must be one of {self.ALLOWED_WORKING_WEEKS}")
         self.desired_working_weeks = desired_working_weeks
         self.restricted_tasks = restricted_tasks
         self.exclusion_tasks = exclusion_tasks
