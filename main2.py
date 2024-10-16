@@ -3,7 +3,6 @@ from datetime import date
 from models.task import TaskCategory, Task, TaskDaysParameter
 from models.physician import Physician
 from models.calendar import Calendar
-from models.schedule import Schedule
 from models.math_schedule import MathSchedule
 from config.managers import TaskManager, PhysicianManager
 
@@ -65,16 +64,16 @@ def initialize_task_manager():
     task_manager.add_task(Task.create(ambu_category, 'Main', 'AMBU_1', heaviness=5, mandatory=True))
     task_manager.add_task(Task.create(ambu_category, 'Main', 'AMBU_2', heaviness=5, mandatory=True))
 
-    ## task_manager.add_task(Task.create(mog_category, 'Main', 'MOG', heaviness=5, mandatory=False))
-    ## task_manager.add_task(Task.create(vasc_category, 'Main', 'VASC', heaviness=5, mandatory=False))
+    task_manager.add_task(Task.create(mog_category, 'Main', 'MOG', heaviness=5, mandatory=True))
+    task_manager.add_task(Task.create(vasc_category, 'Main', 'VASC', heaviness=5, mandatory=True))
 
     task_manager.add_task(Task.create(ctu_category, 'Call', 'CTU_AB_CALL', heaviness=5, mandatory=True))
     task_manager.add_task(Task.create(ctu_category, 'Call', 'CTU_CD_CALL', heaviness=5, mandatory=True))
     task_manager.add_task(Task.create(er_category, 'Call', 'ER_CALL', heaviness=5, mandatory=True))
     task_manager.add_task(Task.create(consult_category, 'Call', 'CONSULT_CALL', heaviness=5, mandatory=True))
 
-    ## task_manager.add_task(Task.create(mog_category, 'Call', 'MOG_CALL', heaviness=5, mandatory=False))
-    ## task_manager.add_task(Task.create(vasc_category, 'Call', 'VASC_CALL', heaviness=5, mandatory=False))
+    task_manager.add_task(Task.create(mog_category, 'Call', 'MOG_CALL', heaviness=5, mandatory=True))
+    task_manager.add_task(Task.create(vasc_category, 'Call', 'VASC_CALL', heaviness=5, mandatory=True))
 
     # Link tasks
     task_manager.link_tasks('CTU_A', 'CTU_AB_CALL')
@@ -88,8 +87,8 @@ def initialize_task_manager():
     task_manager.link_tasks('CONSULT_1', 'CONSULT_CALL')
     task_manager.link_tasks('CONSULT_2', 'CONSULT_CALL')
 
-    ## task_manager.link_tasks('VASC', 'VASC_CALL')
-    ## task_manager.link_tasks('MOG', 'MOG_CALL')
+    task_manager.link_tasks('VASC', 'VASC_CALL')
+    task_manager.link_tasks('MOG', 'MOG_CALL')
 
 
     return task_manager
@@ -100,55 +99,172 @@ def initialize_physician_manager(task_manager):
 
     # Add physicians
     physicians = [
-        Physician("Eric", "Yamga", ["CTU"], True, 0.5, [], []),
+        Physician("Eric", "Yamga", ["CTU", "ER", "PREOP", "CONSULT"], True, 0.45, [], ["MOG", "VASC", "AMBU"]),
+        Physician("Madeleine", "Durand", ["CONSULT", "CTU", "ER", "PREOP"], False, 0.3, [], ["MOG", "VASC", "AMBU"]),
+        Physician("Emmanuelle", "Duceppe", ["CTU", "PREOP", "CONSULT"], False, 0.3, [], ["MOG", "VASC", "AMBU", "ER"]),
+        Physician("Emmanuel", "Sirdar", ["CTU", "CONSULT", "ER", "PREOP"], False, 0.3, [], ["MOG", "VASC"]),
+
+
+        Physician("Florence", "Weber", ["MOG", "ER", "CTU"],False, 0.6, ["MOG"], ["VASC"]),
+        Physician("Sophie", "Grandmaison", ["MOG", "CTU", "ER", "AMBU"], False, 0.75, ["MOG"], ["VASC"]),
+        Physician("Michèle", "Mahone", ["MOG", "CTU", "ER", "AMBU", "PREOP"], False, 0.75, ["MOG"], ["VASC"]),
+        Physician("Nazila", "Bettache", ["MOG", "ER", "CTU", "AMBU", "CONSULT", "PREOP"], False, 0.5, ["MOG"], ["VASC"]),
+        Physician("Vincent", "Williams", ["MOG", "CTU", "ER", "PREOP", "CONSULT", "AMBU"], False, 0.80, [], ["VASC"]),
+
+        Physician("Gabriel", "Dion", ["CTU", "PREOP", "CONSULT"], False, 0.70, [], ["MOG", "VASC"]),
         Physician("Justine", "Munger", ["CTU"], True, 0.75, [], []),
-        Physician("Audrey", "Lacasse", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-        Physician("Diem-Quyen", "Nguyen", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-        Physician("Mikhael", "Laskine", ["ER", "CTU"], False, 1.0, [], ["MOG", "VASC"]),
+        Physician("Mikhael", "Laskine", ["CTU", "CONSULT", "ER", "PREOP"], False, 0.8, [], ["AMBU"]),
         Physician("Benoit", "Deligne", ["ER", "CTU"], False, 0.25, [], ["MOG", "VASC"]),
-        Physician("Michèle", "Mahone", ["ER", "CTU"], False, 0.75, ["MOG"], ["VASC"]),
-        Physician("Robert", "Wistaff", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-        Physician("Nazila", "Bettache", ["ER", "CTU"], False, 0.5, ["MOG"], ["VASC"]),
-        Physician("Vincent", "Williams", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-        Physician("Maxime", "Lamarre-Cliche", ["ER", "CTU"], False, 1.0, [], ["MOG", "VASC"]),
-        Physician("Julien", "D'Astous", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-        Physician("Jean-Pascal", "Costa", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-        Physician("J.Manuel", "Dominguez", ["ER", "CTU"], False, 1.0, ["VASC"], ["MOG"]),
-        Physician("Camille", "Laflamme", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-        Physician("Florence", "Weber", ["ER", "CTU"], False, 0.75, ["MOG"], ["VASC"]),
-        Physician("Sophie", "Grandmaison", ["ER", "CTU"], False, 0.75, ["MOG"], ["MOG", "VASC"]),
-        Physician("Marie-Jose", "Miron", ["ER", "CTU"], False, 0.75, ["VASC"], ["MOG", "CTU", "ER", "PREOP", "AMBU"]),
-        Physician("Emmanuelle", "Duceppe", ["PREOP", "CTU"], False, 0.5, [], ["MOG", "VASC"]),
-        Physician("Michel", "Bertrand", ["ER", "CTU"], False, 1.0, [], ["MOG", "VASC"]),
-        Physician("André", "Roussin", ["ER", "CTU"], False, 0.75, ["VASC"], ["CTU", "CONSULT", "ER", "PREOP", "AMBU"]),
-        Physician("Madeleine", "Durand", ["ER", "CTU"], False, 1.0, [], ["MOG", "VASC"]),
-        Physician("Gabriel", "Dion", ["PREOP", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-        Physician("Brigitte", "Benard", ["ER", "CTU"], False, 0.25, [], ["MOG", "VASC"]),
-        Physician("Christopher Oliver", "Clapperton", ["ER", "CTU"], False, 0.75, [], ["MOG", "VASC"]),
-    ]
+        Physician("Maxime", "Lamarre-Cliche", ["CTU", "ER",  "CONSULT",  "PREOP", "AMBU"], False, 0.80, [], ["MOG", "VASC"]),
+        Physician("Julien", "D'Astous", ["CTU", "CONSULT", "PREOP", "ER", "AMBU"], False, 0.75, [], ["MOG", "VASC"]),
+        Physician("Jean-Pascal", "Costa", ["CTU", "ER", "AMBU", "PREOP", "CONSULT"], False, 0.70, [], ["MOG", "VASC"]),
+        Physician("Camille", "Laflamme", ["ER",  "CONSULT", "CTU", "PREOP", "AMBU"], False, 0.70, [], ["MOG", "VASC"]),
+
+        Physician("Robert", "Wistaff", ["CTU",  "CONSULT", "PREOP", "ER", "AMBU"], False, 0.85, [], ["MOG", "VASC"]),
+        Physician("Rene", "Lecours", ["AMBU", "CTU", "CONSULT", "ER"], False, 0.80, [],
+                ["MOG", "VASC"]),
+        Physician("Diem-Quyen", "Nguyen", ["CTU",  "CONSULT", "PREOP", "AMBU", "ER"], False, 0.70, [], ["MOG", "VASC"]),
+        Physician("Michel", "Bertrand", ["CTU", "PREOP", "CONSULT"], False, 0.70, [], ["MOG", "VASC", "AMBU"]),
+
+        Physician("J.Manuel", "Dominguez", ["CTU", "CONSULT", "PREOP", "ER"], False, 0.55, ["VASC"], ["MOG"]),
+        Physician("Marie-Jose", "Miron", ["VASC"], False, 0.4, ["VASC"],
+                ["MOG", "CTU", "ER", "PREOP", "AMBU"]),
+        Physician("André", "Roussin", ["VASC"], False, 0.35, ["VASC"],
+                ["MOG", "CTU", "CONSULT", "ER", "PREOP", "AMBU"]),
+        Physician("Benoit", "Deligne", ["CTU", "CONSULT", "ER", "PREOP", "AMBU"], False, 0.5, [], ["MOG", "VASC"]),
+        Physician("Martial", "Koenig", ["CTU", "CONSULT", "PREOP", "AMBU", "ER"], False, 0.8, [], ["MOG", "VASC"]),
+
+        #Physician("Christopher Oliver", "Clapperton", ["CTU", "ER", "PREOP", "AMBU", "CONSULT"], False, 0, [], ["MOG", "VASC"]),
+        #Physician("Brigitte", "Benard", ["PREOP", "CONSULT", "CTU", "AMBU"], False, 0, [], ["MOG", "VASC"]),
+        #Physician("Audrey", "Lacasse", ["CTU", "ER"], False, 0.6, [], ["MOG", "VASC"]),
+        ]
 
     for physician in physicians:
         physician_manager.add_physician(physician)
 
     # Set unavailability periods
     unavailability_periods = {
-        "Eric Yamga": [
-            (date(2024, 1, 1), date(2024, 1, 7)),
-            date(2024, 1, 9),
-        ],
-        "Justine Munger": [
-            (date(2024, 2, 1), date(2024, 2, 14)),
-            date(2024, 3, 3),
-        ]
-    }
+            "Eric Yamga": [
+                (date(2025, 2, 10), date(2025, 2, 23)),
+                (date(2025, 5, 5), date(2025, 5, 11)),
+            ],
+            "Madeleine Durand": [
+                (date(2025, 1, 13), date(2025, 1, 13)),
+                (date(2025, 3, 17), date(2025, 3, 23)),
+                (date(2025, 6, 9), date(2025, 6, 15)),
+            ],
+            "Emmanuelle Duceppe": [
+                (date(2025, 2, 3), date(2025, 2, 9)),
+                (date(2025, 4, 21), date(2025, 4, 21)),
+                (date(2025, 6, 2), date(2025, 6, 15)),
+            ],
+            "Emmanuel Sirdar": [
+                (date(2025, 1, 6), date(2025, 1, 12)),
+                (date(2025, 3, 10), date(2025, 3, 16)),
+                (date(2025, 5, 19), date(2025, 5, 25)),
+            ],
+            "Florence Weber": [
+                (date(2025, 2, 17), date(2025, 2, 23)),
+                (date(2025, 4, 14), date(2025, 4, 20)),
+                (date(2025, 6, 23), date(2025, 6, 29)),
+            ],
+            "Sophie Grandmaison": [
+                (date(2025, 1, 20), date(2025, 1, 26)),
+                (date(2025, 3, 31), date(2025, 4, 6)),
+            ],
+            "Michèle Mahone": [
+                (date(2025, 2, 24), date(2025, 3, 2)),
+                (date(2025, 5, 12), date(2025, 5, 18)),
+            ],
+            "Nazila Bettache": [
+                (date(2025, 1, 27), date(2025, 2, 2)),
+                (date(2025, 4, 7), date(2025, 4, 13)),
+                (date(2025, 6, 16), date(2025, 6, 22)),
+            ],
+            "Vincent Williams": [
+                (date(2025, 3, 3), date(2025, 3, 9)),
+                (date(2025, 5, 26), date(2025, 6, 1)),
+            ],
+            "Gabriel Dion": [
+                (date(2025, 1, 30), date(2025, 1, 31)),
+                (date(2025, 4, 28), date(2025, 5, 4)),
+            ],
+            "Justine Munger": [
+                (date(2025, 1, 1), date(2025, 1, 5)),
+                (date(2025, 3, 24), date(2025, 3, 30)),
+                (date(2025, 6, 9), date(2025, 6, 15)),
+            ],
+            "Mikhael Laskine": [
+                (date(2025, 2, 3), date(2025, 2, 9)),
+                (date(2025, 5, 5), date(2025, 5, 11)),
+            ],
+            "Benoit Deligne": [
+                (date(2025, 1, 13), date(2025, 1, 26)),
+                (date(2025, 3, 31), date(2025, 4, 6)),
+                (date(2025, 6, 2), date(2025, 6, 8)),
+            ],
+            "Maxime Lamarre-Cliche": [
+                (date(2025, 3, 10), date(2025, 3, 16)),
+                (date(2025, 5, 19), date(2025, 5, 25)),
+            ],
+            "Julien D'Astous": [
+                (date(2025, 2, 10), date(2025, 2, 16)),
+                (date(2025, 4, 21), date(2025, 4, 27)),
+            ],
+            "Jean-Pascal Costa": [
+                (date(2025, 1, 27), date(2025, 2, 2)),
+                (date(2025, 4, 7), date(2025, 4, 13)),
+                (date(2025, 6, 16), date(2025, 6, 22)),
+            ],
+            "Camille Laflamme": [
+                (date(2025, 3, 17), date(2025, 3, 23)),
+                (date(2025, 5, 26), date(2025, 6, 1)),
+            ],
+            "Robert Wistaff": [
+                (date(2025, 2, 17), date(2025, 2, 23)),
+                (date(2025, 4, 28), date(2025, 5, 4)),
+            ],
+            "Rene Lecours": [
+                (date(2025, 1, 6), date(2025, 1, 12)),
+                (date(2025, 3, 24), date(2025, 3, 30)),
+                (date(2025, 6, 9), date(2025, 6, 15)),
+            ],
+            "Diem-Quyen Nguyen": [
+                (date(2025, 2, 24), date(2025, 3, 2)),
+                (date(2025, 5, 12), date(2025, 5, 18)),
+            ],
+            "Michel Bertrand": [
+                (date(2025, 1, 20), date(2025, 1, 26)),
+                (date(2025, 4, 14), date(2025, 4, 20)),
+            ],
+            "J.Manuel Dominguez": [
+                (date(2025, 3, 3), date(2025, 3, 9)),
+                (date(2025, 5, 19), date(2025, 5, 25)),
+            ],
+            "Marie-Jose Miron": [
+                (date(2025, 2, 3), date(2025, 2, 9)),
+                (date(2025, 4, 21), date(2025, 4, 27)),
+                (date(2025, 6, 23), date(2025, 6, 29)),
+            ],
+            "André Roussin": [
+                (date(2025, 1, 13), date(2025, 1, 19)),
+                (date(2025, 3, 31), date(2025, 4, 6)),
+                (date(2025, 6, 2), date(2025, 6, 8)),
+            ],
+            "Martial Koenig": [
+                (date(2025, 2, 10), date(2025, 2, 16)),
+                (date(2025, 5, 5), date(2025, 5, 11)),
+            ],
+        }
+        
     physician_manager.set_unavailability_periods(unavailability_periods)
 
     return physician_manager
 
 
 def initialize_calendar():
-    start_date = date(2024, 12, 1)
-    end_date = date(2025, 3, 30)
+    start_date = date(2024, 1, 6)
+    end_date = date(2025, 6, 30)
     region = 'Canada/QC'
     calendar = Calendar.create_calendar(start_date, end_date, region)
     calendar.add_holiday(date(2025, 1, 2))
@@ -159,8 +275,8 @@ def initialize_calendar():
 
 
 def generate_schedules(physician_manager, task_manager, calendar):
-    start_date = date(2025, 1, 12)
-    end_date = date(2025, 2, 6)
+    start_date = date(2025, 1, 6)
+    end_date = date(2025, 6, 30)
     task_splits = {
         "CTU": {"linked": "5:2", "unlinked": "5:2"},
         "ER": {"linked": "5:2", "unlinked": "5:2"},
