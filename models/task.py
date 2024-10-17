@@ -106,6 +106,11 @@ class Task:
     @property
     def task_type(self) -> TaskType:
         return self.type
+
+    @property
+    def task_category(self) -> str:
+        return self.category.name
+
     @property
     def days_parameter(self) -> TaskDaysParameter:
         return self.category.days_parameter

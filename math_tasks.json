@@ -1,0 +1,2182 @@
+{
+  "CTU_A": [
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-01-06",
+      "end_date": "2025-01-10",
+      "days": [
+        "2025-01-06",
+        "2025-01-07",
+        "2025-01-08",
+        "2025-01-09",
+        "2025-01-10"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-01-13",
+      "end_date": "2025-01-17",
+      "days": [
+        "2025-01-13",
+        "2025-01-14",
+        "2025-01-15",
+        "2025-01-16",
+        "2025-01-17"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-01-20",
+      "end_date": "2025-01-24",
+      "days": [
+        "2025-01-20",
+        "2025-01-21",
+        "2025-01-22",
+        "2025-01-23",
+        "2025-01-24"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-01-27",
+      "end_date": "2025-01-31",
+      "days": [
+        "2025-01-27",
+        "2025-01-28",
+        "2025-01-29",
+        "2025-01-30",
+        "2025-01-31"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-02-03",
+      "end_date": "2025-02-07",
+      "days": [
+        "2025-02-03",
+        "2025-02-04",
+        "2025-02-05",
+        "2025-02-06",
+        "2025-02-07"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-02-10",
+      "end_date": "2025-02-14",
+      "days": [
+        "2025-02-10",
+        "2025-02-11",
+        "2025-02-12",
+        "2025-02-13",
+        "2025-02-14"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-02-17",
+      "end_date": "2025-02-21",
+      "days": [
+        "2025-02-17",
+        "2025-02-18",
+        "2025-02-19",
+        "2025-02-20",
+        "2025-02-21"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-02-24",
+      "end_date": "2025-02-28",
+      "days": [
+        "2025-02-24",
+        "2025-02-25",
+        "2025-02-26",
+        "2025-02-27",
+        "2025-02-28"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-03-03",
+      "end_date": "2025-03-07",
+      "days": [
+        "2025-03-03",
+        "2025-03-04",
+        "2025-03-05",
+        "2025-03-06",
+        "2025-03-07"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-03-10",
+      "end_date": "2025-03-14",
+      "days": [
+        "2025-03-10",
+        "2025-03-11",
+        "2025-03-12",
+        "2025-03-13",
+        "2025-03-14"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-03-17",
+      "end_date": "2025-03-21",
+      "days": [
+        "2025-03-17",
+        "2025-03-18",
+        "2025-03-19",
+        "2025-03-20",
+        "2025-03-21"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-03-24",
+      "end_date": "2025-03-28",
+      "days": [
+        "2025-03-24",
+        "2025-03-25",
+        "2025-03-26",
+        "2025-03-27",
+        "2025-03-28"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-03-31",
+      "end_date": "2025-04-04",
+      "days": [
+        "2025-03-31",
+        "2025-04-01",
+        "2025-04-02",
+        "2025-04-03",
+        "2025-04-04"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-04-07",
+      "end_date": "2025-04-11",
+      "days": [
+        "2025-04-07",
+        "2025-04-08",
+        "2025-04-09",
+        "2025-04-10",
+        "2025-04-11"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-04-14",
+      "end_date": "2025-04-17",
+      "days": [
+        "2025-04-14",
+        "2025-04-15",
+        "2025-04-16",
+        "2025-04-17"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-04-21",
+      "end_date": "2025-04-25",
+      "days": [
+        "2025-04-21",
+        "2025-04-22",
+        "2025-04-23",
+        "2025-04-24",
+        "2025-04-25"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-04-28",
+      "end_date": "2025-05-02",
+      "days": [
+        "2025-04-28",
+        "2025-04-29",
+        "2025-04-30",
+        "2025-05-01",
+        "2025-05-02"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-05-05",
+      "end_date": "2025-05-09",
+      "days": [
+        "2025-05-05",
+        "2025-05-06",
+        "2025-05-07",
+        "2025-05-08",
+        "2025-05-09"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-05-12",
+      "end_date": "2025-05-16",
+      "days": [
+        "2025-05-12",
+        "2025-05-13",
+        "2025-05-14",
+        "2025-05-15",
+        "2025-05-16"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-05-20",
+      "end_date": "2025-05-23",
+      "days": [
+        "2025-05-20",
+        "2025-05-21",
+        "2025-05-22",
+        "2025-05-23"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-05-26",
+      "end_date": "2025-05-30",
+      "days": [
+        "2025-05-26",
+        "2025-05-27",
+        "2025-05-28",
+        "2025-05-29",
+        "2025-05-30"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-06-02",
+      "end_date": "2025-06-06",
+      "days": [
+        "2025-06-02",
+        "2025-06-03",
+        "2025-06-04",
+        "2025-06-05",
+        "2025-06-06"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-06-09",
+      "end_date": "2025-06-13",
+      "days": [
+        "2025-06-09",
+        "2025-06-10",
+        "2025-06-11",
+        "2025-06-12",
+        "2025-06-13"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-06-16",
+      "end_date": "2025-06-20",
+      "days": [
+        "2025-06-16",
+        "2025-06-17",
+        "2025-06-18",
+        "2025-06-19",
+        "2025-06-20"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-06-23",
+      "end_date": "2025-06-23",
+      "days": [
+        "2025-06-23"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-06-25",
+      "end_date": "2025-06-27",
+      "days": [
+        "2025-06-25",
+        "2025-06-26",
+        "2025-06-27"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_A",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-06-30",
+      "end_date": "2025-06-30",
+      "days": [
+        "2025-06-30"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    }
+  ],
+  "CTU_B": [
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-01-13",
+      "end_date": "2025-01-17",
+      "days": [
+        "2025-01-13",
+        "2025-01-14",
+        "2025-01-15",
+        "2025-01-16",
+        "2025-01-17"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-01-20",
+      "end_date": "2025-01-24",
+      "days": [
+        "2025-01-20",
+        "2025-01-21",
+        "2025-01-22",
+        "2025-01-23",
+        "2025-01-24"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-01-27",
+      "end_date": "2025-01-31",
+      "days": [
+        "2025-01-27",
+        "2025-01-28",
+        "2025-01-29",
+        "2025-01-30",
+        "2025-01-31"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-02-03",
+      "end_date": "2025-02-07",
+      "days": [
+        "2025-02-03",
+        "2025-02-04",
+        "2025-02-05",
+        "2025-02-06",
+        "2025-02-07"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-02-10",
+      "end_date": "2025-02-14",
+      "days": [
+        "2025-02-10",
+        "2025-02-11",
+        "2025-02-12",
+        "2025-02-13",
+        "2025-02-14"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-02-17",
+      "end_date": "2025-02-21",
+      "days": [
+        "2025-02-17",
+        "2025-02-18",
+        "2025-02-19",
+        "2025-02-20",
+        "2025-02-21"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-02-24",
+      "end_date": "2025-02-28",
+      "days": [
+        "2025-02-24",
+        "2025-02-25",
+        "2025-02-26",
+        "2025-02-27",
+        "2025-02-28"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-03-03",
+      "end_date": "2025-03-07",
+      "days": [
+        "2025-03-03",
+        "2025-03-04",
+        "2025-03-05",
+        "2025-03-06",
+        "2025-03-07"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-03-10",
+      "end_date": "2025-03-14",
+      "days": [
+        "2025-03-10",
+        "2025-03-11",
+        "2025-03-12",
+        "2025-03-13",
+        "2025-03-14"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-03-17",
+      "end_date": "2025-03-21",
+      "days": [
+        "2025-03-17",
+        "2025-03-18",
+        "2025-03-19",
+        "2025-03-20",
+        "2025-03-21"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-03-24",
+      "end_date": "2025-03-28",
+      "days": [
+        "2025-03-24",
+        "2025-03-25",
+        "2025-03-26",
+        "2025-03-27",
+        "2025-03-28"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-03-31",
+      "end_date": "2025-04-04",
+      "days": [
+        "2025-03-31",
+        "2025-04-01",
+        "2025-04-02",
+        "2025-04-03",
+        "2025-04-04"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-04-07",
+      "end_date": "2025-04-11",
+      "days": [
+        "2025-04-07",
+        "2025-04-08",
+        "2025-04-09",
+        "2025-04-10",
+        "2025-04-11"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-04-14",
+      "end_date": "2025-04-17",
+      "days": [
+        "2025-04-14",
+        "2025-04-15",
+        "2025-04-16",
+        "2025-04-17"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-04-21",
+      "end_date": "2025-04-25",
+      "days": [
+        "2025-04-21",
+        "2025-04-22",
+        "2025-04-23",
+        "2025-04-24",
+        "2025-04-25"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-04-28",
+      "end_date": "2025-05-02",
+      "days": [
+        "2025-04-28",
+        "2025-04-29",
+        "2025-04-30",
+        "2025-05-01",
+        "2025-05-02"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-05-05",
+      "end_date": "2025-05-09",
+      "days": [
+        "2025-05-05",
+        "2025-05-06",
+        "2025-05-07",
+        "2025-05-08",
+        "2025-05-09"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-05-12",
+      "end_date": "2025-05-16",
+      "days": [
+        "2025-05-12",
+        "2025-05-13",
+        "2025-05-14",
+        "2025-05-15",
+        "2025-05-16"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-05-20",
+      "end_date": "2025-05-23",
+      "days": [
+        "2025-05-20",
+        "2025-05-21",
+        "2025-05-22",
+        "2025-05-23"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-05-26",
+      "end_date": "2025-05-30",
+      "days": [
+        "2025-05-26",
+        "2025-05-27",
+        "2025-05-28",
+        "2025-05-29",
+        "2025-05-30"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-06-02",
+      "end_date": "2025-06-06",
+      "days": [
+        "2025-06-02",
+        "2025-06-03",
+        "2025-06-04",
+        "2025-06-05",
+        "2025-06-06"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-06-09",
+      "end_date": "2025-06-13",
+      "days": [
+        "2025-06-09",
+        "2025-06-10",
+        "2025-06-11",
+        "2025-06-12",
+        "2025-06-13"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-06-16",
+      "end_date": "2025-06-20",
+      "days": [
+        "2025-06-16",
+        "2025-06-17",
+        "2025-06-18",
+        "2025-06-19",
+        "2025-06-20"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-06-23",
+      "end_date": "2025-06-23",
+      "days": [
+        "2025-06-23"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-06-25",
+      "end_date": "2025-06-27",
+      "days": [
+        "2025-06-25",
+        "2025-06-26",
+        "2025-06-27"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_B",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-06-30",
+      "end_date": "2025-06-30",
+      "days": [
+        "2025-06-30"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    }
+  ],
+  "CTU_C": [
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-01-06",
+      "end_date": "2025-01-10",
+      "days": [
+        "2025-01-06",
+        "2025-01-07",
+        "2025-01-08",
+        "2025-01-09",
+        "2025-01-10"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-01-13",
+      "end_date": "2025-01-17",
+      "days": [
+        "2025-01-13",
+        "2025-01-14",
+        "2025-01-15",
+        "2025-01-16",
+        "2025-01-17"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-01-20",
+      "end_date": "2025-01-24",
+      "days": [
+        "2025-01-20",
+        "2025-01-21",
+        "2025-01-22",
+        "2025-01-23",
+        "2025-01-24"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-01-27",
+      "end_date": "2025-01-31",
+      "days": [
+        "2025-01-27",
+        "2025-01-28",
+        "2025-01-29",
+        "2025-01-30",
+        "2025-01-31"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-02-03",
+      "end_date": "2025-02-07",
+      "days": [
+        "2025-02-03",
+        "2025-02-04",
+        "2025-02-05",
+        "2025-02-06",
+        "2025-02-07"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-02-10",
+      "end_date": "2025-02-14",
+      "days": [
+        "2025-02-10",
+        "2025-02-11",
+        "2025-02-12",
+        "2025-02-13",
+        "2025-02-14"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-02-17",
+      "end_date": "2025-02-21",
+      "days": [
+        "2025-02-17",
+        "2025-02-18",
+        "2025-02-19",
+        "2025-02-20",
+        "2025-02-21"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-02-24",
+      "end_date": "2025-02-28",
+      "days": [
+        "2025-02-24",
+        "2025-02-25",
+        "2025-02-26",
+        "2025-02-27",
+        "2025-02-28"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-03-03",
+      "end_date": "2025-03-07",
+      "days": [
+        "2025-03-03",
+        "2025-03-04",
+        "2025-03-05",
+        "2025-03-06",
+        "2025-03-07"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-03-10",
+      "end_date": "2025-03-14",
+      "days": [
+        "2025-03-10",
+        "2025-03-11",
+        "2025-03-12",
+        "2025-03-13",
+        "2025-03-14"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-03-17",
+      "end_date": "2025-03-21",
+      "days": [
+        "2025-03-17",
+        "2025-03-18",
+        "2025-03-19",
+        "2025-03-20",
+        "2025-03-21"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-03-24",
+      "end_date": "2025-03-28",
+      "days": [
+        "2025-03-24",
+        "2025-03-25",
+        "2025-03-26",
+        "2025-03-27",
+        "2025-03-28"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-03-31",
+      "end_date": "2025-04-04",
+      "days": [
+        "2025-03-31",
+        "2025-04-01",
+        "2025-04-02",
+        "2025-04-03",
+        "2025-04-04"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-04-07",
+      "end_date": "2025-04-11",
+      "days": [
+        "2025-04-07",
+        "2025-04-08",
+        "2025-04-09",
+        "2025-04-10",
+        "2025-04-11"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-04-14",
+      "end_date": "2025-04-17",
+      "days": [
+        "2025-04-14",
+        "2025-04-15",
+        "2025-04-16",
+        "2025-04-17"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-04-21",
+      "end_date": "2025-04-25",
+      "days": [
+        "2025-04-21",
+        "2025-04-22",
+        "2025-04-23",
+        "2025-04-24",
+        "2025-04-25"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-04-28",
+      "end_date": "2025-05-02",
+      "days": [
+        "2025-04-28",
+        "2025-04-29",
+        "2025-04-30",
+        "2025-05-01",
+        "2025-05-02"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-05-05",
+      "end_date": "2025-05-09",
+      "days": [
+        "2025-05-05",
+        "2025-05-06",
+        "2025-05-07",
+        "2025-05-08",
+        "2025-05-09"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-05-12",
+      "end_date": "2025-05-16",
+      "days": [
+        "2025-05-12",
+        "2025-05-13",
+        "2025-05-14",
+        "2025-05-15",
+        "2025-05-16"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-05-20",
+      "end_date": "2025-05-23",
+      "days": [
+        "2025-05-20",
+        "2025-05-21",
+        "2025-05-22",
+        "2025-05-23"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-05-26",
+      "end_date": "2025-05-30",
+      "days": [
+        "2025-05-26",
+        "2025-05-27",
+        "2025-05-28",
+        "2025-05-29",
+        "2025-05-30"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-06-02",
+      "end_date": "2025-06-06",
+      "days": [
+        "2025-06-02",
+        "2025-06-03",
+        "2025-06-04",
+        "2025-06-05",
+        "2025-06-06"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-06-09",
+      "end_date": "2025-06-13",
+      "days": [
+        "2025-06-09",
+        "2025-06-10",
+        "2025-06-11",
+        "2025-06-12",
+        "2025-06-13"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-06-16",
+      "end_date": "2025-06-20",
+      "days": [
+        "2025-06-16",
+        "2025-06-17",
+        "2025-06-18",
+        "2025-06-19",
+        "2025-06-20"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-06-23",
+      "end_date": "2025-06-23",
+      "days": [
+        "2025-06-23"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-06-25",
+      "end_date": "2025-06-27",
+      "days": [
+        "2025-06-25",
+        "2025-06-26",
+        "2025-06-27"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_C",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-06-30",
+      "end_date": "2025-06-30",
+      "days": [
+        "2025-06-30"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    }
+  ],
+  "CTU_D": [
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-01-13",
+      "end_date": "2025-01-17",
+      "days": [
+        "2025-01-13",
+        "2025-01-14",
+        "2025-01-15",
+        "2025-01-16",
+        "2025-01-17"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-01-20",
+      "end_date": "2025-01-24",
+      "days": [
+        "2025-01-20",
+        "2025-01-21",
+        "2025-01-22",
+        "2025-01-23",
+        "2025-01-24"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-01-27",
+      "end_date": "2025-01-31",
+      "days": [
+        "2025-01-27",
+        "2025-01-28",
+        "2025-01-29",
+        "2025-01-30",
+        "2025-01-31"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-02-03",
+      "end_date": "2025-02-07",
+      "days": [
+        "2025-02-03",
+        "2025-02-04",
+        "2025-02-05",
+        "2025-02-06",
+        "2025-02-07"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-02-10",
+      "end_date": "2025-02-14",
+      "days": [
+        "2025-02-10",
+        "2025-02-11",
+        "2025-02-12",
+        "2025-02-13",
+        "2025-02-14"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-02-17",
+      "end_date": "2025-02-21",
+      "days": [
+        "2025-02-17",
+        "2025-02-18",
+        "2025-02-19",
+        "2025-02-20",
+        "2025-02-21"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-02-24",
+      "end_date": "2025-02-28",
+      "days": [
+        "2025-02-24",
+        "2025-02-25",
+        "2025-02-26",
+        "2025-02-27",
+        "2025-02-28"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-03-03",
+      "end_date": "2025-03-07",
+      "days": [
+        "2025-03-03",
+        "2025-03-04",
+        "2025-03-05",
+        "2025-03-06",
+        "2025-03-07"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-03-10",
+      "end_date": "2025-03-14",
+      "days": [
+        "2025-03-10",
+        "2025-03-11",
+        "2025-03-12",
+        "2025-03-13",
+        "2025-03-14"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-03-17",
+      "end_date": "2025-03-21",
+      "days": [
+        "2025-03-17",
+        "2025-03-18",
+        "2025-03-19",
+        "2025-03-20",
+        "2025-03-21"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-03-24",
+      "end_date": "2025-03-28",
+      "days": [
+        "2025-03-24",
+        "2025-03-25",
+        "2025-03-26",
+        "2025-03-27",
+        "2025-03-28"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-03-31",
+      "end_date": "2025-04-04",
+      "days": [
+        "2025-03-31",
+        "2025-04-01",
+        "2025-04-02",
+        "2025-04-03",
+        "2025-04-04"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-04-07",
+      "end_date": "2025-04-11",
+      "days": [
+        "2025-04-07",
+        "2025-04-08",
+        "2025-04-09",
+        "2025-04-10",
+        "2025-04-11"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-04-14",
+      "end_date": "2025-04-17",
+      "days": [
+        "2025-04-14",
+        "2025-04-15",
+        "2025-04-16",
+        "2025-04-17"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-04-21",
+      "end_date": "2025-04-25",
+      "days": [
+        "2025-04-21",
+        "2025-04-22",
+        "2025-04-23",
+        "2025-04-24",
+        "2025-04-25"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-04-28",
+      "end_date": "2025-05-02",
+      "days": [
+        "2025-04-28",
+        "2025-04-29",
+        "2025-04-30",
+        "2025-05-01",
+        "2025-05-02"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-05-05",
+      "end_date": "2025-05-09",
+      "days": [
+        "2025-05-05",
+        "2025-05-06",
+        "2025-05-07",
+        "2025-05-08",
+        "2025-05-09"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-05-12",
+      "end_date": "2025-05-16",
+      "days": [
+        "2025-05-12",
+        "2025-05-13",
+        "2025-05-14",
+        "2025-05-15",
+        "2025-05-16"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-05-20",
+      "end_date": "2025-05-23",
+      "days": [
+        "2025-05-20",
+        "2025-05-21",
+        "2025-05-22",
+        "2025-05-23"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-05-26",
+      "end_date": "2025-05-30",
+      "days": [
+        "2025-05-26",
+        "2025-05-27",
+        "2025-05-28",
+        "2025-05-29",
+        "2025-05-30"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-06-02",
+      "end_date": "2025-06-06",
+      "days": [
+        "2025-06-02",
+        "2025-06-03",
+        "2025-06-04",
+        "2025-06-05",
+        "2025-06-06"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-06-09",
+      "end_date": "2025-06-13",
+      "days": [
+        "2025-06-09",
+        "2025-06-10",
+        "2025-06-11",
+        "2025-06-12",
+        "2025-06-13"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-06-16",
+      "end_date": "2025-06-20",
+      "days": [
+        "2025-06-16",
+        "2025-06-17",
+        "2025-06-18",
+        "2025-06-19",
+        "2025-06-20"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-06-23",
+      "end_date": "2025-06-23",
+      "days": [
+        "2025-06-23"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-06-25",
+      "end_date": "2025-06-27",
+      "days": [
+        "2025-06-25",
+        "2025-06-26",
+        "2025-06-27"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_D",
+      "task_type": "(<TaskType.MAIN: 'Main'>,)",
+      "start_date": "2025-06-30",
+      "end_date": "2025-06-30",
+      "days": [
+        "2025-06-30"
+      ],
+      "heaviness": 4,
+      "mandatory": true
+    }
+  ],
+  "CTU_AB_CALL": [
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-01-11",
+      "end_date": "2025-01-12",
+      "days": [
+        "2025-01-11",
+        "2025-01-12"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-01-18",
+      "end_date": "2025-01-19",
+      "days": [
+        "2025-01-18",
+        "2025-01-19"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-01-25",
+      "end_date": "2025-01-26",
+      "days": [
+        "2025-01-25",
+        "2025-01-26"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-02-01",
+      "end_date": "2025-02-02",
+      "days": [
+        "2025-02-01",
+        "2025-02-02"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-02-08",
+      "end_date": "2025-02-09",
+      "days": [
+        "2025-02-08",
+        "2025-02-09"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-02-15",
+      "end_date": "2025-02-16",
+      "days": [
+        "2025-02-15",
+        "2025-02-16"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-02-22",
+      "end_date": "2025-02-23",
+      "days": [
+        "2025-02-22",
+        "2025-02-23"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-03-01",
+      "end_date": "2025-03-02",
+      "days": [
+        "2025-03-01",
+        "2025-03-02"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-03-08",
+      "end_date": "2025-03-09",
+      "days": [
+        "2025-03-08",
+        "2025-03-09"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-03-15",
+      "end_date": "2025-03-16",
+      "days": [
+        "2025-03-15",
+        "2025-03-16"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-03-22",
+      "end_date": "2025-03-23",
+      "days": [
+        "2025-03-22",
+        "2025-03-23"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-03-29",
+      "end_date": "2025-03-30",
+      "days": [
+        "2025-03-29",
+        "2025-03-30"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-04-05",
+      "end_date": "2025-04-06",
+      "days": [
+        "2025-04-05",
+        "2025-04-06"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-04-12",
+      "end_date": "2025-04-13",
+      "days": [
+        "2025-04-12",
+        "2025-04-13"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-04-18",
+      "end_date": "2025-04-20",
+      "days": [
+        "2025-04-18",
+        "2025-04-19",
+        "2025-04-20"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-04-26",
+      "end_date": "2025-04-27",
+      "days": [
+        "2025-04-26",
+        "2025-04-27"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-05-03",
+      "end_date": "2025-05-04",
+      "days": [
+        "2025-05-03",
+        "2025-05-04"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-05-10",
+      "end_date": "2025-05-11",
+      "days": [
+        "2025-05-10",
+        "2025-05-11"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-05-17",
+      "end_date": "2025-05-19",
+      "days": [
+        "2025-05-17",
+        "2025-05-18",
+        "2025-05-19"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-05-24",
+      "end_date": "2025-05-25",
+      "days": [
+        "2025-05-24",
+        "2025-05-25"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-05-31",
+      "end_date": "2025-06-01",
+      "days": [
+        "2025-05-31",
+        "2025-06-01"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-06-07",
+      "end_date": "2025-06-08",
+      "days": [
+        "2025-06-07",
+        "2025-06-08"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-06-14",
+      "end_date": "2025-06-15",
+      "days": [
+        "2025-06-14",
+        "2025-06-15"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-06-21",
+      "end_date": "2025-06-22",
+      "days": [
+        "2025-06-21",
+        "2025-06-22"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-06-24",
+      "end_date": "2025-06-24",
+      "days": [
+        "2025-06-24"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_AB_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-06-28",
+      "end_date": "2025-06-29",
+      "days": [
+        "2025-06-28",
+        "2025-06-29"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    }
+  ],
+  "CTU_CD_CALL": [
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-01-11",
+      "end_date": "2025-01-12",
+      "days": [
+        "2025-01-11",
+        "2025-01-12"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-01-18",
+      "end_date": "2025-01-19",
+      "days": [
+        "2025-01-18",
+        "2025-01-19"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-01-25",
+      "end_date": "2025-01-26",
+      "days": [
+        "2025-01-25",
+        "2025-01-26"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-02-01",
+      "end_date": "2025-02-02",
+      "days": [
+        "2025-02-01",
+        "2025-02-02"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-02-08",
+      "end_date": "2025-02-09",
+      "days": [
+        "2025-02-08",
+        "2025-02-09"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-02-15",
+      "end_date": "2025-02-16",
+      "days": [
+        "2025-02-15",
+        "2025-02-16"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-02-22",
+      "end_date": "2025-02-23",
+      "days": [
+        "2025-02-22",
+        "2025-02-23"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-03-01",
+      "end_date": "2025-03-02",
+      "days": [
+        "2025-03-01",
+        "2025-03-02"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-03-08",
+      "end_date": "2025-03-09",
+      "days": [
+        "2025-03-08",
+        "2025-03-09"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-03-15",
+      "end_date": "2025-03-16",
+      "days": [
+        "2025-03-15",
+        "2025-03-16"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-03-22",
+      "end_date": "2025-03-23",
+      "days": [
+        "2025-03-22",
+        "2025-03-23"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-03-29",
+      "end_date": "2025-03-30",
+      "days": [
+        "2025-03-29",
+        "2025-03-30"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-04-05",
+      "end_date": "2025-04-06",
+      "days": [
+        "2025-04-05",
+        "2025-04-06"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-04-12",
+      "end_date": "2025-04-13",
+      "days": [
+        "2025-04-12",
+        "2025-04-13"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-04-18",
+      "end_date": "2025-04-20",
+      "days": [
+        "2025-04-18",
+        "2025-04-19",
+        "2025-04-20"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-04-26",
+      "end_date": "2025-04-27",
+      "days": [
+        "2025-04-26",
+        "2025-04-27"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-05-03",
+      "end_date": "2025-05-04",
+      "days": [
+        "2025-05-03",
+        "2025-05-04"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-05-10",
+      "end_date": "2025-05-11",
+      "days": [
+        "2025-05-10",
+        "2025-05-11"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-05-17",
+      "end_date": "2025-05-19",
+      "days": [
+        "2025-05-17",
+        "2025-05-18",
+        "2025-05-19"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-05-24",
+      "end_date": "2025-05-25",
+      "days": [
+        "2025-05-24",
+        "2025-05-25"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-05-31",
+      "end_date": "2025-06-01",
+      "days": [
+        "2025-05-31",
+        "2025-06-01"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-06-07",
+      "end_date": "2025-06-08",
+      "days": [
+        "2025-06-07",
+        "2025-06-08"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-06-14",
+      "end_date": "2025-06-15",
+      "days": [
+        "2025-06-14",
+        "2025-06-15"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-06-21",
+      "end_date": "2025-06-22",
+      "days": [
+        "2025-06-21",
+        "2025-06-22"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-06-24",
+      "end_date": "2025-06-24",
+      "days": [
+        "2025-06-24"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "name": "CTU_CD_CALL",
+      "task_type": "(<TaskType.CALL: 'Call'>,)",
+      "start_date": "2025-06-28",
+      "end_date": "2025-06-29",
+      "days": [
+        "2025-06-28",
+        "2025-06-29"
+      ],
+      "heaviness": 5,
+      "mandatory": true
+    }
+  ]
+}

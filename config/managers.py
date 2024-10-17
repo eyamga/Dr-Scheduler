@@ -51,6 +51,23 @@ class TaskManager(ConfigurableManager):
     def add_task(self, task: Task):
         self.data['tasks'].append(task)
 
+<<<<<<< Updated upstream
+=======
+    def get_task(self, task: str):
+        for t in self.data['tasks']:
+            if t.name == task:
+                return t
+        return None
+
+    def get_task_category(self, task: str):
+        #task_manager.get_task_category('CTU')
+        for t in self.data['tasks']:
+            if t.name == task:
+                return t.task_category
+        return None
+
+
+>>>>>>> Stashed changes
     def link_tasks(self, main_task_name: str, call_task_name: str):
         main_task = next((t for t in self.data['tasks'] if t.name == main_task_name), None)
         call_task = next((t for t in self.data['tasks'] if t.name == call_task_name), None)
@@ -152,17 +169,30 @@ class PhysicianManager(ConfigurableManager):
             raise ValueError(f"Invalid unavailability period: {period}")
 
     def is_unavailable(self, name, check_date: date) -> bool:
+        '''
+        Check if a physician is unavailable on a given date, note that if unavailable for a single date in a period, the physician is considered unavailable for the whole period.
+        '''
+        #logging.debug(f"Checking unavailability for {name} on {check_date}")
+
         if name not in self.unavailability_periods:
+            logging.debug(f"  No unavailability periods found for {name}")
             return False
 
         for period in self.unavailability_periods[name]:
+            # show period instance
             if isinstance(period, date):
-                if check_date == period:
+                if period == check_date:
+                    #logging.debug(f"  {name} is unavailable on {check_date}")
                     return True
-            else:
+            elif isinstance(period, tuple) and len(period) == 2:
                 start, end = period
                 if start <= check_date <= end:
+                    #logging.debug(f"  {name} is unavailable from {start} to {end}")
                     return True
+            else:
+                logging.warning(f"Unexpected period format for {name}: {period}")
+
+        #logging.debug(f"  {name} is available on {check_date}")
         return False
 
     def get_unavailability_periods(self, name) -> List[Union[date, Tuple[date, date]]]:
@@ -175,6 +205,10 @@ class PhysicianManager(ConfigurableManager):
         with open(filename, 'w') as f:
             json.dump(data, f, indent=2)
 
+    def print_all_unavailability_periods(self):
+        for name, periods in self.unavailability_periods.items():
+            print(f"Unavailability periods for {name}: {periods}")
+
     @classmethod
     def load_config(cls, physician_config_filename: str, task_config_filename: str):
         with open(physician_config_filename, 'r') as f:
@@ -186,3 +220,4 @@ class PhysicianManager(ConfigurableManager):
             manager.add_physician(physician)
 
         return manager
+

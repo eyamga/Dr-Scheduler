@@ -1,0 +1,5084 @@
+[
+  {
+    "task": "CTU_A",
+    "physician": "Emmanuel Sirdar",
+    "reason": "Unavailable",
+    "start_date": "2025-01-06",
+    "end_date": "2025-01-10"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Rene Lecours",
+    "reason": "Unavailable",
+    "start_date": "2025-01-06",
+    "end_date": "2025-01-10"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Emmanuel Sirdar",
+    "reason": "Unavailable",
+    "start_date": "2025-01-06",
+    "end_date": "2025-01-10"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Rene Lecours",
+    "reason": "Unavailable",
+    "start_date": "2025-01-06",
+    "end_date": "2025-01-10"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Emmanuel Sirdar",
+    "reason": "Unavailable",
+    "start_date": "2025-01-11",
+    "end_date": "2025-01-12"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Rene Lecours",
+    "reason": "Unavailable",
+    "start_date": "2025-01-11",
+    "end_date": "2025-01-12"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Emmanuel Sirdar",
+    "reason": "Unavailable",
+    "start_date": "2025-01-11",
+    "end_date": "2025-01-12"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Rene Lecours",
+    "reason": "Unavailable",
+    "start_date": "2025-01-11",
+    "end_date": "2025-01-12"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Madeleine Durand",
+    "reason": "Unavailable",
+    "start_date": "2025-01-13",
+    "end_date": "2025-01-17"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-01-13",
+    "end_date": "2025-01-17"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Unavailable",
+    "start_date": "2025-01-13",
+    "end_date": "2025-01-17"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-01-13",
+    "end_date": "2025-01-17"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Madeleine Durand",
+    "reason": "Unavailable",
+    "start_date": "2025-01-13",
+    "end_date": "2025-01-17"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-01-13",
+    "end_date": "2025-01-17"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Unavailable",
+    "start_date": "2025-01-13",
+    "end_date": "2025-01-17"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-01-13",
+    "end_date": "2025-01-17"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Madeleine Durand",
+    "reason": "Unavailable",
+    "start_date": "2025-01-13",
+    "end_date": "2025-01-17"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-01-13",
+    "end_date": "2025-01-17"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Unavailable",
+    "start_date": "2025-01-13",
+    "end_date": "2025-01-17"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-01-13",
+    "end_date": "2025-01-17"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Madeleine Durand",
+    "reason": "Unavailable",
+    "start_date": "2025-01-13",
+    "end_date": "2025-01-17"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-01-13",
+    "end_date": "2025-01-17"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Unavailable",
+    "start_date": "2025-01-13",
+    "end_date": "2025-01-17"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-01-13",
+    "end_date": "2025-01-17"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-01-18",
+    "end_date": "2025-01-19"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Unavailable",
+    "start_date": "2025-01-18",
+    "end_date": "2025-01-19"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-01-18",
+    "end_date": "2025-01-19"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-01-18",
+    "end_date": "2025-01-19"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Unavailable",
+    "start_date": "2025-01-18",
+    "end_date": "2025-01-19"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-01-18",
+    "end_date": "2025-01-19"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Sophie Grandmaison",
+    "reason": "Unavailable",
+    "start_date": "2025-01-20",
+    "end_date": "2025-01-24"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-01-20",
+    "end_date": "2025-01-24"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Michel Bertrand",
+    "reason": "Unavailable",
+    "start_date": "2025-01-20",
+    "end_date": "2025-01-24"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-01-20",
+    "end_date": "2025-01-24"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Sophie Grandmaison",
+    "reason": "Unavailable",
+    "start_date": "2025-01-20",
+    "end_date": "2025-01-24"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-01-20",
+    "end_date": "2025-01-24"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Michel Bertrand",
+    "reason": "Unavailable",
+    "start_date": "2025-01-20",
+    "end_date": "2025-01-24"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-01-20",
+    "end_date": "2025-01-24"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Sophie Grandmaison",
+    "reason": "Unavailable",
+    "start_date": "2025-01-20",
+    "end_date": "2025-01-24"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-01-20",
+    "end_date": "2025-01-24"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Michel Bertrand",
+    "reason": "Unavailable",
+    "start_date": "2025-01-20",
+    "end_date": "2025-01-24"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-01-20",
+    "end_date": "2025-01-24"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Sophie Grandmaison",
+    "reason": "Unavailable",
+    "start_date": "2025-01-20",
+    "end_date": "2025-01-24"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-01-20",
+    "end_date": "2025-01-24"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Michel Bertrand",
+    "reason": "Unavailable",
+    "start_date": "2025-01-20",
+    "end_date": "2025-01-24"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-01-20",
+    "end_date": "2025-01-24"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Sophie Grandmaison",
+    "reason": "Unavailable",
+    "start_date": "2025-01-25",
+    "end_date": "2025-01-26"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-01-25",
+    "end_date": "2025-01-26"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Michel Bertrand",
+    "reason": "Unavailable",
+    "start_date": "2025-01-25",
+    "end_date": "2025-01-26"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-01-25",
+    "end_date": "2025-01-26"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Sophie Grandmaison",
+    "reason": "Unavailable",
+    "start_date": "2025-01-25",
+    "end_date": "2025-01-26"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-01-25",
+    "end_date": "2025-01-26"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Michel Bertrand",
+    "reason": "Unavailable",
+    "start_date": "2025-01-25",
+    "end_date": "2025-01-26"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-01-25",
+    "end_date": "2025-01-26"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Nazila Bettache",
+    "reason": "Unavailable",
+    "start_date": "2025-01-27",
+    "end_date": "2025-01-31"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Gabriel Dion",
+    "reason": "Unavailable",
+    "start_date": "2025-01-27",
+    "end_date": "2025-01-31"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Jean-Pascal Costa",
+    "reason": "Unavailable",
+    "start_date": "2025-01-27",
+    "end_date": "2025-01-31"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Nazila Bettache",
+    "reason": "Unavailable",
+    "start_date": "2025-01-27",
+    "end_date": "2025-01-31"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Gabriel Dion",
+    "reason": "Unavailable",
+    "start_date": "2025-01-27",
+    "end_date": "2025-01-31"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Jean-Pascal Costa",
+    "reason": "Unavailable",
+    "start_date": "2025-01-27",
+    "end_date": "2025-01-31"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Nazila Bettache",
+    "reason": "Unavailable",
+    "start_date": "2025-01-27",
+    "end_date": "2025-01-31"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Gabriel Dion",
+    "reason": "Unavailable",
+    "start_date": "2025-01-27",
+    "end_date": "2025-01-31"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Jean-Pascal Costa",
+    "reason": "Unavailable",
+    "start_date": "2025-01-27",
+    "end_date": "2025-01-31"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Nazila Bettache",
+    "reason": "Unavailable",
+    "start_date": "2025-01-27",
+    "end_date": "2025-01-31"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Gabriel Dion",
+    "reason": "Unavailable",
+    "start_date": "2025-01-27",
+    "end_date": "2025-01-31"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Jean-Pascal Costa",
+    "reason": "Unavailable",
+    "start_date": "2025-01-27",
+    "end_date": "2025-01-31"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Nazila Bettache",
+    "reason": "Unavailable",
+    "start_date": "2025-02-01",
+    "end_date": "2025-02-02"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Jean-Pascal Costa",
+    "reason": "Unavailable",
+    "start_date": "2025-02-01",
+    "end_date": "2025-02-02"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Nazila Bettache",
+    "reason": "Unavailable",
+    "start_date": "2025-02-01",
+    "end_date": "2025-02-02"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Jean-Pascal Costa",
+    "reason": "Unavailable",
+    "start_date": "2025-02-01",
+    "end_date": "2025-02-02"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Emmanuelle Duceppe",
+    "reason": "Unavailable",
+    "start_date": "2025-02-03",
+    "end_date": "2025-02-07"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Mikhael Laskine",
+    "reason": "Unavailable",
+    "start_date": "2025-02-03",
+    "end_date": "2025-02-07"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Unavailable",
+    "start_date": "2025-02-03",
+    "end_date": "2025-02-07"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Emmanuelle Duceppe",
+    "reason": "Unavailable",
+    "start_date": "2025-02-03",
+    "end_date": "2025-02-07"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Mikhael Laskine",
+    "reason": "Unavailable",
+    "start_date": "2025-02-03",
+    "end_date": "2025-02-07"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Unavailable",
+    "start_date": "2025-02-03",
+    "end_date": "2025-02-07"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Emmanuelle Duceppe",
+    "reason": "Unavailable",
+    "start_date": "2025-02-03",
+    "end_date": "2025-02-07"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Mikhael Laskine",
+    "reason": "Unavailable",
+    "start_date": "2025-02-03",
+    "end_date": "2025-02-07"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Unavailable",
+    "start_date": "2025-02-03",
+    "end_date": "2025-02-07"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Emmanuelle Duceppe",
+    "reason": "Unavailable",
+    "start_date": "2025-02-03",
+    "end_date": "2025-02-07"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Mikhael Laskine",
+    "reason": "Unavailable",
+    "start_date": "2025-02-03",
+    "end_date": "2025-02-07"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Unavailable",
+    "start_date": "2025-02-03",
+    "end_date": "2025-02-07"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Emmanuelle Duceppe",
+    "reason": "Unavailable",
+    "start_date": "2025-02-08",
+    "end_date": "2025-02-09"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Mikhael Laskine",
+    "reason": "Unavailable",
+    "start_date": "2025-02-08",
+    "end_date": "2025-02-09"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Unavailable",
+    "start_date": "2025-02-08",
+    "end_date": "2025-02-09"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Emmanuelle Duceppe",
+    "reason": "Unavailable",
+    "start_date": "2025-02-08",
+    "end_date": "2025-02-09"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Mikhael Laskine",
+    "reason": "Unavailable",
+    "start_date": "2025-02-08",
+    "end_date": "2025-02-09"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Unavailable",
+    "start_date": "2025-02-08",
+    "end_date": "2025-02-09"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Eric Yamga",
+    "reason": "Unavailable",
+    "start_date": "2025-02-10",
+    "end_date": "2025-02-14"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Julien D'Astous",
+    "reason": "Unavailable",
+    "start_date": "2025-02-10",
+    "end_date": "2025-02-14"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Martial Koenig",
+    "reason": "Unavailable",
+    "start_date": "2025-02-10",
+    "end_date": "2025-02-14"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Eric Yamga",
+    "reason": "Unavailable",
+    "start_date": "2025-02-10",
+    "end_date": "2025-02-14"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Julien D'Astous",
+    "reason": "Unavailable",
+    "start_date": "2025-02-10",
+    "end_date": "2025-02-14"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Martial Koenig",
+    "reason": "Unavailable",
+    "start_date": "2025-02-10",
+    "end_date": "2025-02-14"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Eric Yamga",
+    "reason": "Unavailable",
+    "start_date": "2025-02-10",
+    "end_date": "2025-02-14"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Julien D'Astous",
+    "reason": "Unavailable",
+    "start_date": "2025-02-10",
+    "end_date": "2025-02-14"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Martial Koenig",
+    "reason": "Unavailable",
+    "start_date": "2025-02-10",
+    "end_date": "2025-02-14"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Eric Yamga",
+    "reason": "Unavailable",
+    "start_date": "2025-02-10",
+    "end_date": "2025-02-14"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Julien D'Astous",
+    "reason": "Unavailable",
+    "start_date": "2025-02-10",
+    "end_date": "2025-02-14"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Martial Koenig",
+    "reason": "Unavailable",
+    "start_date": "2025-02-10",
+    "end_date": "2025-02-14"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Eric Yamga",
+    "reason": "Unavailable",
+    "start_date": "2025-02-15",
+    "end_date": "2025-02-16"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Julien D'Astous",
+    "reason": "Unavailable",
+    "start_date": "2025-02-15",
+    "end_date": "2025-02-16"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Martial Koenig",
+    "reason": "Unavailable",
+    "start_date": "2025-02-15",
+    "end_date": "2025-02-16"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Eric Yamga",
+    "reason": "Unavailable",
+    "start_date": "2025-02-15",
+    "end_date": "2025-02-16"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Julien D'Astous",
+    "reason": "Unavailable",
+    "start_date": "2025-02-15",
+    "end_date": "2025-02-16"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Martial Koenig",
+    "reason": "Unavailable",
+    "start_date": "2025-02-15",
+    "end_date": "2025-02-16"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Eric Yamga",
+    "reason": "Unavailable",
+    "start_date": "2025-02-17",
+    "end_date": "2025-02-21"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Florence Weber",
+    "reason": "Unavailable",
+    "start_date": "2025-02-17",
+    "end_date": "2025-02-21"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Robert Wistaff",
+    "reason": "Unavailable",
+    "start_date": "2025-02-17",
+    "end_date": "2025-02-21"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Eric Yamga",
+    "reason": "Unavailable",
+    "start_date": "2025-02-17",
+    "end_date": "2025-02-21"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Florence Weber",
+    "reason": "Unavailable",
+    "start_date": "2025-02-17",
+    "end_date": "2025-02-21"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Robert Wistaff",
+    "reason": "Unavailable",
+    "start_date": "2025-02-17",
+    "end_date": "2025-02-21"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Eric Yamga",
+    "reason": "Unavailable",
+    "start_date": "2025-02-17",
+    "end_date": "2025-02-21"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Florence Weber",
+    "reason": "Unavailable",
+    "start_date": "2025-02-17",
+    "end_date": "2025-02-21"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Robert Wistaff",
+    "reason": "Unavailable",
+    "start_date": "2025-02-17",
+    "end_date": "2025-02-21"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Eric Yamga",
+    "reason": "Unavailable",
+    "start_date": "2025-02-17",
+    "end_date": "2025-02-21"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Florence Weber",
+    "reason": "Unavailable",
+    "start_date": "2025-02-17",
+    "end_date": "2025-02-21"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Robert Wistaff",
+    "reason": "Unavailable",
+    "start_date": "2025-02-17",
+    "end_date": "2025-02-21"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Eric Yamga",
+    "reason": "Unavailable",
+    "start_date": "2025-02-22",
+    "end_date": "2025-02-23"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Florence Weber",
+    "reason": "Unavailable",
+    "start_date": "2025-02-22",
+    "end_date": "2025-02-23"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Robert Wistaff",
+    "reason": "Unavailable",
+    "start_date": "2025-02-22",
+    "end_date": "2025-02-23"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Eric Yamga",
+    "reason": "Unavailable",
+    "start_date": "2025-02-22",
+    "end_date": "2025-02-23"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Florence Weber",
+    "reason": "Unavailable",
+    "start_date": "2025-02-22",
+    "end_date": "2025-02-23"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Robert Wistaff",
+    "reason": "Unavailable",
+    "start_date": "2025-02-22",
+    "end_date": "2025-02-23"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Mich\u00e8le Mahone",
+    "reason": "Unavailable",
+    "start_date": "2025-02-24",
+    "end_date": "2025-02-28"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Diem-Quyen Nguyen",
+    "reason": "Unavailable",
+    "start_date": "2025-02-24",
+    "end_date": "2025-02-28"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Mich\u00e8le Mahone",
+    "reason": "Unavailable",
+    "start_date": "2025-02-24",
+    "end_date": "2025-02-28"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Diem-Quyen Nguyen",
+    "reason": "Unavailable",
+    "start_date": "2025-02-24",
+    "end_date": "2025-02-28"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Mich\u00e8le Mahone",
+    "reason": "Unavailable",
+    "start_date": "2025-02-24",
+    "end_date": "2025-02-28"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Diem-Quyen Nguyen",
+    "reason": "Unavailable",
+    "start_date": "2025-02-24",
+    "end_date": "2025-02-28"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Mich\u00e8le Mahone",
+    "reason": "Unavailable",
+    "start_date": "2025-02-24",
+    "end_date": "2025-02-28"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Diem-Quyen Nguyen",
+    "reason": "Unavailable",
+    "start_date": "2025-02-24",
+    "end_date": "2025-02-28"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Mich\u00e8le Mahone",
+    "reason": "Unavailable",
+    "start_date": "2025-03-01",
+    "end_date": "2025-03-02"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Diem-Quyen Nguyen",
+    "reason": "Unavailable",
+    "start_date": "2025-03-01",
+    "end_date": "2025-03-02"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Mich\u00e8le Mahone",
+    "reason": "Unavailable",
+    "start_date": "2025-03-01",
+    "end_date": "2025-03-02"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Diem-Quyen Nguyen",
+    "reason": "Unavailable",
+    "start_date": "2025-03-01",
+    "end_date": "2025-03-02"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Vincent Williams",
+    "reason": "Unavailable",
+    "start_date": "2025-03-03",
+    "end_date": "2025-03-07"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "J.Manuel Dominguez",
+    "reason": "Unavailable",
+    "start_date": "2025-03-03",
+    "end_date": "2025-03-07"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Vincent Williams",
+    "reason": "Unavailable",
+    "start_date": "2025-03-03",
+    "end_date": "2025-03-07"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "J.Manuel Dominguez",
+    "reason": "Unavailable",
+    "start_date": "2025-03-03",
+    "end_date": "2025-03-07"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Vincent Williams",
+    "reason": "Unavailable",
+    "start_date": "2025-03-03",
+    "end_date": "2025-03-07"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "J.Manuel Dominguez",
+    "reason": "Unavailable",
+    "start_date": "2025-03-03",
+    "end_date": "2025-03-07"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Vincent Williams",
+    "reason": "Unavailable",
+    "start_date": "2025-03-03",
+    "end_date": "2025-03-07"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "J.Manuel Dominguez",
+    "reason": "Unavailable",
+    "start_date": "2025-03-03",
+    "end_date": "2025-03-07"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Vincent Williams",
+    "reason": "Unavailable",
+    "start_date": "2025-03-08",
+    "end_date": "2025-03-09"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "J.Manuel Dominguez",
+    "reason": "Unavailable",
+    "start_date": "2025-03-08",
+    "end_date": "2025-03-09"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Vincent Williams",
+    "reason": "Unavailable",
+    "start_date": "2025-03-08",
+    "end_date": "2025-03-09"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "J.Manuel Dominguez",
+    "reason": "Unavailable",
+    "start_date": "2025-03-08",
+    "end_date": "2025-03-09"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Emmanuel Sirdar",
+    "reason": "Unavailable",
+    "start_date": "2025-03-10",
+    "end_date": "2025-03-14"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Maxime Lamarre-Cliche",
+    "reason": "Unavailable",
+    "start_date": "2025-03-10",
+    "end_date": "2025-03-14"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Emmanuel Sirdar",
+    "reason": "Unavailable",
+    "start_date": "2025-03-10",
+    "end_date": "2025-03-14"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Maxime Lamarre-Cliche",
+    "reason": "Unavailable",
+    "start_date": "2025-03-10",
+    "end_date": "2025-03-14"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Emmanuel Sirdar",
+    "reason": "Unavailable",
+    "start_date": "2025-03-10",
+    "end_date": "2025-03-14"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Maxime Lamarre-Cliche",
+    "reason": "Unavailable",
+    "start_date": "2025-03-10",
+    "end_date": "2025-03-14"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Emmanuel Sirdar",
+    "reason": "Unavailable",
+    "start_date": "2025-03-10",
+    "end_date": "2025-03-14"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Maxime Lamarre-Cliche",
+    "reason": "Unavailable",
+    "start_date": "2025-03-10",
+    "end_date": "2025-03-14"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Emmanuel Sirdar",
+    "reason": "Unavailable",
+    "start_date": "2025-03-15",
+    "end_date": "2025-03-16"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Maxime Lamarre-Cliche",
+    "reason": "Unavailable",
+    "start_date": "2025-03-15",
+    "end_date": "2025-03-16"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Emmanuel Sirdar",
+    "reason": "Unavailable",
+    "start_date": "2025-03-15",
+    "end_date": "2025-03-16"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Maxime Lamarre-Cliche",
+    "reason": "Unavailable",
+    "start_date": "2025-03-15",
+    "end_date": "2025-03-16"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Madeleine Durand",
+    "reason": "Unavailable",
+    "start_date": "2025-03-17",
+    "end_date": "2025-03-21"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Camille Laflamme",
+    "reason": "Unavailable",
+    "start_date": "2025-03-17",
+    "end_date": "2025-03-21"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Madeleine Durand",
+    "reason": "Unavailable",
+    "start_date": "2025-03-17",
+    "end_date": "2025-03-21"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Camille Laflamme",
+    "reason": "Unavailable",
+    "start_date": "2025-03-17",
+    "end_date": "2025-03-21"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Madeleine Durand",
+    "reason": "Unavailable",
+    "start_date": "2025-03-17",
+    "end_date": "2025-03-21"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Camille Laflamme",
+    "reason": "Unavailable",
+    "start_date": "2025-03-17",
+    "end_date": "2025-03-21"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Madeleine Durand",
+    "reason": "Unavailable",
+    "start_date": "2025-03-17",
+    "end_date": "2025-03-21"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Camille Laflamme",
+    "reason": "Unavailable",
+    "start_date": "2025-03-17",
+    "end_date": "2025-03-21"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Madeleine Durand",
+    "reason": "Unavailable",
+    "start_date": "2025-03-22",
+    "end_date": "2025-03-23"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Camille Laflamme",
+    "reason": "Unavailable",
+    "start_date": "2025-03-22",
+    "end_date": "2025-03-23"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Madeleine Durand",
+    "reason": "Unavailable",
+    "start_date": "2025-03-22",
+    "end_date": "2025-03-23"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Camille Laflamme",
+    "reason": "Unavailable",
+    "start_date": "2025-03-22",
+    "end_date": "2025-03-23"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Justine Munger",
+    "reason": "Unavailable",
+    "start_date": "2025-03-24",
+    "end_date": "2025-03-28"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Rene Lecours",
+    "reason": "Unavailable",
+    "start_date": "2025-03-24",
+    "end_date": "2025-03-28"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Justine Munger",
+    "reason": "Unavailable",
+    "start_date": "2025-03-24",
+    "end_date": "2025-03-28"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Rene Lecours",
+    "reason": "Unavailable",
+    "start_date": "2025-03-24",
+    "end_date": "2025-03-28"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Justine Munger",
+    "reason": "Unavailable",
+    "start_date": "2025-03-24",
+    "end_date": "2025-03-28"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Rene Lecours",
+    "reason": "Unavailable",
+    "start_date": "2025-03-24",
+    "end_date": "2025-03-28"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Justine Munger",
+    "reason": "Unavailable",
+    "start_date": "2025-03-24",
+    "end_date": "2025-03-28"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Rene Lecours",
+    "reason": "Unavailable",
+    "start_date": "2025-03-24",
+    "end_date": "2025-03-28"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Justine Munger",
+    "reason": "Unavailable",
+    "start_date": "2025-03-29",
+    "end_date": "2025-03-30"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Rene Lecours",
+    "reason": "Unavailable",
+    "start_date": "2025-03-29",
+    "end_date": "2025-03-30"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Justine Munger",
+    "reason": "Unavailable",
+    "start_date": "2025-03-29",
+    "end_date": "2025-03-30"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Rene Lecours",
+    "reason": "Unavailable",
+    "start_date": "2025-03-29",
+    "end_date": "2025-03-30"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Sophie Grandmaison",
+    "reason": "Unavailable",
+    "start_date": "2025-03-31",
+    "end_date": "2025-04-04"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-03-31",
+    "end_date": "2025-04-04"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Unavailable",
+    "start_date": "2025-03-31",
+    "end_date": "2025-04-04"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-03-31",
+    "end_date": "2025-04-04"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Sophie Grandmaison",
+    "reason": "Unavailable",
+    "start_date": "2025-03-31",
+    "end_date": "2025-04-04"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-03-31",
+    "end_date": "2025-04-04"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Unavailable",
+    "start_date": "2025-03-31",
+    "end_date": "2025-04-04"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-03-31",
+    "end_date": "2025-04-04"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Sophie Grandmaison",
+    "reason": "Unavailable",
+    "start_date": "2025-03-31",
+    "end_date": "2025-04-04"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-03-31",
+    "end_date": "2025-04-04"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Unavailable",
+    "start_date": "2025-03-31",
+    "end_date": "2025-04-04"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-03-31",
+    "end_date": "2025-04-04"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Sophie Grandmaison",
+    "reason": "Unavailable",
+    "start_date": "2025-03-31",
+    "end_date": "2025-04-04"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-03-31",
+    "end_date": "2025-04-04"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Unavailable",
+    "start_date": "2025-03-31",
+    "end_date": "2025-04-04"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-03-31",
+    "end_date": "2025-04-04"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Sophie Grandmaison",
+    "reason": "Unavailable",
+    "start_date": "2025-04-05",
+    "end_date": "2025-04-06"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-04-05",
+    "end_date": "2025-04-06"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Unavailable",
+    "start_date": "2025-04-05",
+    "end_date": "2025-04-06"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-04-05",
+    "end_date": "2025-04-06"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Sophie Grandmaison",
+    "reason": "Unavailable",
+    "start_date": "2025-04-05",
+    "end_date": "2025-04-06"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-04-05",
+    "end_date": "2025-04-06"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Unavailable",
+    "start_date": "2025-04-05",
+    "end_date": "2025-04-06"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-04-05",
+    "end_date": "2025-04-06"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Nazila Bettache",
+    "reason": "Unavailable",
+    "start_date": "2025-04-07",
+    "end_date": "2025-04-11"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Jean-Pascal Costa",
+    "reason": "Unavailable",
+    "start_date": "2025-04-07",
+    "end_date": "2025-04-11"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Nazila Bettache",
+    "reason": "Unavailable",
+    "start_date": "2025-04-07",
+    "end_date": "2025-04-11"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Jean-Pascal Costa",
+    "reason": "Unavailable",
+    "start_date": "2025-04-07",
+    "end_date": "2025-04-11"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Nazila Bettache",
+    "reason": "Unavailable",
+    "start_date": "2025-04-07",
+    "end_date": "2025-04-11"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Jean-Pascal Costa",
+    "reason": "Unavailable",
+    "start_date": "2025-04-07",
+    "end_date": "2025-04-11"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Nazila Bettache",
+    "reason": "Unavailable",
+    "start_date": "2025-04-07",
+    "end_date": "2025-04-11"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Jean-Pascal Costa",
+    "reason": "Unavailable",
+    "start_date": "2025-04-07",
+    "end_date": "2025-04-11"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Nazila Bettache",
+    "reason": "Unavailable",
+    "start_date": "2025-04-12",
+    "end_date": "2025-04-13"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Jean-Pascal Costa",
+    "reason": "Unavailable",
+    "start_date": "2025-04-12",
+    "end_date": "2025-04-13"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Nazila Bettache",
+    "reason": "Unavailable",
+    "start_date": "2025-04-12",
+    "end_date": "2025-04-13"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Jean-Pascal Costa",
+    "reason": "Unavailable",
+    "start_date": "2025-04-12",
+    "end_date": "2025-04-13"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Florence Weber",
+    "reason": "Unavailable",
+    "start_date": "2025-04-14",
+    "end_date": "2025-04-17"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Michel Bertrand",
+    "reason": "Unavailable",
+    "start_date": "2025-04-14",
+    "end_date": "2025-04-17"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Florence Weber",
+    "reason": "Unavailable",
+    "start_date": "2025-04-14",
+    "end_date": "2025-04-17"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Michel Bertrand",
+    "reason": "Unavailable",
+    "start_date": "2025-04-14",
+    "end_date": "2025-04-17"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Florence Weber",
+    "reason": "Unavailable",
+    "start_date": "2025-04-14",
+    "end_date": "2025-04-17"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Michel Bertrand",
+    "reason": "Unavailable",
+    "start_date": "2025-04-14",
+    "end_date": "2025-04-17"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Florence Weber",
+    "reason": "Unavailable",
+    "start_date": "2025-04-14",
+    "end_date": "2025-04-17"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Michel Bertrand",
+    "reason": "Unavailable",
+    "start_date": "2025-04-14",
+    "end_date": "2025-04-17"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Florence Weber",
+    "reason": "Unavailable",
+    "start_date": "2025-04-18",
+    "end_date": "2025-04-20"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Michel Bertrand",
+    "reason": "Unavailable",
+    "start_date": "2025-04-18",
+    "end_date": "2025-04-20"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Florence Weber",
+    "reason": "Unavailable",
+    "start_date": "2025-04-18",
+    "end_date": "2025-04-20"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Michel Bertrand",
+    "reason": "Unavailable",
+    "start_date": "2025-04-18",
+    "end_date": "2025-04-20"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Emmanuelle Duceppe",
+    "reason": "Unavailable",
+    "start_date": "2025-04-21",
+    "end_date": "2025-04-25"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Julien D'Astous",
+    "reason": "Unavailable",
+    "start_date": "2025-04-21",
+    "end_date": "2025-04-25"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Unavailable",
+    "start_date": "2025-04-21",
+    "end_date": "2025-04-25"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Emmanuelle Duceppe",
+    "reason": "Unavailable",
+    "start_date": "2025-04-21",
+    "end_date": "2025-04-25"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Julien D'Astous",
+    "reason": "Unavailable",
+    "start_date": "2025-04-21",
+    "end_date": "2025-04-25"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Unavailable",
+    "start_date": "2025-04-21",
+    "end_date": "2025-04-25"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Emmanuelle Duceppe",
+    "reason": "Unavailable",
+    "start_date": "2025-04-21",
+    "end_date": "2025-04-25"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Julien D'Astous",
+    "reason": "Unavailable",
+    "start_date": "2025-04-21",
+    "end_date": "2025-04-25"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Unavailable",
+    "start_date": "2025-04-21",
+    "end_date": "2025-04-25"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Emmanuelle Duceppe",
+    "reason": "Unavailable",
+    "start_date": "2025-04-21",
+    "end_date": "2025-04-25"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Julien D'Astous",
+    "reason": "Unavailable",
+    "start_date": "2025-04-21",
+    "end_date": "2025-04-25"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Unavailable",
+    "start_date": "2025-04-21",
+    "end_date": "2025-04-25"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Julien D'Astous",
+    "reason": "Unavailable",
+    "start_date": "2025-04-26",
+    "end_date": "2025-04-27"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Unavailable",
+    "start_date": "2025-04-26",
+    "end_date": "2025-04-27"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Julien D'Astous",
+    "reason": "Unavailable",
+    "start_date": "2025-04-26",
+    "end_date": "2025-04-27"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Unavailable",
+    "start_date": "2025-04-26",
+    "end_date": "2025-04-27"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Gabriel Dion",
+    "reason": "Unavailable",
+    "start_date": "2025-04-28",
+    "end_date": "2025-05-02"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Robert Wistaff",
+    "reason": "Unavailable",
+    "start_date": "2025-04-28",
+    "end_date": "2025-05-02"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Gabriel Dion",
+    "reason": "Unavailable",
+    "start_date": "2025-04-28",
+    "end_date": "2025-05-02"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Robert Wistaff",
+    "reason": "Unavailable",
+    "start_date": "2025-04-28",
+    "end_date": "2025-05-02"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Gabriel Dion",
+    "reason": "Unavailable",
+    "start_date": "2025-04-28",
+    "end_date": "2025-05-02"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Robert Wistaff",
+    "reason": "Unavailable",
+    "start_date": "2025-04-28",
+    "end_date": "2025-05-02"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Gabriel Dion",
+    "reason": "Unavailable",
+    "start_date": "2025-04-28",
+    "end_date": "2025-05-02"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Robert Wistaff",
+    "reason": "Unavailable",
+    "start_date": "2025-04-28",
+    "end_date": "2025-05-02"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Gabriel Dion",
+    "reason": "Unavailable",
+    "start_date": "2025-05-03",
+    "end_date": "2025-05-04"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Robert Wistaff",
+    "reason": "Unavailable",
+    "start_date": "2025-05-03",
+    "end_date": "2025-05-04"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Gabriel Dion",
+    "reason": "Unavailable",
+    "start_date": "2025-05-03",
+    "end_date": "2025-05-04"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Robert Wistaff",
+    "reason": "Unavailable",
+    "start_date": "2025-05-03",
+    "end_date": "2025-05-04"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Eric Yamga",
+    "reason": "Unavailable",
+    "start_date": "2025-05-05",
+    "end_date": "2025-05-09"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Mikhael Laskine",
+    "reason": "Unavailable",
+    "start_date": "2025-05-05",
+    "end_date": "2025-05-09"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Martial Koenig",
+    "reason": "Unavailable",
+    "start_date": "2025-05-05",
+    "end_date": "2025-05-09"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Eric Yamga",
+    "reason": "Unavailable",
+    "start_date": "2025-05-05",
+    "end_date": "2025-05-09"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Mikhael Laskine",
+    "reason": "Unavailable",
+    "start_date": "2025-05-05",
+    "end_date": "2025-05-09"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Martial Koenig",
+    "reason": "Unavailable",
+    "start_date": "2025-05-05",
+    "end_date": "2025-05-09"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Eric Yamga",
+    "reason": "Unavailable",
+    "start_date": "2025-05-05",
+    "end_date": "2025-05-09"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Mikhael Laskine",
+    "reason": "Unavailable",
+    "start_date": "2025-05-05",
+    "end_date": "2025-05-09"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Martial Koenig",
+    "reason": "Unavailable",
+    "start_date": "2025-05-05",
+    "end_date": "2025-05-09"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Eric Yamga",
+    "reason": "Unavailable",
+    "start_date": "2025-05-05",
+    "end_date": "2025-05-09"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Mikhael Laskine",
+    "reason": "Unavailable",
+    "start_date": "2025-05-05",
+    "end_date": "2025-05-09"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Martial Koenig",
+    "reason": "Unavailable",
+    "start_date": "2025-05-05",
+    "end_date": "2025-05-09"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Eric Yamga",
+    "reason": "Unavailable",
+    "start_date": "2025-05-10",
+    "end_date": "2025-05-11"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Mikhael Laskine",
+    "reason": "Unavailable",
+    "start_date": "2025-05-10",
+    "end_date": "2025-05-11"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Martial Koenig",
+    "reason": "Unavailable",
+    "start_date": "2025-05-10",
+    "end_date": "2025-05-11"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Eric Yamga",
+    "reason": "Unavailable",
+    "start_date": "2025-05-10",
+    "end_date": "2025-05-11"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Mikhael Laskine",
+    "reason": "Unavailable",
+    "start_date": "2025-05-10",
+    "end_date": "2025-05-11"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Martial Koenig",
+    "reason": "Unavailable",
+    "start_date": "2025-05-10",
+    "end_date": "2025-05-11"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Mich\u00e8le Mahone",
+    "reason": "Unavailable",
+    "start_date": "2025-05-12",
+    "end_date": "2025-05-16"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Diem-Quyen Nguyen",
+    "reason": "Unavailable",
+    "start_date": "2025-05-12",
+    "end_date": "2025-05-16"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Mich\u00e8le Mahone",
+    "reason": "Unavailable",
+    "start_date": "2025-05-12",
+    "end_date": "2025-05-16"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Diem-Quyen Nguyen",
+    "reason": "Unavailable",
+    "start_date": "2025-05-12",
+    "end_date": "2025-05-16"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Mich\u00e8le Mahone",
+    "reason": "Unavailable",
+    "start_date": "2025-05-12",
+    "end_date": "2025-05-16"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Diem-Quyen Nguyen",
+    "reason": "Unavailable",
+    "start_date": "2025-05-12",
+    "end_date": "2025-05-16"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Mich\u00e8le Mahone",
+    "reason": "Unavailable",
+    "start_date": "2025-05-12",
+    "end_date": "2025-05-16"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Diem-Quyen Nguyen",
+    "reason": "Unavailable",
+    "start_date": "2025-05-12",
+    "end_date": "2025-05-16"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Emmanuel Sirdar",
+    "reason": "Unavailable",
+    "start_date": "2025-05-17",
+    "end_date": "2025-05-19"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Mich\u00e8le Mahone",
+    "reason": "Unavailable",
+    "start_date": "2025-05-17",
+    "end_date": "2025-05-19"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Maxime Lamarre-Cliche",
+    "reason": "Unavailable",
+    "start_date": "2025-05-17",
+    "end_date": "2025-05-19"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Diem-Quyen Nguyen",
+    "reason": "Unavailable",
+    "start_date": "2025-05-17",
+    "end_date": "2025-05-19"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "J.Manuel Dominguez",
+    "reason": "Unavailable",
+    "start_date": "2025-05-17",
+    "end_date": "2025-05-19"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Emmanuel Sirdar",
+    "reason": "Unavailable",
+    "start_date": "2025-05-17",
+    "end_date": "2025-05-19"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Mich\u00e8le Mahone",
+    "reason": "Unavailable",
+    "start_date": "2025-05-17",
+    "end_date": "2025-05-19"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Maxime Lamarre-Cliche",
+    "reason": "Unavailable",
+    "start_date": "2025-05-17",
+    "end_date": "2025-05-19"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Diem-Quyen Nguyen",
+    "reason": "Unavailable",
+    "start_date": "2025-05-17",
+    "end_date": "2025-05-19"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "J.Manuel Dominguez",
+    "reason": "Unavailable",
+    "start_date": "2025-05-17",
+    "end_date": "2025-05-19"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Emmanuel Sirdar",
+    "reason": "Unavailable",
+    "start_date": "2025-05-20",
+    "end_date": "2025-05-23"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Maxime Lamarre-Cliche",
+    "reason": "Unavailable",
+    "start_date": "2025-05-20",
+    "end_date": "2025-05-23"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "J.Manuel Dominguez",
+    "reason": "Unavailable",
+    "start_date": "2025-05-20",
+    "end_date": "2025-05-23"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Emmanuel Sirdar",
+    "reason": "Unavailable",
+    "start_date": "2025-05-20",
+    "end_date": "2025-05-23"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Maxime Lamarre-Cliche",
+    "reason": "Unavailable",
+    "start_date": "2025-05-20",
+    "end_date": "2025-05-23"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "J.Manuel Dominguez",
+    "reason": "Unavailable",
+    "start_date": "2025-05-20",
+    "end_date": "2025-05-23"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Emmanuel Sirdar",
+    "reason": "Unavailable",
+    "start_date": "2025-05-20",
+    "end_date": "2025-05-23"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Maxime Lamarre-Cliche",
+    "reason": "Unavailable",
+    "start_date": "2025-05-20",
+    "end_date": "2025-05-23"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "J.Manuel Dominguez",
+    "reason": "Unavailable",
+    "start_date": "2025-05-20",
+    "end_date": "2025-05-23"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Emmanuel Sirdar",
+    "reason": "Unavailable",
+    "start_date": "2025-05-20",
+    "end_date": "2025-05-23"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Maxime Lamarre-Cliche",
+    "reason": "Unavailable",
+    "start_date": "2025-05-20",
+    "end_date": "2025-05-23"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "J.Manuel Dominguez",
+    "reason": "Unavailable",
+    "start_date": "2025-05-20",
+    "end_date": "2025-05-23"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Emmanuel Sirdar",
+    "reason": "Unavailable",
+    "start_date": "2025-05-24",
+    "end_date": "2025-05-25"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Maxime Lamarre-Cliche",
+    "reason": "Unavailable",
+    "start_date": "2025-05-24",
+    "end_date": "2025-05-25"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "J.Manuel Dominguez",
+    "reason": "Unavailable",
+    "start_date": "2025-05-24",
+    "end_date": "2025-05-25"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Emmanuel Sirdar",
+    "reason": "Unavailable",
+    "start_date": "2025-05-24",
+    "end_date": "2025-05-25"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Maxime Lamarre-Cliche",
+    "reason": "Unavailable",
+    "start_date": "2025-05-24",
+    "end_date": "2025-05-25"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "J.Manuel Dominguez",
+    "reason": "Unavailable",
+    "start_date": "2025-05-24",
+    "end_date": "2025-05-25"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Vincent Williams",
+    "reason": "Unavailable",
+    "start_date": "2025-05-26",
+    "end_date": "2025-05-30"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Camille Laflamme",
+    "reason": "Unavailable",
+    "start_date": "2025-05-26",
+    "end_date": "2025-05-30"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Vincent Williams",
+    "reason": "Unavailable",
+    "start_date": "2025-05-26",
+    "end_date": "2025-05-30"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Camille Laflamme",
+    "reason": "Unavailable",
+    "start_date": "2025-05-26",
+    "end_date": "2025-05-30"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Vincent Williams",
+    "reason": "Unavailable",
+    "start_date": "2025-05-26",
+    "end_date": "2025-05-30"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Camille Laflamme",
+    "reason": "Unavailable",
+    "start_date": "2025-05-26",
+    "end_date": "2025-05-30"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Vincent Williams",
+    "reason": "Unavailable",
+    "start_date": "2025-05-26",
+    "end_date": "2025-05-30"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Camille Laflamme",
+    "reason": "Unavailable",
+    "start_date": "2025-05-26",
+    "end_date": "2025-05-30"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Vincent Williams",
+    "reason": "Unavailable",
+    "start_date": "2025-05-31",
+    "end_date": "2025-06-01"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Camille Laflamme",
+    "reason": "Unavailable",
+    "start_date": "2025-05-31",
+    "end_date": "2025-06-01"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Vincent Williams",
+    "reason": "Unavailable",
+    "start_date": "2025-05-31",
+    "end_date": "2025-06-01"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Camille Laflamme",
+    "reason": "Unavailable",
+    "start_date": "2025-05-31",
+    "end_date": "2025-06-01"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Emmanuelle Duceppe",
+    "reason": "Unavailable",
+    "start_date": "2025-06-02",
+    "end_date": "2025-06-06"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-06-02",
+    "end_date": "2025-06-06"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Unavailable",
+    "start_date": "2025-06-02",
+    "end_date": "2025-06-06"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-06-02",
+    "end_date": "2025-06-06"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Emmanuelle Duceppe",
+    "reason": "Unavailable",
+    "start_date": "2025-06-02",
+    "end_date": "2025-06-06"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-06-02",
+    "end_date": "2025-06-06"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Unavailable",
+    "start_date": "2025-06-02",
+    "end_date": "2025-06-06"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-06-02",
+    "end_date": "2025-06-06"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Emmanuelle Duceppe",
+    "reason": "Unavailable",
+    "start_date": "2025-06-02",
+    "end_date": "2025-06-06"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-06-02",
+    "end_date": "2025-06-06"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Unavailable",
+    "start_date": "2025-06-02",
+    "end_date": "2025-06-06"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-06-02",
+    "end_date": "2025-06-06"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Emmanuelle Duceppe",
+    "reason": "Unavailable",
+    "start_date": "2025-06-02",
+    "end_date": "2025-06-06"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-06-02",
+    "end_date": "2025-06-06"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Unavailable",
+    "start_date": "2025-06-02",
+    "end_date": "2025-06-06"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-06-02",
+    "end_date": "2025-06-06"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Emmanuelle Duceppe",
+    "reason": "Unavailable",
+    "start_date": "2025-06-07",
+    "end_date": "2025-06-08"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-06-07",
+    "end_date": "2025-06-08"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Unavailable",
+    "start_date": "2025-06-07",
+    "end_date": "2025-06-08"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-06-07",
+    "end_date": "2025-06-08"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Emmanuelle Duceppe",
+    "reason": "Unavailable",
+    "start_date": "2025-06-07",
+    "end_date": "2025-06-08"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-06-07",
+    "end_date": "2025-06-08"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Unavailable",
+    "start_date": "2025-06-07",
+    "end_date": "2025-06-08"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Benoit Deligne",
+    "reason": "Unavailable",
+    "start_date": "2025-06-07",
+    "end_date": "2025-06-08"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Madeleine Durand",
+    "reason": "Unavailable",
+    "start_date": "2025-06-09",
+    "end_date": "2025-06-13"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Emmanuelle Duceppe",
+    "reason": "Unavailable",
+    "start_date": "2025-06-09",
+    "end_date": "2025-06-13"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Justine Munger",
+    "reason": "Unavailable",
+    "start_date": "2025-06-09",
+    "end_date": "2025-06-13"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Rene Lecours",
+    "reason": "Unavailable",
+    "start_date": "2025-06-09",
+    "end_date": "2025-06-13"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Madeleine Durand",
+    "reason": "Unavailable",
+    "start_date": "2025-06-09",
+    "end_date": "2025-06-13"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Emmanuelle Duceppe",
+    "reason": "Unavailable",
+    "start_date": "2025-06-09",
+    "end_date": "2025-06-13"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Justine Munger",
+    "reason": "Unavailable",
+    "start_date": "2025-06-09",
+    "end_date": "2025-06-13"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Rene Lecours",
+    "reason": "Unavailable",
+    "start_date": "2025-06-09",
+    "end_date": "2025-06-13"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Madeleine Durand",
+    "reason": "Unavailable",
+    "start_date": "2025-06-09",
+    "end_date": "2025-06-13"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Emmanuelle Duceppe",
+    "reason": "Unavailable",
+    "start_date": "2025-06-09",
+    "end_date": "2025-06-13"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Justine Munger",
+    "reason": "Unavailable",
+    "start_date": "2025-06-09",
+    "end_date": "2025-06-13"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Rene Lecours",
+    "reason": "Unavailable",
+    "start_date": "2025-06-09",
+    "end_date": "2025-06-13"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Madeleine Durand",
+    "reason": "Unavailable",
+    "start_date": "2025-06-09",
+    "end_date": "2025-06-13"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Emmanuelle Duceppe",
+    "reason": "Unavailable",
+    "start_date": "2025-06-09",
+    "end_date": "2025-06-13"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Justine Munger",
+    "reason": "Unavailable",
+    "start_date": "2025-06-09",
+    "end_date": "2025-06-13"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Rene Lecours",
+    "reason": "Unavailable",
+    "start_date": "2025-06-09",
+    "end_date": "2025-06-13"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Madeleine Durand",
+    "reason": "Unavailable",
+    "start_date": "2025-06-14",
+    "end_date": "2025-06-15"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Emmanuelle Duceppe",
+    "reason": "Unavailable",
+    "start_date": "2025-06-14",
+    "end_date": "2025-06-15"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Justine Munger",
+    "reason": "Unavailable",
+    "start_date": "2025-06-14",
+    "end_date": "2025-06-15"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Rene Lecours",
+    "reason": "Unavailable",
+    "start_date": "2025-06-14",
+    "end_date": "2025-06-15"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Madeleine Durand",
+    "reason": "Unavailable",
+    "start_date": "2025-06-14",
+    "end_date": "2025-06-15"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Emmanuelle Duceppe",
+    "reason": "Unavailable",
+    "start_date": "2025-06-14",
+    "end_date": "2025-06-15"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Justine Munger",
+    "reason": "Unavailable",
+    "start_date": "2025-06-14",
+    "end_date": "2025-06-15"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Rene Lecours",
+    "reason": "Unavailable",
+    "start_date": "2025-06-14",
+    "end_date": "2025-06-15"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Nazila Bettache",
+    "reason": "Unavailable",
+    "start_date": "2025-06-16",
+    "end_date": "2025-06-20"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Jean-Pascal Costa",
+    "reason": "Unavailable",
+    "start_date": "2025-06-16",
+    "end_date": "2025-06-20"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Nazila Bettache",
+    "reason": "Unavailable",
+    "start_date": "2025-06-16",
+    "end_date": "2025-06-20"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Jean-Pascal Costa",
+    "reason": "Unavailable",
+    "start_date": "2025-06-16",
+    "end_date": "2025-06-20"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Nazila Bettache",
+    "reason": "Unavailable",
+    "start_date": "2025-06-16",
+    "end_date": "2025-06-20"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Jean-Pascal Costa",
+    "reason": "Unavailable",
+    "start_date": "2025-06-16",
+    "end_date": "2025-06-20"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Nazila Bettache",
+    "reason": "Unavailable",
+    "start_date": "2025-06-16",
+    "end_date": "2025-06-20"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Jean-Pascal Costa",
+    "reason": "Unavailable",
+    "start_date": "2025-06-16",
+    "end_date": "2025-06-20"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Nazila Bettache",
+    "reason": "Unavailable",
+    "start_date": "2025-06-21",
+    "end_date": "2025-06-22"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Jean-Pascal Costa",
+    "reason": "Unavailable",
+    "start_date": "2025-06-21",
+    "end_date": "2025-06-22"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Nazila Bettache",
+    "reason": "Unavailable",
+    "start_date": "2025-06-21",
+    "end_date": "2025-06-22"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Jean-Pascal Costa",
+    "reason": "Unavailable",
+    "start_date": "2025-06-21",
+    "end_date": "2025-06-22"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Florence Weber",
+    "reason": "Unavailable",
+    "start_date": "2025-06-23",
+    "end_date": "2025-06-23"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Unavailable",
+    "start_date": "2025-06-23",
+    "end_date": "2025-06-23"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Florence Weber",
+    "reason": "Unavailable",
+    "start_date": "2025-06-25",
+    "end_date": "2025-06-27"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Unavailable",
+    "start_date": "2025-06-25",
+    "end_date": "2025-06-27"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Florence Weber",
+    "reason": "Unavailable",
+    "start_date": "2025-06-23",
+    "end_date": "2025-06-23"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Unavailable",
+    "start_date": "2025-06-23",
+    "end_date": "2025-06-23"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Florence Weber",
+    "reason": "Unavailable",
+    "start_date": "2025-06-25",
+    "end_date": "2025-06-27"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Unavailable",
+    "start_date": "2025-06-25",
+    "end_date": "2025-06-27"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Florence Weber",
+    "reason": "Unavailable",
+    "start_date": "2025-06-23",
+    "end_date": "2025-06-23"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Unavailable",
+    "start_date": "2025-06-23",
+    "end_date": "2025-06-23"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Florence Weber",
+    "reason": "Unavailable",
+    "start_date": "2025-06-25",
+    "end_date": "2025-06-27"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Unavailable",
+    "start_date": "2025-06-25",
+    "end_date": "2025-06-27"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Florence Weber",
+    "reason": "Unavailable",
+    "start_date": "2025-06-23",
+    "end_date": "2025-06-23"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Unavailable",
+    "start_date": "2025-06-23",
+    "end_date": "2025-06-23"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Florence Weber",
+    "reason": "Unavailable",
+    "start_date": "2025-06-25",
+    "end_date": "2025-06-27"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Unavailable",
+    "start_date": "2025-06-25",
+    "end_date": "2025-06-27"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Florence Weber",
+    "reason": "Unavailable",
+    "start_date": "2025-06-24",
+    "end_date": "2025-06-24"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Unavailable",
+    "start_date": "2025-06-24",
+    "end_date": "2025-06-24"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Florence Weber",
+    "reason": "Unavailable",
+    "start_date": "2025-06-28",
+    "end_date": "2025-06-29"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Unavailable",
+    "start_date": "2025-06-28",
+    "end_date": "2025-06-29"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Florence Weber",
+    "reason": "Unavailable",
+    "start_date": "2025-06-24",
+    "end_date": "2025-06-24"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Unavailable",
+    "start_date": "2025-06-24",
+    "end_date": "2025-06-24"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Florence Weber",
+    "reason": "Unavailable",
+    "start_date": "2025-06-28",
+    "end_date": "2025-06-29"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Unavailable",
+    "start_date": "2025-06-28",
+    "end_date": "2025-06-29"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-01-06",
+    "end_date": "2025-01-10"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-01-06",
+    "end_date": "2025-01-10"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-01-06",
+    "end_date": "2025-01-10"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-01-06",
+    "end_date": "2025-01-10"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-01-11",
+    "end_date": "2025-01-12"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-01-11",
+    "end_date": "2025-01-12"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-01-11",
+    "end_date": "2025-01-12"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-01-11",
+    "end_date": "2025-01-12"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-01-13",
+    "end_date": "2025-01-17"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-01-13",
+    "end_date": "2025-01-17"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-01-13",
+    "end_date": "2025-01-17"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-01-13",
+    "end_date": "2025-01-17"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-01-13",
+    "end_date": "2025-01-17"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-01-13",
+    "end_date": "2025-01-17"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-01-13",
+    "end_date": "2025-01-17"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-01-13",
+    "end_date": "2025-01-17"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-01-18",
+    "end_date": "2025-01-19"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-01-18",
+    "end_date": "2025-01-19"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-01-18",
+    "end_date": "2025-01-19"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-01-18",
+    "end_date": "2025-01-19"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-01-20",
+    "end_date": "2025-01-24"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-01-20",
+    "end_date": "2025-01-24"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-01-20",
+    "end_date": "2025-01-24"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-01-20",
+    "end_date": "2025-01-24"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-01-20",
+    "end_date": "2025-01-24"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-01-20",
+    "end_date": "2025-01-24"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-01-20",
+    "end_date": "2025-01-24"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-01-20",
+    "end_date": "2025-01-24"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-01-25",
+    "end_date": "2025-01-26"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-01-25",
+    "end_date": "2025-01-26"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-01-25",
+    "end_date": "2025-01-26"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-01-25",
+    "end_date": "2025-01-26"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-01-27",
+    "end_date": "2025-01-31"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-01-27",
+    "end_date": "2025-01-31"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-01-27",
+    "end_date": "2025-01-31"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-01-27",
+    "end_date": "2025-01-31"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-01-27",
+    "end_date": "2025-01-31"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-01-27",
+    "end_date": "2025-01-31"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-01-27",
+    "end_date": "2025-01-31"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-01-27",
+    "end_date": "2025-01-31"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-02-01",
+    "end_date": "2025-02-02"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-02-01",
+    "end_date": "2025-02-02"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-02-01",
+    "end_date": "2025-02-02"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-02-01",
+    "end_date": "2025-02-02"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-02-03",
+    "end_date": "2025-02-07"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-02-03",
+    "end_date": "2025-02-07"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-02-03",
+    "end_date": "2025-02-07"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-02-03",
+    "end_date": "2025-02-07"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-02-03",
+    "end_date": "2025-02-07"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-02-03",
+    "end_date": "2025-02-07"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-02-03",
+    "end_date": "2025-02-07"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-02-03",
+    "end_date": "2025-02-07"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-02-08",
+    "end_date": "2025-02-09"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-02-08",
+    "end_date": "2025-02-09"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-02-08",
+    "end_date": "2025-02-09"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-02-08",
+    "end_date": "2025-02-09"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-02-10",
+    "end_date": "2025-02-14"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-02-10",
+    "end_date": "2025-02-14"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-02-10",
+    "end_date": "2025-02-14"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-02-10",
+    "end_date": "2025-02-14"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-02-10",
+    "end_date": "2025-02-14"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-02-10",
+    "end_date": "2025-02-14"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-02-10",
+    "end_date": "2025-02-14"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-02-10",
+    "end_date": "2025-02-14"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-02-15",
+    "end_date": "2025-02-16"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-02-15",
+    "end_date": "2025-02-16"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-02-15",
+    "end_date": "2025-02-16"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-02-15",
+    "end_date": "2025-02-16"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-02-17",
+    "end_date": "2025-02-21"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-02-17",
+    "end_date": "2025-02-21"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-02-17",
+    "end_date": "2025-02-21"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-02-17",
+    "end_date": "2025-02-21"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-02-17",
+    "end_date": "2025-02-21"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-02-17",
+    "end_date": "2025-02-21"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-02-17",
+    "end_date": "2025-02-21"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-02-17",
+    "end_date": "2025-02-21"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-02-22",
+    "end_date": "2025-02-23"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-02-22",
+    "end_date": "2025-02-23"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-02-22",
+    "end_date": "2025-02-23"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-02-22",
+    "end_date": "2025-02-23"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-02-24",
+    "end_date": "2025-02-28"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-02-24",
+    "end_date": "2025-02-28"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-02-24",
+    "end_date": "2025-02-28"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-02-24",
+    "end_date": "2025-02-28"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-02-24",
+    "end_date": "2025-02-28"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-02-24",
+    "end_date": "2025-02-28"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-02-24",
+    "end_date": "2025-02-28"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-02-24",
+    "end_date": "2025-02-28"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-01",
+    "end_date": "2025-03-02"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-01",
+    "end_date": "2025-03-02"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-01",
+    "end_date": "2025-03-02"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-01",
+    "end_date": "2025-03-02"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-03",
+    "end_date": "2025-03-07"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-03",
+    "end_date": "2025-03-07"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-03",
+    "end_date": "2025-03-07"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-03",
+    "end_date": "2025-03-07"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-03",
+    "end_date": "2025-03-07"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-03",
+    "end_date": "2025-03-07"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-03",
+    "end_date": "2025-03-07"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-03",
+    "end_date": "2025-03-07"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-08",
+    "end_date": "2025-03-09"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-08",
+    "end_date": "2025-03-09"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-08",
+    "end_date": "2025-03-09"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-08",
+    "end_date": "2025-03-09"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-10",
+    "end_date": "2025-03-14"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-10",
+    "end_date": "2025-03-14"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-10",
+    "end_date": "2025-03-14"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-10",
+    "end_date": "2025-03-14"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-10",
+    "end_date": "2025-03-14"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-10",
+    "end_date": "2025-03-14"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-10",
+    "end_date": "2025-03-14"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-10",
+    "end_date": "2025-03-14"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-15",
+    "end_date": "2025-03-16"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-15",
+    "end_date": "2025-03-16"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-15",
+    "end_date": "2025-03-16"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-15",
+    "end_date": "2025-03-16"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-17",
+    "end_date": "2025-03-21"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-17",
+    "end_date": "2025-03-21"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-17",
+    "end_date": "2025-03-21"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-17",
+    "end_date": "2025-03-21"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-17",
+    "end_date": "2025-03-21"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-17",
+    "end_date": "2025-03-21"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-17",
+    "end_date": "2025-03-21"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-17",
+    "end_date": "2025-03-21"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-22",
+    "end_date": "2025-03-23"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-22",
+    "end_date": "2025-03-23"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-22",
+    "end_date": "2025-03-23"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-22",
+    "end_date": "2025-03-23"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-24",
+    "end_date": "2025-03-28"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-24",
+    "end_date": "2025-03-28"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-24",
+    "end_date": "2025-03-28"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-24",
+    "end_date": "2025-03-28"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-24",
+    "end_date": "2025-03-28"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-24",
+    "end_date": "2025-03-28"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-24",
+    "end_date": "2025-03-28"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-24",
+    "end_date": "2025-03-28"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-29",
+    "end_date": "2025-03-30"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-29",
+    "end_date": "2025-03-30"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-29",
+    "end_date": "2025-03-30"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-29",
+    "end_date": "2025-03-30"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-31",
+    "end_date": "2025-04-04"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-31",
+    "end_date": "2025-04-04"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-31",
+    "end_date": "2025-04-04"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-31",
+    "end_date": "2025-04-04"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-31",
+    "end_date": "2025-04-04"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-31",
+    "end_date": "2025-04-04"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-03-31",
+    "end_date": "2025-04-04"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-03-31",
+    "end_date": "2025-04-04"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-04-05",
+    "end_date": "2025-04-06"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-04-05",
+    "end_date": "2025-04-06"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-04-05",
+    "end_date": "2025-04-06"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-04-05",
+    "end_date": "2025-04-06"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-04-07",
+    "end_date": "2025-04-11"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-04-07",
+    "end_date": "2025-04-11"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-04-07",
+    "end_date": "2025-04-11"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-04-07",
+    "end_date": "2025-04-11"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-04-07",
+    "end_date": "2025-04-11"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-04-07",
+    "end_date": "2025-04-11"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-04-07",
+    "end_date": "2025-04-11"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-04-07",
+    "end_date": "2025-04-11"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-04-12",
+    "end_date": "2025-04-13"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-04-12",
+    "end_date": "2025-04-13"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-04-12",
+    "end_date": "2025-04-13"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-04-12",
+    "end_date": "2025-04-13"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-04-14",
+    "end_date": "2025-04-17"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-04-14",
+    "end_date": "2025-04-17"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-04-14",
+    "end_date": "2025-04-17"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-04-14",
+    "end_date": "2025-04-17"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-04-14",
+    "end_date": "2025-04-17"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-04-14",
+    "end_date": "2025-04-17"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-04-14",
+    "end_date": "2025-04-17"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-04-14",
+    "end_date": "2025-04-17"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-04-18",
+    "end_date": "2025-04-20"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-04-18",
+    "end_date": "2025-04-20"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-04-18",
+    "end_date": "2025-04-20"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-04-18",
+    "end_date": "2025-04-20"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-04-21",
+    "end_date": "2025-04-25"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-04-21",
+    "end_date": "2025-04-25"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-04-21",
+    "end_date": "2025-04-25"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-04-21",
+    "end_date": "2025-04-25"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-04-21",
+    "end_date": "2025-04-25"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-04-21",
+    "end_date": "2025-04-25"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-04-21",
+    "end_date": "2025-04-25"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-04-21",
+    "end_date": "2025-04-25"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-04-26",
+    "end_date": "2025-04-27"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-04-26",
+    "end_date": "2025-04-27"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-04-26",
+    "end_date": "2025-04-27"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-04-26",
+    "end_date": "2025-04-27"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-04-28",
+    "end_date": "2025-05-02"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-04-28",
+    "end_date": "2025-05-02"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-04-28",
+    "end_date": "2025-05-02"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-04-28",
+    "end_date": "2025-05-02"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-04-28",
+    "end_date": "2025-05-02"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-04-28",
+    "end_date": "2025-05-02"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-04-28",
+    "end_date": "2025-05-02"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-04-28",
+    "end_date": "2025-05-02"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-03",
+    "end_date": "2025-05-04"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-03",
+    "end_date": "2025-05-04"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-03",
+    "end_date": "2025-05-04"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-03",
+    "end_date": "2025-05-04"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-05",
+    "end_date": "2025-05-09"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-05",
+    "end_date": "2025-05-09"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-05",
+    "end_date": "2025-05-09"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-05",
+    "end_date": "2025-05-09"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-05",
+    "end_date": "2025-05-09"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-05",
+    "end_date": "2025-05-09"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-05",
+    "end_date": "2025-05-09"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-05",
+    "end_date": "2025-05-09"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-10",
+    "end_date": "2025-05-11"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-10",
+    "end_date": "2025-05-11"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-10",
+    "end_date": "2025-05-11"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-10",
+    "end_date": "2025-05-11"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-12",
+    "end_date": "2025-05-16"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-12",
+    "end_date": "2025-05-16"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-12",
+    "end_date": "2025-05-16"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-12",
+    "end_date": "2025-05-16"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-12",
+    "end_date": "2025-05-16"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-12",
+    "end_date": "2025-05-16"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-12",
+    "end_date": "2025-05-16"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-12",
+    "end_date": "2025-05-16"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-17",
+    "end_date": "2025-05-19"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-17",
+    "end_date": "2025-05-19"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-17",
+    "end_date": "2025-05-19"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-17",
+    "end_date": "2025-05-19"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-20",
+    "end_date": "2025-05-23"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-20",
+    "end_date": "2025-05-23"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-20",
+    "end_date": "2025-05-23"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-20",
+    "end_date": "2025-05-23"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-20",
+    "end_date": "2025-05-23"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-20",
+    "end_date": "2025-05-23"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-20",
+    "end_date": "2025-05-23"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-20",
+    "end_date": "2025-05-23"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-24",
+    "end_date": "2025-05-25"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-24",
+    "end_date": "2025-05-25"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-24",
+    "end_date": "2025-05-25"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-24",
+    "end_date": "2025-05-25"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-26",
+    "end_date": "2025-05-30"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-26",
+    "end_date": "2025-05-30"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-26",
+    "end_date": "2025-05-30"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-26",
+    "end_date": "2025-05-30"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-26",
+    "end_date": "2025-05-30"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-26",
+    "end_date": "2025-05-30"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-26",
+    "end_date": "2025-05-30"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-26",
+    "end_date": "2025-05-30"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-31",
+    "end_date": "2025-06-01"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-31",
+    "end_date": "2025-06-01"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-05-31",
+    "end_date": "2025-06-01"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-05-31",
+    "end_date": "2025-06-01"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-02",
+    "end_date": "2025-06-06"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-02",
+    "end_date": "2025-06-06"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-02",
+    "end_date": "2025-06-06"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-02",
+    "end_date": "2025-06-06"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-02",
+    "end_date": "2025-06-06"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-02",
+    "end_date": "2025-06-06"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-02",
+    "end_date": "2025-06-06"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-02",
+    "end_date": "2025-06-06"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-07",
+    "end_date": "2025-06-08"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-07",
+    "end_date": "2025-06-08"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-07",
+    "end_date": "2025-06-08"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-07",
+    "end_date": "2025-06-08"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-09",
+    "end_date": "2025-06-13"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-09",
+    "end_date": "2025-06-13"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-09",
+    "end_date": "2025-06-13"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-09",
+    "end_date": "2025-06-13"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-09",
+    "end_date": "2025-06-13"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-09",
+    "end_date": "2025-06-13"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-09",
+    "end_date": "2025-06-13"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-09",
+    "end_date": "2025-06-13"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-14",
+    "end_date": "2025-06-15"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-14",
+    "end_date": "2025-06-15"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-14",
+    "end_date": "2025-06-15"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-14",
+    "end_date": "2025-06-15"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-16",
+    "end_date": "2025-06-20"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-16",
+    "end_date": "2025-06-20"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-16",
+    "end_date": "2025-06-20"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-16",
+    "end_date": "2025-06-20"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-16",
+    "end_date": "2025-06-20"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-16",
+    "end_date": "2025-06-20"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-16",
+    "end_date": "2025-06-20"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-16",
+    "end_date": "2025-06-20"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-21",
+    "end_date": "2025-06-22"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-21",
+    "end_date": "2025-06-22"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-21",
+    "end_date": "2025-06-22"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-21",
+    "end_date": "2025-06-22"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-23",
+    "end_date": "2025-06-23"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-23",
+    "end_date": "2025-06-23"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-25",
+    "end_date": "2025-06-27"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-25",
+    "end_date": "2025-06-27"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-23",
+    "end_date": "2025-06-23"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-23",
+    "end_date": "2025-06-23"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-25",
+    "end_date": "2025-06-27"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-25",
+    "end_date": "2025-06-27"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-23",
+    "end_date": "2025-06-23"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-23",
+    "end_date": "2025-06-23"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-25",
+    "end_date": "2025-06-27"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-25",
+    "end_date": "2025-06-27"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-23",
+    "end_date": "2025-06-23"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-23",
+    "end_date": "2025-06-23"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-25",
+    "end_date": "2025-06-27"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-25",
+    "end_date": "2025-06-27"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-24",
+    "end_date": "2025-06-24"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-24",
+    "end_date": "2025-06-24"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-28",
+    "end_date": "2025-06-29"
+  },
+  {
+    "task": "CTU_AB_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-28",
+    "end_date": "2025-06-29"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-24",
+    "end_date": "2025-06-24"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-24",
+    "end_date": "2025-06-24"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-28",
+    "end_date": "2025-06-29"
+  },
+  {
+    "task": "CTU_CD_CALL",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-28",
+    "end_date": "2025-06-29"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-30",
+    "end_date": "2025-06-30"
+  },
+  {
+    "task": "CTU_A",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-30",
+    "end_date": "2025-06-30"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-30",
+    "end_date": "2025-06-30"
+  },
+  {
+    "task": "CTU_B",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-30",
+    "end_date": "2025-06-30"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-30",
+    "end_date": "2025-06-30"
+  },
+  {
+    "task": "CTU_C",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-30",
+    "end_date": "2025-06-30"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Marie-Jose Miron",
+    "reason": "Ineligible",
+    "start_date": "2025-06-30",
+    "end_date": "2025-06-30"
+  },
+  {
+    "task": "CTU_D",
+    "physician": "Andr\u00e9 Roussin",
+    "reason": "Ineligible",
+    "start_date": "2025-06-30",
+    "end_date": "2025-06-30"
+  }
+]
