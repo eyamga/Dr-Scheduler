@@ -644,12 +644,8 @@ class MathSchedule:
         self._math_create_physician_eligibility_constraints()
         self._math_create_mandatory_task_constraints(week_starts=week_starts, periods=periods)
         self._math_create_non_simultaneous_tasks(week_starts=week_starts, periods=periods)
-<<<<<<< Updated upstream
-
-=======
         self._math_create_linked_main_call_tasks_constraints(week_starts=week_starts, periods=periods)
         
->>>>>>> Stashed changes
     def _math_create_physician_availability_constraints(self):
         """
         Add constraints to prevent assignment of tasks to physicians who are unavailable during the task period.
@@ -658,11 +654,8 @@ class MathSchedule:
         for task in self.task_manager.data['tasks']:
             for week_start in self.math_tasks[task.name]:
                 for math_task in self.math_tasks[task.name][week_start]:
-<<<<<<< Updated upstream
-=======
                     task_key = f"{task.name}_{math_task.start_date}_{math_task.end_date}"
                     available_physicians = []
->>>>>>> Stashed changes
                     for physician in self._get_all_physicians():
                         # Check if physician is unavailable during the entire task period
                         is_unavailable = any(
@@ -675,13 +668,6 @@ class MathSchedule:
                                 self.y[(task.name, math_task.start_date, math_task.end_date, physician)] == 0
                             ).WithName(f"Unavailable_{physician}_{task.name}_{math_task.start_date}")
                             constraints_added += 1
-<<<<<<< Updated upstream
-        logging.info(f"Added {constraints_added} physician availability constraints")
-
-    def _math_create_physician_eligibility_constraints(self):
-        """
-        Add constraints to prevent assignment of tasks to physicians who are ineligible due to exclusions.
-=======
                         else:
                             available_physicians.append(physician)
                     self.debug_info['math_tasks'][task_key]['candidates_after_availability'] = available_physicians.copy()
@@ -690,44 +676,25 @@ class MathSchedule:
     def _math_create_physician_eligibility_constraints(self):
         """
         Forbid assigning tasks to physicians who are not eligible to perform them.
->>>>>>> Stashed changes
         """
         constraints_added = 0
         for task in self.task_manager.data['tasks']:
             for week_start in self.math_tasks[task.name]:
                 for math_task in self.math_tasks[task.name][week_start]:
-<<<<<<< Updated upstream
-                    for physician in self._get_all_physicians():
-                        if not self._is_physician_eligible(physician, task):
-                            # Set assignment variable to 0
-=======
                     task_key = f"{task.name}_{math_task.start_date}_{math_task.end_date}"
                     eligible_physicians = []
                     for physician in self._get_all_physicians():
                         physician_obj = self.physician_manager.get_physician_by_name(physician)
                         if task.category.name in physician_obj.exclusion_tasks: #task.category.name not in physician_obj.restricted_tasks or
->>>>>>> Stashed changes
                             self.math_model.Add(
                                 self.y[(task.name, math_task.start_date, math_task.end_date, physician)] == 0
                             ).WithName(f"Ineligible_{physician}_{task.name}_{math_task.start_date}")
                             constraints_added += 1
-<<<<<<< Updated upstream
-        logging.info(f"Added {constraints_added} physician eligibility constraints")
-    
-    def _is_physician_eligible(self, physician_name, task):
-        """
-        Check if a physician is eligible for a given task based on exclusions.
-        """
-        physician_obj = self.physician_manager.get_physician_by_name(physician_name)
-        return task.category.name not in physician_obj.exclusion_tasks
-    
-=======
                         else:
                             eligible_physicians.append(physician)
                     self.debug_info['math_tasks'][task_key]['candidates_after_eligibility'] = eligible_physicians.copy()
         logging.info(f"Added {constraints_added} physician eligibility constraints")
         
->>>>>>> Stashed changes
     def _math_create_mandatory_task_constraints(self, week_starts, periods):
         """
         Create the mandatory tasks constraints.

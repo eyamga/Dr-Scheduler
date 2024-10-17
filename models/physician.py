@@ -24,8 +24,6 @@ class Physician:
         self.initials = ""  # Will be set by PhysicianManager
         self.preferred_tasks = preferred_tasks[:3]  # Limit to top 3
         self.discontinuity_preference = discontinuity_preference
-        if desired_working_weeks not in self.ALLOWED_WORKING_WEEKS:
-            raise ValueError(f"Invalid desired working weeks: {desired_working_weeks}. Must be one of {self.ALLOWED_WORKING_WEEKS}")
         self.desired_working_weeks = desired_working_weeks
         self.restricted_tasks = restricted_tasks
         self.exclusion_tasks = exclusion_tasks
