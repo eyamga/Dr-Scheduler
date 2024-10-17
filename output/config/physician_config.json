@@ -198,7 +198,14 @@
       "discontinuity_preference": true,
       "desired_working_weeks": 0.75,
       "restricted_tasks": [],
+<<<<<<< Updated upstream
       "exclusion_tasks": []
+=======
+      "exclusion_tasks": [
+        "MOG",
+        "VASC"
+      ]
+>>>>>>> Stashed changes
     },
     {
       "first_name": "Mikhael",
@@ -214,7 +221,12 @@
       "desired_working_weeks": 0.8,
       "restricted_tasks": [],
       "exclusion_tasks": [
+<<<<<<< Updated upstream
         "AMBU"
+=======
+        "AMBU",
+        "VASC"
+>>>>>>> Stashed changes
       ]
     },
     {
