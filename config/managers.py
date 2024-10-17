@@ -162,6 +162,7 @@ class PhysicianManager(ConfigurableManager):
             else:
                 start, end = period
                 if start <= check_date <= end:
+                    logging.debug(f"{name} is unavailable from {start} to {end}")
                     return True
         return False
 

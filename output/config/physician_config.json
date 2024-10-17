@@ -1,0 +1,481 @@
+{
+  "physicians": [
+    {
+      "first_name": "Eric",
+      "last_name": "Yamga",
+      "name": "Eric Yamga",
+      "initials": "EY",
+      "preferred_tasks": [
+        "CTU",
+        "ER",
+        "PREOP"
+      ],
+      "discontinuity_preference": true,
+      "desired_working_weeks": 0.45,
+      "restricted_tasks": [],
+      "exclusion_tasks": [
+        "MOG",
+        "VASC",
+        "AMBU"
+      ]
+    },
+    {
+      "first_name": "Madeleine",
+      "last_name": "Durand",
+      "name": "Madeleine Durand",
+      "initials": "MD",
+      "preferred_tasks": [
+        "CONSULT",
+        "CTU",
+        "ER"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.3,
+      "restricted_tasks": [],
+      "exclusion_tasks": [
+        "MOG",
+        "VASC",
+        "AMBU"
+      ]
+    },
+    {
+      "first_name": "Emmanuelle",
+      "last_name": "Duceppe",
+      "name": "Emmanuelle Duceppe",
+      "initials": "ED",
+      "preferred_tasks": [
+        "CTU",
+        "PREOP",
+        "CONSULT"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.3,
+      "restricted_tasks": [],
+      "exclusion_tasks": [
+        "MOG",
+        "VASC",
+        "AMBU",
+        "ER"
+      ]
+    },
+    {
+      "first_name": "Emmanuel",
+      "last_name": "Sirdar",
+      "name": "Emmanuel Sirdar",
+      "initials": "ES",
+      "preferred_tasks": [
+        "CTU",
+        "CONSULT",
+        "ER"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.3,
+      "restricted_tasks": [],
+      "exclusion_tasks": [
+        "MOG",
+        "VASC"
+      ]
+    },
+    {
+      "first_name": "Florence",
+      "last_name": "Weber",
+      "name": "Florence Weber",
+      "initials": "FW",
+      "preferred_tasks": [
+        "MOG",
+        "ER",
+        "CTU"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.6,
+      "restricted_tasks": [
+        "MOG"
+      ],
+      "exclusion_tasks": [
+        "VASC"
+      ]
+    },
+    {
+      "first_name": "Sophie",
+      "last_name": "Grandmaison",
+      "name": "Sophie Grandmaison",
+      "initials": "SG",
+      "preferred_tasks": [
+        "MOG",
+        "CTU",
+        "ER"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.75,
+      "restricted_tasks": [
+        "MOG"
+      ],
+      "exclusion_tasks": [
+        "VASC"
+      ]
+    },
+    {
+      "first_name": "Mich\u00e8le",
+      "last_name": "Mahone",
+      "name": "Mich\u00e8le Mahone",
+      "initials": "MM",
+      "preferred_tasks": [
+        "MOG",
+        "CTU",
+        "ER"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.75,
+      "restricted_tasks": [
+        "MOG"
+      ],
+      "exclusion_tasks": [
+        "VASC"
+      ]
+    },
+    {
+      "first_name": "Nazila",
+      "last_name": "Bettache",
+      "name": "Nazila Bettache",
+      "initials": "NB",
+      "preferred_tasks": [
+        "MOG",
+        "ER",
+        "CTU"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.5,
+      "restricted_tasks": [
+        "MOG"
+      ],
+      "exclusion_tasks": [
+        "VASC"
+      ]
+    },
+    {
+      "first_name": "Vincent",
+      "last_name": "Williams",
+      "name": "Vincent Williams",
+      "initials": "VW",
+      "preferred_tasks": [
+        "MOG",
+        "CTU",
+        "ER"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.8,
+      "restricted_tasks": [],
+      "exclusion_tasks": [
+        "VASC"
+      ]
+    },
+    {
+      "first_name": "Gabriel",
+      "last_name": "Dion",
+      "name": "Gabriel Dion",
+      "initials": "GD",
+      "preferred_tasks": [
+        "CTU",
+        "PREOP",
+        "CONSULT"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.7,
+      "restricted_tasks": [],
+      "exclusion_tasks": [
+        "MOG",
+        "VASC"
+      ]
+    },
+    {
+      "first_name": "Justine",
+      "last_name": "Munger",
+      "name": "Justine Munger",
+      "initials": "JM",
+      "preferred_tasks": [
+        "CTU"
+      ],
+      "discontinuity_preference": true,
+      "desired_working_weeks": 0.75,
+      "restricted_tasks": [],
+      "exclusion_tasks": []
+    },
+    {
+      "first_name": "Mikhael",
+      "last_name": "Laskine",
+      "name": "Mikhael Laskine",
+      "initials": "ML",
+      "preferred_tasks": [
+        "CTU",
+        "CONSULT",
+        "ER"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.8,
+      "restricted_tasks": [],
+      "exclusion_tasks": [
+        "AMBU"
+      ]
+    },
+    {
+      "first_name": "Benoit",
+      "last_name": "Deligne",
+      "name": "Benoit Deligne",
+      "initials": "BD",
+      "preferred_tasks": [
+        "ER",
+        "CTU"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.25,
+      "restricted_tasks": [],
+      "exclusion_tasks": [
+        "MOG",
+        "VASC"
+      ]
+    },
+    {
+      "first_name": "Maxime",
+      "last_name": "Lamarre-Cliche",
+      "name": "Maxime Lamarre-Cliche",
+      "initials": "MaL",
+      "preferred_tasks": [
+        "CTU",
+        "ER",
+        "CONSULT"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.8,
+      "restricted_tasks": [],
+      "exclusion_tasks": [
+        "MOG",
+        "VASC"
+      ]
+    },
+    {
+      "first_name": "Julien",
+      "last_name": "D'Astous",
+      "name": "Julien D'Astous",
+      "initials": "JD",
+      "preferred_tasks": [
+        "CTU",
+        "CONSULT",
+        "PREOP"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.75,
+      "restricted_tasks": [],
+      "exclusion_tasks": [
+        "MOG",
+        "VASC"
+      ]
+    },
+    {
+      "first_name": "Jean-Pascal",
+      "last_name": "Costa",
+      "name": "Jean-Pascal Costa",
+      "initials": "JC",
+      "preferred_tasks": [
+        "CTU",
+        "ER",
+        "AMBU"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.7,
+      "restricted_tasks": [],
+      "exclusion_tasks": [
+        "MOG",
+        "VASC"
+      ]
+    },
+    {
+      "first_name": "Camille",
+      "last_name": "Laflamme",
+      "name": "Camille Laflamme",
+      "initials": "CL",
+      "preferred_tasks": [
+        "ER",
+        "CONSULT",
+        "CTU"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.7,
+      "restricted_tasks": [],
+      "exclusion_tasks": [
+        "MOG",
+        "VASC"
+      ]
+    },
+    {
+      "first_name": "Robert",
+      "last_name": "Wistaff",
+      "name": "Robert Wistaff",
+      "initials": "RW",
+      "preferred_tasks": [
+        "CTU",
+        "CONSULT",
+        "PREOP"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.85,
+      "restricted_tasks": [],
+      "exclusion_tasks": [
+        "MOG",
+        "VASC"
+      ]
+    },
+    {
+      "first_name": "Rene",
+      "last_name": "Lecours",
+      "name": "Rene Lecours",
+      "initials": "RL",
+      "preferred_tasks": [
+        "AMBU",
+        "CTU",
+        "CONSULT"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.8,
+      "restricted_tasks": [],
+      "exclusion_tasks": [
+        "MOG",
+        "VASC"
+      ]
+    },
+    {
+      "first_name": "Diem-Quyen",
+      "last_name": "Nguyen",
+      "name": "Diem-Quyen Nguyen",
+      "initials": "DN",
+      "preferred_tasks": [
+        "CTU",
+        "CONSULT",
+        "PREOP"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.7,
+      "restricted_tasks": [],
+      "exclusion_tasks": [
+        "MOG",
+        "VASC"
+      ]
+    },
+    {
+      "first_name": "Michel",
+      "last_name": "Bertrand",
+      "name": "Michel Bertrand",
+      "initials": "MB",
+      "preferred_tasks": [
+        "CTU",
+        "PREOP",
+        "CONSULT"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.7,
+      "restricted_tasks": [],
+      "exclusion_tasks": [
+        "MOG",
+        "VASC",
+        "AMBU"
+      ]
+    },
+    {
+      "first_name": "J.Manuel",
+      "last_name": "Dominguez",
+      "name": "J.Manuel Dominguez",
+      "initials": "J.D",
+      "preferred_tasks": [
+        "CTU",
+        "CONSULT",
+        "PREOP"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.55,
+      "restricted_tasks": [
+        "VASC"
+      ],
+      "exclusion_tasks": [
+        "MOG"
+      ]
+    },
+    {
+      "first_name": "Marie-Jose",
+      "last_name": "Miron",
+      "name": "Marie-Jose Miron",
+      "initials": "MaM",
+      "preferred_tasks": [
+        "VASC"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.4,
+      "restricted_tasks": [
+        "VASC"
+      ],
+      "exclusion_tasks": [
+        "MOG",
+        "CTU",
+        "ER",
+        "PREOP",
+        "AMBU"
+      ]
+    },
+    {
+      "first_name": "Andr\u00e9",
+      "last_name": "Roussin",
+      "name": "Andr\u00e9 Roussin",
+      "initials": "AR",
+      "preferred_tasks": [
+        "VASC"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.35,
+      "restricted_tasks": [
+        "VASC"
+      ],
+      "exclusion_tasks": [
+        "MOG",
+        "CTU",
+        "CONSULT",
+        "ER",
+        "PREOP",
+        "AMBU"
+      ]
+    },
+    {
+      "first_name": "Benoit",
+      "last_name": "Deligne",
+      "name": "Benoit Deligne",
+      "initials": "BeD",
+      "preferred_tasks": [
+        "CTU",
+        "CONSULT",
+        "ER"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.5,
+      "restricted_tasks": [],
+      "exclusion_tasks": [
+        "MOG",
+        "VASC"
+      ]
+    },
+    {
+      "first_name": "Martial",
+      "last_name": "Koenig",
+      "name": "Martial Koenig",
+      "initials": "MK",
+      "preferred_tasks": [
+        "CTU",
+        "CONSULT",
+        "PREOP"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.8,
+      "restricted_tasks": [],
+      "exclusion_tasks": [
+        "MOG",
+        "VASC"
+      ]
+    }
+  ]
+}
