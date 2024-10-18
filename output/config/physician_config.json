@@ -222,23 +222,6 @@
       ]
     },
     {
-      "first_name": "Benoit",
-      "last_name": "Deligne",
-      "name": "Benoit Deligne",
-      "initials": "BD",
-      "preferred_tasks": [
-        "ER",
-        "CTU"
-      ],
-      "discontinuity_preference": false,
-      "desired_working_weeks": 0.25,
-      "restricted_tasks": [],
-      "exclusion_tasks": [
-        "MOG",
-        "VASC"
-      ]
-    },
-    {
       "first_name": "Maxime",
       "last_name": "Lamarre-Cliche",
       "name": "Maxime Lamarre-Cliche",
@@ -446,10 +429,28 @@
       ]
     },
     {
+      "first_name": "Vasc",
+      "last_name": "Vasc",
+      "name": "Vasc Vasc",
+      "initials": "VV",
+      "preferred_tasks": [],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 1.0,
+      "restricted_tasks": [],
+      "exclusion_tasks": [
+        "MOG",
+        "CTU",
+        "CONSULT",
+        "ER",
+        "PREOP",
+        "AMBU"
+      ]
+    },
+    {
       "first_name": "Benoit",
       "last_name": "Deligne",
       "name": "Benoit Deligne",
-      "initials": "BeD",
+      "initials": "BD",
       "preferred_tasks": [
         "CTU",
         "CONSULT",

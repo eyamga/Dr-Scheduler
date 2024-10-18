@@ -6,33 +6,24 @@ from ics import Calendar as IcsCalendar, Event
 import json
 import logging
 from models.task import TaskType, TaskDaysParameter, Task
-
+import random
 from ortools.sat.python import cp_model
 
 logging.basicConfig(level=logging.DEBUG)
 
-# models/math_schedule.py
-
-
 class MathTask:
     """
-    This class represents a mathematical task that is the basic unit in the mathematical model.
-
-    A mathematical task is one contiguous time interval that corresponds to one `Task`. It can be
-    spanning one day or several days, be contained in one week or overlapping over several weeks.
-    As a continguous time interval, i.e. there is no whole in it, it has a start_date and an
-    end_date and all the dates in between. If a `Task` corresponds to several day intervals,
-    we create several corresponding `MathTask`s.
+    Represents a mathematical task that is the basic unit in the mathematical model.
     """
 
     def __init__(self, name, task_type, y_vars, index, week_start, days, start_date, end_date, number_of_weeks, available_physicians, heaviness, mandatory):
         self.name = name
         assert isinstance(task_type, TaskType)
-        self.task_type = task_type,
+        self.task_type = task_type
         self.y_vars = y_vars
         self.index = index
         self.week_start = week_start
-        self.days = days  # to keep the current code as is and retrieve all days, list of days
+        self.days = days
         assert start_date == days[0]
         self.start_date = start_date
         assert end_date == days[-1]
@@ -45,27 +36,12 @@ class MathTask:
     def y_var(self, physician):
         """
         Return the variable for the given physician.
-
-        Warnings:
-            It does not matter if this physician is available or not.
-
-        Args:
-            physician (str):
-
-        Returns:
-            The corresponding mathematical variable.
         """
         return self.y_vars[(self.name, self.start_date, self.end_date, physician)]
 
     def is_physician_available(self, physician):
         """
         Returns if physician is available or not.
-
-        Args:
-            physician:
-
-        Returns:
-            True if physician is available, False otherwise.
         """
         return physician in self.available_physicians
 
@@ -76,159 +52,37 @@ class MathTask:
         return str(self)
 
 
-class TaskMatcher:
-    def __init__(self, physician_manager, task_manager):
-        self.physician_manager = physician_manager
-        self.task_manager = task_manager
-        self.physician_task_counts = defaultdict(lambda: defaultdict(int))
-        self.physician_task_days = defaultdict(lambda: defaultdict(list))
-        self.physician_call_counts = defaultdict(lambda: defaultdict(int))
-        self.last_heavy_task = {}
-        self.revenue_distribution = defaultdict(float)
-
-    def _is_physician_eligible(self, physician: str, task: Any, period: Dict[str, Any]) -> bool:
-        physician_obj = self.physician_manager.get_physician_by_name(physician)
-        logging.debug(f"Checking eligibility for physician {physician} for task {task.name}")
-
-        if task.name in physician_obj.restricted_tasks or task.name in physician_obj.exclusion_tasks:
-            logging.debug(f"Physician {physician} is restricted or excluded from task {task.name}")
-            return False
-
-        if task.is_call_task and self.physician_call_counts[physician][period['month']] > 0:
-            logging.debug(f"Physician {physician} has already been assigned a call task in month {period['month']}")
-            return False
-
-        if task.is_discontinuous and not physician_obj.discontinuity_preference:
-            logging.debug(f"Physician {physician} does not prefer discontinuous tasks")
-            return False
-
-        logging.debug(f"Physician {physician} is eligible for task {task.name}")
-        return True
-
-    def _get_eligible_physicians(self, available_physicians: List[str], task: Any, period: Dict[str, Any]) -> List[str]:
-        return [
-            p for p in available_physicians
-            if self._is_physician_eligible(p, task, period)
-        ]
-    def _get_available_physicians(self, days: List[date]) -> List[str]:
-        available_physicians = [
-            physician.name
-            for physician in self.physician_manager.data['physicians']
-            if all(not self.physician_manager.is_unavailable(physician.name, day) for day in days)
-        ]
-        logging.debug(f"Available physicians for days {days}: {available_physicians}")
-        return available_physicians
-
-    def find_best_match(self, available_physicians: List[str], task: Any, period: Dict[str, Any], month: int) -> Tuple[str, float]:
-        logging.debug(f"Finding best match for task {task.name} in period {period} for month {month}")
-        eligible_physicians = self._get_eligible_physicians(available_physicians, task, period)
-
-        if not eligible_physicians:
-            logging.debug(f"No eligible physicians found for task {task.name}")
-            return None, 0
-
-        scored_physicians = self._score_physicians(eligible_physicians, task, period, month)
-        best_physician = max(scored_physicians, key=scored_physicians.get)
-        logging.debug(f"Best match for task {task.name} is physician {best_physician} with score {scored_physicians[best_physician]}")
-        return best_physician, scored_physicians[best_physician]
-
-    def _score_physicians(self, eligible_physicians: List[str], task: Any, period: Dict[str, Any], month: int) -> Dict[
-        str, float]:
-        scores = {}
-        for physician in eligible_physicians:
-            physician_obj = self.physician_manager.get_physician_by_name(physician)
-            score = 0
-            score += self._score_preference(physician_obj, task)
-            score += self._score_fairness(physician, task)
-            score += self._score_call_distribution(physician, task, month)
-            score += self._score_heavy_task_avoidance(physician, task, period)
-            score += self._score_discontinuity_preference(physician_obj, task)
-            score += self._score_desired_working_weeks(physician)
-            score += self._score_revenue_distribution(physician)
-            score += self._score_consecutive_category_avoidance(physician, task)
-            scores[physician] = score
-        return scores
-
-    def _score_consecutive_category_avoidance(self, physician: str, task: Any) -> float:
-        last_task = self.physician_task_counts[physician].get('last_task')
-        if last_task and last_task.category == task.category and task.number_of_weeks <= 1:
-            return -10
-        return 0
-
-    def _score_preference(self, physician_obj: Any, task: Any) -> float:
-        return 10 if task.name in physician_obj.preferred_tasks else 0
-
-    def _score_fairness(self, physician: str, task: Any) -> float:
-        task_count = self.physician_task_counts[physician][task.name]
-        return 5 / (task_count + 1)
-
-    def _score_call_distribution(self, physician: str, task: Any, month: int) -> float:
-        if task.is_call_task:
-            call_count = self.physician_call_counts[physician][month]
-            return 5 / (call_count + 1)
-        return 0
-
-    def _score_heavy_task_avoidance(self, physician: str, task: Any, period: Dict[str, Any]) -> float:
-        if task.is_heavy:
-            if physician not in self.last_heavy_task or \
-                    (period['days'][0] - self.last_heavy_task[physician]).days > 7:
-                return 5
-        return 0
-
-    def _score_discontinuity_preference(self, physician_obj: Any, task: Any) -> float:
-        if task.is_discontinuous:
-            return 10 if physician_obj.discontinuity_preference else -5
-        return 0
-
-    def _score_desired_working_weeks(self, physician: str) -> float:
-        total_days = sum(len(days) for days in self.physician_task_days[physician].values())
-        physician_obj = self.physician_manager.get_physician_by_name(physician)
-        if total_days / 7 < physician_obj.desired_working_weeks * 52:
-            return 5
-        return 0
-
-    def _score_revenue_distribution(self, physician: str) -> float:
-        if not self.revenue_distribution:
-            return 0
-        avg_revenue = sum(self.revenue_distribution.values()) / len(self.revenue_distribution)
-        if self.revenue_distribution[physician] < avg_revenue:
-            return 5
-        return 0
-
-    def update_physician_stats(self, physician: str, task: Any, period: Dict[str, Any]):
-        self.physician_task_counts[physician][task] += 1
-        self.physician_task_days[physician][task].extend(period['days'])
-
-        if task.is_call_task:
-            self.physician_call_counts[physician][period['days'][0].month] += 1
-
-        if task.is_heavy:
-            self.last_heavy_task[physician] = period['days'][-1]
-
-        self.revenue_distribution[physician] += task.revenue
-
-
 class MathSchedule:
+    # SCORING WEIGHTS
+    PREFERENCE_SCORE = 10
+    DESIRED_WEEKS_SCORE = 100
+    REVENUE_BALANCE_SCORE = 5
+    CONSECUTIVE_CATEGORY_PENALTY = -10
+    CALL_DISTRIBUTION_PENALTY = -10
+    HEAVY_TASK_PENALTY = -10
+
     def __init__(self, physician_manager, task_manager, calendar):
         self.physician_manager = physician_manager
         self.task_manager = task_manager
         self.calendar = calendar
         self.scheduling_period = None
         self.task_splits = {}
-        self.schedule = defaultdict(list)  # unique solution
-        self.task_matcher = TaskMatcher(physician_manager, task_manager)
+        self.schedule = defaultdict(list)
         self.off_days = {}
         self.assigned_calls = defaultdict(lambda: defaultdict(int))
+        self.slack_vars = []
+        self.revenue_per_physician = defaultdict(float)
+        self.physician_assignments = defaultdict(list)
+        self.physician_call_assignments = defaultdict(list)
         self.debug_info = {
             'math_tasks': {},
             'constraints': {
-            'mandatory_task': {},
-            'non_simultaneous': {},
+                'mandatory_task': {},
+                'non_simultaneous': {},
                 'linked_main_call': {}
             }
         }
-
-        logging.debug("Schedule initialized with physician_manager, task_manager, and calendar")
+        logging.debug("Schedule initialized")
 
     def set_scheduling_period(self, start_date: date, end_date: date):
         self.scheduling_period = (start_date, end_date)
@@ -242,410 +96,137 @@ class MathSchedule:
         self.off_days = off_days
         logging.debug(f"Off days set to {self.off_days}")
 
-    def _load_schedule_from_file(self, filename):
-        """
-        Load and test the schedule from a JSON file.
-
-        Args:
-            filename:
-
-        Raises:
-            AssertionError whenever there is a mistake in the schedule format.
-        """
-        with open(filename, 'r') as f:
-            loaded_schedule = json.load(f)
-
-        schedule = defaultdict(list, {
-            k: [
-                {
-                    **t,
-                    'start_date': date.fromisoformat(t['start_date']),
-                    'end_date': date.fromisoformat(t['end_date']),
-                    'task': self.task_manager.get_task(t['task'])
-                }
-                for t in v
-            ]
-            for k, v in loaded_schedule.items()
-        })
-
-        # test loaded schedule
-        all_physicians = self._get_all_physicians()
-        for physician, task_list in schedule.items():
-            assert physician in all_physicians, f"Physician {physician} is not recognized!"
-            for task_index, task_dict in enumerate(task_list):
-                task = task_dict['task']
-                start_date = task_dict['start_date']
-                end_date = task_dict['end_date']
-                task_number_and_physician_str = f"task number {task_index + 1} and physician {physician}"
-                assert isinstance(task, Task), f"Task ({task}) number {task_index + 1} is not recognized for physician {physician}!"
-                assert isinstance(start_date, datetime.date), f"Start date {start_date} is not a date for {task_number_and_physician_str}!"
-                assert isinstance(end_date,
-                                  datetime.date), f"End date {end_date} is not a date for {task_number_and_physician_str}!"
-                assert start_date <= end_date, f"Start ({start_date}) and end ({end_date}) date are not coherent for {task_number_and_physician_str}!"
-                days = task_dict['days']
-                assert date.fromisoformat(days[0]) == start_date, f"First date ({days[0]}) in 'days' is not the start date ({start_date}) for {task_number_and_physician_str}!"
-                assert date.fromisoformat(days[-1]) == end_date, f"Last date ({days[-1]}) in 'days' is not the end date ({end_date}) for {task_number_and_physician_str}!"
-                for i in range(len(days) - 1):
-                    assert date.fromisoformat(days[i+1]) == date.fromisoformat(days[i]) + datetime.timedelta(days=1), f"Dates in 'days' are not continuous for {task_number_and_physician_str}!"
-
-        return schedule
-
-    def _math_load_initial_schedule(self):
-        """
-        Use loaded schedule as an initial solution.
-
-        Notes:
-            This schedule/solution can be partial or complete.
-
-        Warnings:
-            The schedule must be loaded in self.schedule before. You can use `load_schedule()` for instance.
-        """
-        assert self.schedule
-        task_index = -1
-        physician = None
-        vars = []    # variables for the loaded schedule
-        values = []  # values from the loaded schedule
-        try:
-            for physician, task_list in self.schedule.items():
-                for task_index, task_dict in enumerate(task_list):
-                    task = task_dict['task']
-                    vars.append(self.y[(task.name, task_dict['start_date'], task_dict['end_date'], physician)].Index())
-                    values.append(1)
-
-            self.math_model._CpModel__model.solution_hint.vars.extend(vars)
-            self.math_model._CpModel__model.solution_hint.values.extend(values)
-
-        except Exception as e:
-            raise RuntimeError(f"The initial schedule does not correspond to the problem \n"
-                  f" physician {physician} at task number {task_index + 1}: {e}")
-
     def generate_schedule(self, use_initial_schedule=False):
         """
         Generate a schedule given all the instance information.
-
-        Args:
-            use_initial_schedule (bool): If `True`, use the loaded schedule as a start point to solve this
-                instance.
         """
         if not self.scheduling_period:
             raise ValueError("Scheduling period must be set before generating schedule")
 
-        if use_initial_schedule:
-            assert self.schedule, f"No initial schedule was provided to start the search!"
-
         logging.info("Starting schedule generation...")
         extended_end_date = self._extend_scheduling_period()
-        logging.debug(f"Scheduling period extended to {extended_end_date}")
-
         periods = self.calendar.determine_periods()
-
         relevant_periods = self._filter_relevant_periods(periods, self.scheduling_period[0], extended_end_date)
-        logging.debug(f"Filtered relevant periods: {relevant_periods}")
 
-        # create mathematical model
         self.math_model = cp_model.CpModel()
 
-        # create variables, constraints and objective function
-        logging.info("Creating variables...")
         self._math_create_variables(periods=relevant_periods)
-        logging.info("Serializing MathTasks...")
-        self.serialize_math_tasks("math_tasks.json")
-        logging.info("Creating constraints...")
         self._math_create_constraints(periods=relevant_periods)
-        
-        # logging.info("Creating objective function...")
-        # self._math_create_objective_function()  # TODO: adapt scores to the objective function
+        self._math_create_objective_function()
 
-        logging.debug("Variables and constraints added to the model.")
-        
-                # save debug info
-        logging.info("Saving debug info...")
         self.save_debug_info("debug_info.json")
 
         if use_initial_schedule:
-            logging.info("Loading initial schedule...")
             self._math_load_initial_schedule()
 
-        # Creates the solver and solve
         self.math_solver = cp_model.CpSolver()
         status = self.math_solver.Solve(self.math_model)
 
-        # test the solution/schedule
         if status == cp_model.OPTIMAL or status == cp_model.FEASIBLE:
-            logging.info("Solution found.")
-            logging.info(f"Schedule solved with status: {cp_model.CpSolver.status_name(self.math_solver)}")
+            logging.info(f"Solution found with status: {cp_model.CpSolver.status_name(self.math_solver)}")
             self._math_set_solution(periods=relevant_periods)
         else:
-            logging.info(f"Schedule infeasible")
-            print("Model is infeasible")
-            infeasibility = self.math_solver.SufficientAssumptionsForInfeasibility()
-            print("Infeasible because of assumptions:", infeasibility)
-        logging.debug("Schedule generated")
-        
-    def _get_available_physicians(self, days: List[date]) -> List[str]:
-        """
-        Get the list of physicians who are available for all the given days.
+            logging.info("Schedule infeasible")
+            self.math_model.ExportToFile("infeasible_model.pb.txt")
 
-        Args:
-            days (List[date]): List of dates representing the task period.
+        logging.debug("Schedule generation completed")
 
-        Returns:
-            List[str]: List of physician names who are available during the task period.
-        """
-        available_physicians = []
-        for physician in self._get_all_physicians():
-            is_available = all(
-                not self.physician_manager.is_unavailable(physician, day)
-                for day in days
-            )
-            if is_available:
-                available_physicians.append(physician)
-        return available_physicians
-    
-    def _get_eligible_physicians(self, physicians: List[str], task) -> List[str]:
-        """
-        Filter the list of physicians to only those who are eligible for the given task.
+    def _extend_scheduling_period(self) -> date:
+        max_task_duration = max(task.number_of_weeks for task in self.task_manager.data['tasks'])
+        return self.scheduling_period[1] + timedelta(weeks=max_task_duration)
 
-        Args:
-            physicians (List[str]): List of physician names.
-            task: The Task object for which eligibility is being checked.
-
-        Returns:
-            List[str]: List of physician names who are eligible for the task.
-        """
-        eligible_physicians = []
-        for physician in physicians:
-            physician_obj = self.physician_manager.get_physician_by_name(physician)
-            if task.category.name not in physician_obj.exclusion_tasks:
-                eligible_physicians.append(physician)
-        return eligible_physicians
-
-    def save_debug_info(self, filename: str):
-        """
-        Save the debugging information to a JSON file.
-
-        Args:
-            filename (str): The name of the file to save the debug information.
-        """
-        with open(filename, 'w') as f:
-            json.dump(self.debug_info, f, indent=2, default=str)
-        logging.info(f"Debug information saved to {filename}")
-    
-    def _get_periods_days(self, week_periods):
-        """
-        Get all MAIN and CALL days.
-
-        Args:
-            week_periods:
-
-        Returns:
-            (A, B) with A (MAIN) and B (MAIN) list of list of continuous days.
-        """
-        main_periods_days = []
-        call_periods_days = []
-        for period in week_periods:
-            if period['type'] == 'MAIN':
-                main_periods_days.append(period['days'])
-            elif period['type'] == 'CALL':
-                call_periods_days.append(period['days'])
-            else:
-                raise NotImplementedError(f"Period type {period['type']} not recognized!")
-
-        return main_periods_days, call_periods_days
-
-    def _get_all_math_tasks_per_task(self, week_starts):
-        """
-        Create a dict with all `MathTask` for the given periods.
-
-        Args:
-            week_starts:
-
-        Returns:
-            A dict with entries [task.name] = [MathTask1, MathTask2, MathTask3, ...]. All task are non overlapping and
-            ordered sequentially following the date.
-        """
-        # create output dict
-        math_tasks_dict = {}
-        for task in self.task_manager.data['tasks']:
-            math_tasks_dict[task.name] = []
-
-        # populate if in sequential order (granted because self.math_tasks is already ordered)
-        for week_start in week_starts:
-            for task in self.task_manager.data['tasks']:
-                math_tasks_dict[task.name].extend(self.math_tasks[task.name][week_start])
-
-        return math_tasks_dict
+    def _filter_relevant_periods(self, periods: Dict[str, List[Dict[str, Any]]], start_date: date, end_date: date) -> Dict[str, List[Dict[str, Any]]]:
+        return {
+            week_start: week_periods
+            for week_start, week_periods in periods.items()
+            if start_date <= date.fromisoformat(week_start) <= end_date
+        }
 
     def _math_create_variables(self, periods):
         """
         Create the mathematical variables.
-
-        A variable corresponds to the assignement or not of one physician to a `MathTask`. Each variable is
-        indexed by `(task_name, start_date, end_date, physician)`.
-
-        Args:
-            periods:
-
         """
-        self.y = {}  # x[("CTU_A", start_date, end_date, physician)]  MAIN and CALL tasks
-        self.math_tasks = {}  # math_tasks["CTU_A"][week_start] = [MathTask1, MathTask2, ...]
+        self.y = {}
+        self.math_tasks = {}
         for task in self.task_manager.data['tasks']:
             self.math_tasks[task.name] = {}
 
-        # variables exist for **all** mathematical tasks (MathTask), whether a physician is available or not
         all_physicians = self._get_all_physicians()
-        
 
         for week_start, week_periods in periods.items():
-            # [[day1, day2, day3], [day5]], [[day4], [day6, day7]]
-            main_periods_days, call_periods_days = self._get_periods_days(week_periods=week_periods)
+            main_periods_days, call_periods_days = self._get_periods_days(week_periods)
 
             for task in self.task_manager.data['tasks']:
-                task_category = task.category  # for later
                 self.math_tasks[task.name][week_start] = []
 
                 if task.type == TaskType.MAIN:
-                    if task_category.days_parameter == TaskDaysParameter.DISCONTINUOUS:
-                        # TODO: implement DISCONTINUOUS?
-                        raise NotImplementedError(
-                            f"Task Category days parameters {TaskDaysParameter.DISCONTINUOUS} not yet implemented")
-                    elif task_category.days_parameter in [TaskDaysParameter.CONTINUOUS, TaskDaysParameter.MULTI_WEEK]:
-
-                        for index, main_period_days in enumerate(main_periods_days):
-                            # Could be empty
-                            available_physicians = self._get_available_physicians(main_period_days)
-
-                            start_date = main_period_days[0]
-                            end_date = main_period_days[-1]
-
-                            self.math_tasks[task.name][week_start].append(
-                                MathTask(
-                                    name=task.name,
-                                    task_type=task.type,
-                                    y_vars=self.y,
-                                    index=index,
-                                    week_start=week_start,
-                                    days=main_period_days,
-                                    start_date=start_date,
-                                    end_date=end_date,
-                                    number_of_weeks=task.number_of_weeks,
-                                    available_physicians=available_physicians,
-                                    heaviness=task.heaviness,
-                                    mandatory=task.mandatory
-                                )
-                            )
-                            task_key = f"{task.name}_{start_date}_{end_date}"
-                            if task_key not in self.debug_info['math_tasks']:
-                                self.debug_info['math_tasks'][task_key] = {
-                                    'initial_candidates': self._get_all_physicians(),
-                                    'candidates_after_availability': [],
-                                    'candidates_after_eligibility': [],
-                                    'candidates_after_mandatory': [],
-                                    'candidates_after_non_simultaneous': [],
-                                    'candidates_after_linked_call_constraints': []
-                                }
-                            # vars
-                            for physician in all_physicians:
-                                var_name = f"{task.name}_{start_date}_{end_date}_{physician}"
-                                self.y[(task.name, start_date, end_date, physician)] = self.math_model.NewBoolVar(var_name)
-                    else:
-                        raise NotImplementedError(
-                            f"Task Category days parameters of type {type(task_category.days_parameter)} is unknown"
-                        )
-
+                    self._create_main_task_variables(task, week_start, main_periods_days, all_physicians)
                 elif task.type == TaskType.CALL:
-                    if task_category.days_parameter == TaskDaysParameter.DISCONTINUOUS:
-                        # TODO: implement DISCONTINUOUS?
-                        raise NotImplementedError(
-                            f"Task Category days parameters {TaskDaysParameter.DISCONTINUOUS} not yet implemented")
-                    elif task_category.days_parameter in [TaskDaysParameter.CONTINUOUS, TaskDaysParameter.MULTI_WEEK]:
-                        for index, call_period_days in enumerate(call_periods_days):
-                            # Could be empty
-                            available_physicians = self._get_available_physicians(call_period_days)
+                    self._create_call_task_variables(task, week_start, call_periods_days, all_physicians)
 
-                            start_date = call_period_days[0]
-                            end_date = call_period_days[-1]
+    def _create_main_task_variables(self, task, week_start, main_periods_days, all_physicians):
+        for index, main_period_days in enumerate(main_periods_days):
+            available_physicians = self._get_available_physicians(main_period_days)
+            random.shuffle(available_physicians)
+            
+            start_date = main_period_days[0]
+            end_date = main_period_days[-1]
 
-                            self.math_tasks[task.name][week_start].append(
-                                MathTask(
-                                    name=task.name,
-                                    task_type=task.type,
-                                    y_vars=self.y,
-                                    index=index,
-                                    week_start=week_start,
-                                    days=call_period_days,
-                                    start_date=start_date,
-                                    end_date=end_date,
-                                    number_of_weeks=task.number_of_weeks,
-                                    available_physicians=available_physicians,
-                                    heaviness=task.heaviness,
-                                    mandatory=task.mandatory
-                                )
-                            )
-                            task_key = f"{task.name}_{start_date}_{end_date}"
-                            if task_key not in self.debug_info['math_tasks']:
-                                self.debug_info['math_tasks'][task_key] = {
-                                    'initial_candidates': self._get_all_physicians(),
-                                    'candidates_after_availability': [],
-                                    'candidates_after_eligibility': [],
-                                    'candidates_after_mandatory': [],
-                                    'candidates_after_non_simultaneous': [],
-                                    'candidates_after_linked_call_constraints': []
-                                }
-                            # vars
-                            for physician in all_physicians:
-                                var_name = f"{task.name}_{start_date}_{end_date}_{physician}"
-                                self.y[(task.name, start_date, end_date, physician)] = self.math_model.NewBoolVar(var_name)
-                else:
-                    raise TypeError(f"Task type {task.type} not implemented")
+            self._create_math_task(task, week_start, index, main_period_days, start_date, end_date, available_physicians)
+            self._create_assignment_variables(task, start_date, end_date, all_physicians)
 
-    def serialize_math_tasks(self, filename: str):
-        """
-        Serialize all MathTasks to a JSON file.
+    def _create_call_task_variables(self, task, week_start, call_periods_days, all_physicians):
+        for index, call_period_days in enumerate(call_periods_days):
+            available_physicians = self._get_available_physicians(call_period_days)
+            random.shuffle(available_physicians)
 
-        Args:
-            filename (str): The name of the file to save the MathTasks.
-        """
-        math_tasks_data = {}
-        for task_name, week_tasks in self.math_tasks.items():
-            math_tasks_data[task_name] = []
-            for week_start, tasks in week_tasks.items():
-                for math_task in tasks:
-                    task_data = {
-                        'name': math_task.name,
-                        'task_type': str(math_task.task_type ),
-                        'start_date': math_task.start_date.isoformat(),
-                        'end_date': math_task.end_date.isoformat(),
-                        'days': [day.isoformat() for day in math_task.days],
-                        'heaviness': math_task.heaviness,
-                        'mandatory': math_task.mandatory
-                    }
-                    math_tasks_data[task_name].append(task_data)
+            start_date = call_period_days[0]
+            end_date = call_period_days[-1]
 
-        with open(filename, 'w') as f:
-            json.dump(math_tasks_data, f, indent=2)
+            self._create_math_task(task, week_start, index, call_period_days, start_date, end_date, available_physicians)
+            self._create_assignment_variables(task, start_date, end_date, all_physicians)
 
-        logging.info(f"Serialized MathTasks to {filename}")
-        
+    def _create_math_task(self, task, week_start, index, period_days, start_date, end_date, available_physicians):
+        self.math_tasks[task.name][week_start].append(
+            MathTask(
+                name=task.name,
+                task_type=task.type,
+                y_vars=self.y,
+                index=index,
+                week_start=week_start,
+                days=period_days,
+                start_date=start_date,
+                end_date=end_date,
+                number_of_weeks=task.number_of_weeks,
+                available_physicians=available_physicians,
+                heaviness=task.heaviness,
+                mandatory=task.mandatory
+            )
+        )
+
+    def _create_assignment_variables(self, task, start_date, end_date, all_physicians):
+        task_key = f"{task.name}_{start_date}_{end_date}"
+        if task_key not in self.debug_info['math_tasks']:
+            self.debug_info['math_tasks'][task_key] = {
+                'initial_candidates': self._get_all_physicians(),
+                'candidates_after_availability': [],
+                'candidates_after_eligibility': [],
+                'candidates_after_mandatory': [],
+                'candidates_after_non_simultaneous': [],
+                'candidates_after_linked_call_constraints': []
+            }
+        for physician in all_physicians:
+            var_name = f"{task.name}_{start_date}_{end_date}_{physician}"
+            self.y[(task.name, start_date, end_date, physician)] = self.math_model.NewBoolVar(var_name)
+
     def _math_create_constraints(self, periods):
-        """
-        Create all constraints for the scheduling problem.
-
-        Notes:
-            You can comment one family of constraints to see what happens.
-
-        Args:
-            periods:
-
-        """
         week_starts = sorted(periods.keys())
-
         self._math_create_physician_availability_constraints()
         self._math_create_physician_eligibility_constraints()
-        self._math_create_mandatory_task_constraints(week_starts=week_starts, periods=periods)
-        self._math_create_non_simultaneous_tasks(week_starts=week_starts, periods=periods)
-        self._math_create_linked_main_call_tasks_constraints(week_starts=week_starts, periods=periods)
-        
+        self._math_create_mandatory_task_constraints(week_starts, periods)
+        self._math_create_non_simultaneous_tasks(week_starts, periods)
+        self._math_create_linked_main_call_tasks_constraints(week_starts, periods)
+
     def _math_create_physician_availability_constraints(self):
         """
         Add constraints to prevent assignment of tasks to physicians who are unavailable during the task period.
@@ -657,13 +238,11 @@ class MathSchedule:
                     task_key = f"{task.name}_{math_task.start_date}_{math_task.end_date}"
                     available_physicians = []
                     for physician in self._get_all_physicians():
-                        # Check if physician is unavailable during the entire task period
                         is_unavailable = any(
                             self.physician_manager.is_unavailable(physician, day)
                             for day in math_task.days
                         )
                         if is_unavailable:
-                            # Set assignment variable to 0
                             self.math_model.Add(
                                 self.y[(task.name, math_task.start_date, math_task.end_date, physician)] == 0
                             ).WithName(f"Unavailable_{physician}_{task.name}_{math_task.start_date}")
@@ -672,7 +251,7 @@ class MathSchedule:
                             available_physicians.append(physician)
                     self.debug_info['math_tasks'][task_key]['candidates_after_availability'] = available_physicians.copy()
         logging.info(f"Added {constraints_added} physician availability constraints")
-    
+
     def _math_create_physician_eligibility_constraints(self):
         """
         Forbid assigning tasks to physicians who are not eligible to perform them.
@@ -685,7 +264,7 @@ class MathSchedule:
                     eligible_physicians = []
                     for physician in self._get_all_physicians():
                         physician_obj = self.physician_manager.get_physician_by_name(physician)
-                        if task.category.name in physician_obj.exclusion_tasks: #task.category.name not in physician_obj.restricted_tasks or
+                        if task.category.name in physician_obj.exclusion_tasks:
                             self.math_model.Add(
                                 self.y[(task.name, math_task.start_date, math_task.end_date, physician)] == 0
                             ).WithName(f"Ineligible_{physician}_{task.name}_{math_task.start_date}")
@@ -694,19 +273,11 @@ class MathSchedule:
                             eligible_physicians.append(physician)
                     self.debug_info['math_tasks'][task_key]['candidates_after_eligibility'] = eligible_physicians.copy()
         logging.info(f"Added {constraints_added} physician eligibility constraints")
-        
+
     def _math_create_mandatory_task_constraints(self, week_starts, periods):
-        """
-        Create the mandatory tasks constraints.
-
-        Args:
-            periods:
-        """
-
         for task in self.task_manager.data['tasks']:
             all_physicians = self._get_all_physicians()
-            
-            task_category = task.category  # for later
+            task_category = task.category
             week_offset = task.week_offset
             number_of_weeks = task_category.number_of_weeks
             period_has_started = False
@@ -716,497 +287,26 @@ class MathSchedule:
 
                 if period_has_started:
                     for index, math_task in enumerate(self.math_tasks[task.name][week_start]):
-                        # Get physicians who are both available and eligible
                         available_physicians = self._get_available_physicians(math_task.days)
                         eligible_physicians = self._get_eligible_physicians(available_physicians, task)
-                        #logging.info(f"Available physicians: {available_physicians}")
-                        #logging.info(f"Eligible physicians: {eligible_physicians}")
                         if eligible_physicians:
                             self.math_model.Add(
                                 sum(self.y[(task.name, math_task.start_date, math_task.end_date, physician)]
                                     for physician in eligible_physicians) == 1
                             ).WithName(f"Assign_{task.name}_{math_task.start_date}")
                         else:
-                            # No eligible physicians for mandatory task
-                            logging.warning(f"No eligible physicians available for mandatory task {task.name} from {math_task.start_date} to {math_task.end_date}")
-                            self._log_constraint_info(task.name, None, "NoEligiblePhysicians", math_task.start_date, math_task.end_date)
-            else:
-                # Ensure no physicians are assigned outside the period
-                for index, math_task in enumerate(self.math_tasks[task.name][week_start]):
-                    # Get physicians who are both available and eligible
-                    available_physicians = self._get_available_physicians(math_task.days)
-                    eligible_physicians = self._get_eligible_physicians(available_physicians, task)
-
-                    for physician in eligible_physicians:
-                        self.math_model.Add(
-                            self.y[(task.name, math_task.start_date, math_task.end_date, physician)] == 0
-                        ).WithName(f"NoAssign_{task.name}_{math_task.start_date}_{physician}")
-
-    def _get_main_math_tasks(self, call_math_task, main_main_task_names, tasks_dict):
-        """
-        Collect the MAIN math tasks from a given dict that are "close" to one CALL math task.
-
-        Args:
-            call_math_task:
-            main_main_task_names (List[str]): List of linked MAIN task names.
-            tasks_dict:
-
-        Returns:
-            A list of MAIN `MathTask` that are close to the CALL `MathTask`.
-        """
-        main_math_tasks_set = set()
-
-        start_date = call_math_task.start_date
-        end_date = call_math_task.end_date
-
-        for main_math_task_name in main_main_task_names:
-            main_math_tasks = tasks_dict[main_math_task_name]
-            for main_math_task in main_math_tasks:
-                if abs((main_math_task.start_date - end_date).days) <= 2 or abs((main_math_task.end_date - start_date).days) <= 2:
-                    main_math_tasks_set.add(main_math_task)
-
-        return list(main_math_tasks_set)
-
-
-    def _get_call_math_tasks(self, main_math_tasks_list, call_task_name, tasks_dict):
-        """
-        Collect the CALL math tasks from a given dict that are "close" to some MAIN math task given in a list.
-
-        Warnings:
-            The dict with the `MathTasks` is supposed to be ordered by start dates.
-
-        Args:
-            main_math_tasks_list:
-            call_task_name (str): The name of the CALL `MathTask`.
-            tasks_dict:
-
-        Returns:
-            A list of CALL `MathTask` that are "close" to the MAIN `MathTasks`.
-        """
-        call_math_tasks_set = set()
-        all_call_math_tasks_list = tasks_dict[call_task_name]
-
-        # TODO: optimize the loops so to not look further a given date and reduce the test for the first dates
-        for main_math_task in main_math_tasks_list:
-            start_date = main_math_task.start_date
-            end_date = main_math_task.end_date
-            for call_math_task in all_call_math_tasks_list:
-                if abs((call_math_task.start_date - end_date).days) <= 2 or abs((call_math_task.end_date - start_date).days) <= 2:
-                    call_math_tasks_set.add(call_math_task)
-
-        return list(call_math_tasks_set)
-
-
-    # This is the real constraint
-    def _math_create_linked_main_call_tasks_constraints(self, week_starts, periods):
-        """
-        Link MAIN and CALL tasks when linked together.
-
-        All CALL tasks must be assigned to a physician that was assigned a related (linked) MAIN task right before
-        or right after the CALL task, i.e. a given CALL task assigned to a physician
-        implies this physician
-        was assigned a corresponding MAIN call in a given period.
-
-        Args:
-            week_starts:
-            periods:
-
-        """
-        def restrict_call_tasks_per_calendar_month(call_math_tasks, physicians):
-            """
-            We restrict the number of CALL `MathTask` per calendar month.
-
-            Warnings:
-                A CALL `MathTask` belongs to month X if its `start_date` belongs to month X.
-                The list `call_math_tasks` must only contain unique entries.
-
-            Args:
-                call_math_tasks:
-                physicians:
-            """
-            call_math_tasks_per_month_dict = defaultdict(list)
-
-            for call_math_task in call_math_tasks:
-                month_nbr = call_math_task.start_date.month
-                call_math_tasks_per_month_dict[month_nbr].append(call_math_task)
-
-            # add constraints per month
-            for month_nbr, call_math_tasks_list in call_math_tasks_per_month_dict.items():
-                for physician in physicians:
-                    self.math_model.add(
-                        sum(call_math_task.y_var(physician) for call_math_task in call_math_tasks_list) <= 1)
-
-        def restrict_call_tasks_per_period(week_starts, periods, call_math_tasks, physicians, nbr_weeks):
-            """
-
-            Args:
-                week_starts (List[str]):
-                periods:
-                call_math_tasks:
-                physicians:
-                nbr_weeks:
-
-            """
-
-            # TODO: optimize the loops, in particular if the CALL `MathTask` are sorted by start dates
-            call_math_tasks_set = set()
-
-            period_week_nbr = 0
-            for week_start in week_starts:
-                period_week_nbr += 1
-
-                week_start_date = periods[week_start][0]["days"][0]
-
-                for call_math_task in call_math_tasks:
-                    if 0 <= (call_math_task.start_date - week_start_date).days < 7:
-                        call_math_tasks_set.add(call_math_task)
-
-                if period_week_nbr == nbr_weeks:
-                    # add constraint
-                    for physician in physicians:
-                        self.math_model.add(sum(call_math_task.y_var(physician) for call_math_task in call_math_tasks_set) <= 1)
-                    # reset
-                    period_week_nbr = 0
-                    call_math_tasks_set = set()
-
-            # remaining weeks
-            if call_math_tasks_set:
-                for physician in physicians:
-                    self.math_model.add(
-                        sum(call_math_task.y_var(physician) for call_math_task in call_math_tasks_set) <= 1)
-
-        def one_physician_for_main_task_period(main_math_tasks, physicians):
-            number_of_math_tasks = len(main_math_tasks)
-            M = main_math_tasks
-            for physician in physicians:
-                for i in range(number_of_math_tasks - 1):
-                    self.math_model.add(M[i].y_var(physician) == M[i + 1].y_var(physician)).with_name("doudoune")
-
-        def assign_physician_to_call_task(main_math_tasks, call_math_task, physicians):
-            for physician in physicians:
-                self.math_model.add(call_math_task.y_var(physician) <= sum(main_task.y_var(physician) for main_task in main_math_tasks)).with_name("musique")
-
-        all_tasks_list = self.task_manager.data['tasks']
-
-        # # gather Task Categories
-        # # category_name => TaskCategory
-        # task_categories_dict = self.task_manager.data['categories']
-
-        # gather Tasks
-        all_tasks_dict = {}  # name => Task
-        for task in self.task_manager.data['tasks']:
-            all_tasks_dict[task.name] = task
-
-        # find linked MAIN Tasks
-        linked_main_tasks = defaultdict(list)  # call_task_name => [name1, name2, ...]
-        for main_task_name, call_task_name in self.task_manager.data['linkage_manager'].to_dict().items():
-            linked_main_tasks[call_task_name].append(main_task_name)
-
-        # gather all physicians
-        all_physicians = self._get_all_physicians()
-
-        # gather all MathTask per task name: name => [math_task1, math_task2, ...] ordered by start time for all the periods
-        all_math_tasks = defaultdict(list)
-        for task in self.task_manager.data['tasks']:
-            for week_start in periods.keys():
-                all_math_tasks[task.name].extend(self.math_tasks[task.name][week_start])
-
-        #  self.math_tasks[task.name][week_start]
-
-        # for each CALL Task that is linked with the corresponding MAIN Tasks
-        # CTU_AB_CALL => [CTU_A, CTU_B]
-        for call_task_name, main_task_names in linked_main_tasks.items():
-            # for all call tasks, only one physician can handle it
-            all_call_math_tasks = all_math_tasks[call_task_name]
-
-            restrict_call_tasks_per_calendar_month(
-                call_math_tasks=all_call_math_tasks,
-                physicians=all_physicians
-            )
-
-            # restrict_call_tasks_per_period(
-            #     week_starts=week_starts,
-            #     periods=periods,
-            #     call_math_tasks=all_call_math_tasks,
-            #     physicians=all_physicians,
-            #     nbr_weeks=4
-            # )
-
-            for call_math_task in all_call_math_tasks:
-                self.math_model.add(
-                    sum(call_math_task.y_var(physician) for physician in all_physicians) <= 1).with_name("tqtq")
-
-                # gather main math tasks close to the call math task
-                main_math_tasks = self._get_main_math_tasks(
-                    call_math_task=call_math_task,
-                    main_main_task_names=main_task_names,
-                    tasks_dict=all_math_tasks
-                )
-
-                assign_physician_to_call_task(
-                    main_math_tasks=main_math_tasks,
-                    call_math_task=call_math_task,
-                    physicians=all_physicians
-                )
-
-            # add bundled main tasks constraints
-            for main_task_name in main_task_names:
-                week_offset = all_tasks_dict[main_task_name].week_offset
-                number_of_weeks = all_tasks_dict[main_task_name].category.number_of_weeks
-                one_main_math_tasks_bundled_list = []
-                period_started = False
-                nbr_weeks_in_period = 0
-                for week_nbr, week_start in enumerate(week_starts):
-
-                    if (week_nbr + week_offset) % number_of_weeks == 0:
-                        period_started = True
-                        nbr_weeks_in_period = 0
-
-                    if period_started:
-                        one_main_math_tasks_bundled_list.extend(self.math_tasks[main_task_name][week_start])
-                        nbr_weeks_in_period += 1
-
-                        if nbr_weeks_in_period == number_of_weeks:
-                            # new bundle of main tasks
-                            # the same physician must do all the bundled main tasks or none
-                            one_physician_for_main_task_period(
-                                main_math_tasks=one_main_math_tasks_bundled_list,
-                                physicians=all_physicians
-                            )
-
-                            # main_tasks_must_have_a_call_task(
-                            #     main_math_tasks=one_main_math_tasks_bundled_list,
-                            #     call_math_tasks=call_math_tasks,
-                            #     physicians=all_physicians
-                            # )
-                            # only one call math task per bundle
-                            # only_one_call_per_main_tasks(
-                            #     call_math_tasks=call_math_tasks,
-                            #     main_math_tasks=one_main_math_tasks_bundled_list,
-                            #     physicians=all_physicians
-                            # )
-
-                            one_main_math_tasks_bundled_list = []
-        for task_name, math_tasks in all_math_tasks.items():
-            # Skip CALL tasks
-            if task_name in linked_main_tasks:
-                continue
-            for math_task in math_tasks:
-                task_key = f"{task_name}_{math_task.start_date}_{math_task.end_date}"
-                candidates = []
-                for physician in all_physicians:
-                    var = self.y[(task_name, math_task.start_date, math_task.end_date, physician)]
-                    if not self.math_model.Proto().variables[var.Index()].domain == [0]:
-                        candidates.append(physician)
-                self.debug_info['math_tasks'][task_key]['candidates_after_linked_call_constraints'] = candidates.copy()
-    # WARNING: this is the old version where I misunderstood the specific solutions obtained for the
-    # contraints of the problem
-    # This only works for main tasks that are equal or longer than 2 weeks long
-    # I leave it here as material for potential different constraints in the future
-    def _math_create_call_linked_to_main_tasks_constraints(self, week_starts, periods):
-        """
-        Construct
-
-        Args:
-            periods:
-
-        Warnings:
-            The constraints are constructed for all physicians, whether they are available or not.
-
-            Two conceptual types of constraints (more are really constructed) are constructed at once:
-            1. the constraints linking the MAIN `MathTask`s with the CALL `MathTask` and
-            2. the constraints linking the right number of `MathTask`s for one Task, i.e. linking the
-                `MathTask`s for `number_of_weeks`.
-
-        """
-        def one_physician_for_main_task_period(main_math_tasks, physicians):
-            number_of_math_tasks = len(main_math_tasks)
-            M = main_math_tasks
-            for physician in physicians:
-                for i in range(number_of_math_tasks - 1):
-                    self.math_model.add(M[i].y_var(physician) == M[i + 1].y_var(physician)).with_name("doudoune")
-
-        def main_tasks_must_have_a_call_task(main_math_tasks, call_math_tasks, physicians):
-            """
-            If a main task is done by one physician, this physician must have a corresponding call task.
-
-            Args:
-                main_math_tasks: Main `MathTask` for a bundled period.
-                call_math_tasks: All the corresponding Call `MathTasks` to the `main_math_tasks`.
-                physicians: List of possible physicians.
-
-            """
-            nbr_main_tasks = len(main_math_tasks)
-            for physician in physicians:
-                self.math_model.add(main_math_tasks[0].y_var(physician) <= sum(C.y_var(physician) for C in call_math_tasks)).with_name("albert")
-
-        def only_one_call_per_main_tasks(call_math_tasks, main_math_tasks, physicians):
-            for physician in physicians:
-                # self.math_model.add(sum(C.y_var(physician) for C in call_math_tasks) <= 1).with_name("toto")
-                nbr_call_tasks = len(call_math_tasks)
-                y_main_task = main_math_tasks[0]
-                self.math_model.add(sum(C.y_var(physician) for C in call_math_tasks) <= 1 + (nbr_call_tasks - 1) * (1 - y_main_task.y_var(physician))).with_name("toto")
-
-        all_tasks_list = self.task_manager.data['tasks']
-
-        # # gather Task Categories
-        # # category_name => TaskCategory
-        # task_categories_dict = self.task_manager.data['categories']
-
-        # gather Tasks
-        all_tasks_dict = {}  # name => Task
-        for task in self.task_manager.data['tasks']:
-            all_tasks_dict[task.name] = task
-
-        # find linked MAIN Tasks
-        linked_main_tasks = defaultdict(list)  # call_task_name => [name1, name2, ...]
-        for main_task_name, call_task_name in self.task_manager.data['linkage_manager'].to_dict().items():
-            linked_main_tasks[call_task_name].append(main_task_name)
-
-        # gather all physicians
-        all_physicians = self._get_all_physicians()
-
-        # gather all MathTask per task name: name => [math_task1, math_task2, ...] ordered by start time for all the periods
-        all_math_tasks = defaultdict(list)
-        for task in self.task_manager.data['tasks']:
-            for week_start in periods.keys():
-                all_math_tasks[task.name].extend(self.math_tasks[task.name][week_start])
-
-        #  self.math_tasks[task.name][week_start]
-
-        # for each MAIN Tasks that are linked with the same CALL Task
-        # CTU_AB_CALL => [CTU_A, CTU_B]
-        for call_task_name, main_task_names in linked_main_tasks.items():
-            # for all call tasks, only one physician can handle it
-            all_call_math_tasks = all_math_tasks[call_task_name]
-            for call_math_task in all_call_math_tasks:
-                self.math_model.add(sum(call_math_task.y_var(physician) for physician in all_physicians) <= 1).with_name("tqtq")
-
-            # add bundled main tasks constraints
-            for main_task_name in main_task_names:
-                week_offset = all_tasks_dict[main_task_name].week_offset
-                number_of_weeks = all_tasks_dict[main_task_name].category.number_of_weeks
-                one_main_math_tasks_bundled_list = []
-                period_started = False
-                nbr_weeks_in_period = 0
-                for week_nbr, week_start in enumerate(week_starts):
-
-                    if (week_nbr + week_offset) % number_of_weeks == 0:
-                        period_started = True
-                        nbr_weeks_in_period = 0
-
-                    if period_started:
-                        one_main_math_tasks_bundled_list.extend(self.math_tasks[main_task_name][week_start])
-                        nbr_weeks_in_period += 1
-
-                        if nbr_weeks_in_period == number_of_weeks:
-                            # new bundle of main tasks
-                            # the same physician must do all the bundled main tasks or none
-                            one_physician_for_main_task_period(
-                                main_math_tasks=one_main_math_tasks_bundled_list,
-                                physicians=all_physicians
-                            )
-                            call_math_tasks = self._get_call_math_tasks(main_math_tasks_list=one_main_math_tasks_bundled_list, call_task_name=call_task_name, tasks_dict=all_math_tasks)
-                            main_tasks_must_have_a_call_task(
-                                main_math_tasks=one_main_math_tasks_bundled_list,
-                                call_math_tasks=call_math_tasks,
-                                physicians=all_physicians
-                            )
-                            # only one call math task per bundle
-                            only_one_call_per_main_tasks(
-                                call_math_tasks=call_math_tasks,
-                                main_math_tasks=one_main_math_tasks_bundled_list,
-                                physicians=all_physicians
-                            )
-
-                            one_main_math_tasks_bundled_list = []
-
-
-        # def limit_number_of_call_math_tasks(C, physicians, max_nbr_linked_call_math_tasks=1):
-        #     """
-        #     Limit the number of allowed CALL tasks.
-        #
-        #     Args:
-        #         C:
-        #         physicians:
-        #         max_nbr_linked_call_math_tasks:
-        #     """
-        #     for physician in physicians:
-        #         self.math_model.add(sum(C[i].y_var(physician) for i in range(len(C))) <= max_nbr_linked_call_math_tasks)
-        #
-        # def link_main_and_call_math_tasks(M, C, physicians):
-        #     """
-        #     Link the MAIN and CALL tasks.
-        #
-        #     Args:
-        #         M:
-        #         C:
-        #         physicians:
-        #
-        #     """
-        #     # forbid early call math tasks
-        #     first_possible_call_date = M[0].end_date
-        #
-        #     for j in range(len(C)):
-        #         if C[j].start_date <= first_possible_call_date:
-        #             for physician in physicians:
-        #                 self.math_model.add(C[j].y_var(physician) == 0)
-        #         else:
-        #             # call math tasks are ordered
-        #             break
-        #
-        #     # if a physician is doing a MAIN task, she must do a CALL task too
-        #     for physician in physicians:
-        #         for i in range(len(M)):
-        #             if len(C) > 0:
-        #                 self.math_model.add(M[i].y_var(physician) <= sum(C[j].y_var(physician) for j in range(len(C))))
-        #
-        #     # if a physician is doing a CALL task, she must do the corresponding MAIN tasks too
-        #     for physician in physicians:
-        #         for j in range(len(C)):
-        #             if len(M) > 0:
-        #                 self.math_model.add(C[j].y_var(physician) <= sum(M[i].y_var(physician) for i in range(len(M))))
-        #
-        # all_physicians = self._get_all_physicians()
-        # all_math_tasks_dict = self._get_all_math_tasks_per_task(periods=periods)
-        # all_tasks_list = self.task_manager.data['tasks']
-        #
-        # for task in all_tasks_list:
-        #     if task.type == TaskType.MAIN:
-        #         number_of_weeks_left = task.number_of_weeks  # counter to bundle MathTask for the right number of weeks
-        #         # is there a linked call task?
-        #         linked_call_task_name = self.task_manager.data['linkage_manager'].get_linked_call(task)
-        #         bundled_main_tasks = []
-        #         bundled_call_tasks = []
-        #         for week_start, week_periods in periods.items():
-        #             bundled_main_tasks.extend(self.math_tasks[task.name][week_start])
-        #             if linked_call_task_name:
-        #                 bundled_call_tasks.extend(self.math_tasks[linked_call_task_name][week_start])
-        #             number_of_weeks_left -= 1
-        #             if not number_of_weeks_left:
-        #                 create_math_tasks_bundle_constraints(bundled_main_tasks, all_physicians)
-        #                 if linked_call_task_name:
-        #                     limit_number_of_call_math_tasks(bundled_call_tasks, all_physicians)
-        #                     link_main_and_call_math_tasks(bundled_main_tasks, bundled_call_tasks, all_physicians)
-        #                 # reset for the next bundle of MAIN MathTasks
-        #                 bundled_main_tasks = []
-        #                 bundled_call_tasks = []
-        #                 number_of_weeks_left = task.number_of_weeks
+                            slack_var = self.math_model.NewBoolVar(f"Slack_{task.name}_{math_task.start_date}")
+                            possible_physicians = [
+                                physician for physician in self._get_all_physicians()
+                                if not self._is_physician_unavailable(physician, math_task.days)
+                            ]
+                            self.math_model.Add(
+                                sum(self.y[(task.name, math_task.start_date, math_task.end_date, physician)]
+                                    for physician in possible_physicians) + slack_var == 1
+                            ).WithName(f"AssignOrSlack_{task.name}_{math_task.start_date}")
+                            self.slack_vars.append(slack_var)
 
     def _math_create_non_simultaneous_tasks(self, week_starts, periods):
-        """
-        Forbid one physician to do two simultaneous `MathTask`.
-
-        Args:
-            periods:
-
-        Notes:
-            To allow for simultaneous tasks, simply remove those tasks for the list of `MathTask`s.
-            For more complex tasks, for instance if for one physician, some tasks could be simultaneous, rewrite
-            this method and `_create_mutually_exclusive_math_tasks_constraints` accordingly.
-        """
-        # get all MathTasks for all periods
-        all_math_tasks_dict = self._get_all_math_tasks_per_task(week_starts=week_starts)
         all_tasks_list = self.task_manager.data['tasks']
         nbr_of_tasks = len(all_tasks_list)
         all_physicians = self._get_all_physicians()
@@ -1214,249 +314,261 @@ class MathSchedule:
         for i in range(nbr_of_tasks):
             for j in range(i+1, nbr_of_tasks):
                 self._create_mutually_exclusive_math_tasks_constraints(
-                    all_math_tasks_dict[all_tasks_list[i].name],
-                    all_math_tasks_dict[all_tasks_list[j].name]
+                    self._get_all_math_tasks_per_task(week_starts)[all_tasks_list[i].name],
+                    self._get_all_math_tasks_per_task(week_starts)[all_tasks_list[j].name]
                 )
-        # Update candidates_after_non_simultaneous for each MathTask
-        for task_name, week_tasks in self.math_tasks.items():
-            for week_start, math_tasks in week_tasks.items():
-                for math_task in math_tasks:
-                    task_key = f"{task_name}_{math_task.start_date}_{math_task.end_date}"
-                    candidates = []
-                    for physician in all_physicians:
-                        var = self.y[(task_name, math_task.start_date, math_task.end_date, physician)]
-                        if not self.math_model.Proto().variables[var.Index()].domain == [0]:
-                            candidates.append(physician)
-                    self.debug_info['math_tasks'][task_key]['candidates_after_non_simultaneous'] = candidates.copy()
 
     def _create_mutually_exclusive_math_tasks_constraints(self, A, B):
         """
         Add mutually exclusive constraints between two ordered lists of `MathTask`s.
-
-        Warnings:
-            This is done for all physicians, whether they participate in a `MathTask` or not.
-            This is done in O(len(A) + len(B)).
-
-        Args:
-            A (List[MathTask]):
-            B (List[MathTask]):
         """
         all_physicians = self._get_all_physicians()
         i = j = 0
         while i < len(A) and j < len(B):
-            # Let's check if A[i] intersects B[j].
-            # lo - the startpoint of the intersection
-            # hi - the endpoint of the intersection
-            lo = max(A[i].start_date, B[j].start_date)
-            hi = min(A[i].end_date, B[j].end_date)
-            if lo <= hi:
-                # both interval intersect => add a mutually exclusive constraint for all physicians
-                for physician in all_physicians:
-                    self.math_model.add(A[i].y_var(physician) + B[j].y_var(physician) <= 1).with_name("zizo")
-
-            # Remove the interval with the smallest endpoint
-            if A[i].end_date < B[j].end_date:
+            if A[i].end_date < B[j].start_date:
                 i += 1
-            else:
+            elif B[j].end_date < A[i].start_date:
                 j += 1
+            else:
+                for physician in all_physicians:
+                    self.math_model.Add(
+                        self.y[(A[i].name, A[i].start_date, A[i].end_date, physician)] +
+                        self.y[(B[j].name, B[j].start_date, B[j].end_date, physician)] <= 1
+                    ).WithName(f"NonOverlap_{physician}_{A[i].name}_{B[j].name}_{A[i].start_date}")
+                if A[i].end_date <= B[j].end_date:
+                    i += 1
+                else:
+                    j += 1
+
+    def _math_create_linked_main_call_tasks_constraints(self, week_starts, periods):
+        all_tasks_list = self.task_manager.data['tasks']
+        all_tasks_dict = {task.name: task for task in all_tasks_list}
+        linked_main_tasks = defaultdict(list)
+        for main_task_name, call_task_name in self.task_manager.data['linkage_manager'].to_dict().items():
+            linked_main_tasks[call_task_name].append(main_task_name)
+
+        all_physicians = self._get_all_physicians()
+        all_math_tasks = self._get_all_math_tasks_per_task(week_starts)
+
+        for call_task_name, main_task_names in linked_main_tasks.items():
+            all_call_math_tasks = all_math_tasks[call_task_name]
+
+            for call_math_task in all_call_math_tasks:
+                self.math_model.Add(
+                    sum(call_math_task.y_var(physician) for physician in all_physicians) <= 1).WithName("tqtq")
+
+                main_math_tasks = self._get_main_math_tasks(
+                    call_math_task=call_math_task,
+                    main_main_task_names=main_task_names,
+                    tasks_dict=all_math_tasks
+                )
+
+                self._assign_physician_to_call_task(
+                    main_math_tasks=main_math_tasks,
+                    call_math_task=call_math_task,
+                    physicians=all_physicians
+                )
+
+            for main_task_name in main_task_names:
+                week_offset = all_tasks_dict[main_task_name].week_offset
+                number_of_weeks = all_tasks_dict[main_task_name].category.number_of_weeks
+                one_main_math_tasks_bundled_list = []
+                period_started = False
+                nbr_weeks_in_period = 0
+                for week_nbr, week_start in enumerate(week_starts):
+                    if (week_nbr + week_offset) % number_of_weeks == 0:
+                        period_started = True
+                        nbr_weeks_in_period = 0
+
+                    if period_started:
+                        one_main_math_tasks_bundled_list.extend(self.math_tasks[main_task_name][week_start])
+                        nbr_weeks_in_period += 1
+
+                        if nbr_weeks_in_period == number_of_weeks:
+                            self._one_physician_for_main_task_period(
+                                main_math_tasks=one_main_math_tasks_bundled_list,
+                                physicians=all_physicians
+                            )
+                            one_main_math_tasks_bundled_list = []
 
     def _math_create_objective_function(self):
-        total_assignments = sum(
-            self.y[(task.name, math_task.start_date, math_task.end_date, physician)]
-            for task in self.task_manager.data['tasks']
-            for week_start in self.math_tasks[task.name]
-            for math_task in self.math_tasks[task.name][week_start]
-            for physician in self._get_all_physicians()
-        )
-        self.math_model.Maximize(total_assignments)
+        total_score = 0
 
-    def export_model(self, filename):
-        self.math_model.export_to_file(filename)
+        for task in self.task_manager.data['tasks']:
+            for week_start in self.math_tasks[task.name]:
+                for math_task in self.math_tasks[task.name][week_start]:
+                    for physician in self._get_all_physicians():
+                        var = self.y[(task.name, math_task.start_date, math_task.end_date, physician)]
+                        coeff = 0
+
+                        if not self.math_model.Proto().variables[var.Index()].domain == [0]:
+                            physician_obj = self.physician_manager.get_physician_by_name(physician)
+
+                            # Task Preferences
+                            if task.category.name in physician_obj.preferred_tasks:
+                                preference_rank = physician_obj.preferred_tasks.index(task.category.name)
+                                coeff += self.PREFERENCE_SCORE * (len(physician_obj.preferred_tasks) - preference_rank)
+
+                            # Consecutive Category Avoidance
+                            last_tasks = self.physician_assignments.get(physician, [])
+                            if last_tasks:
+                                last_task = last_tasks[-1]
+                                if last_task.category.name == task.category.name and task.number_of_weeks <= 1:
+                                    coeff += self.CONSECUTIVE_CATEGORY_PENALTY
+
+                            # Call Distribution
+                            if task.is_call_task:
+                                last_calls = self.physician_call_assignments.get(physician, [])
+                                if last_calls:
+                                    last_call_date = last_calls[-1].start_date
+                                    if (math_task.start_date - last_call_date).days <= 28:
+                                        coeff += self.CALL_DISTRIBUTION_PENALTY
+
+                            # Heavy Task Avoidance
+                            if task.is_heavy and task.number_of_weeks <= 1:
+                                if last_tasks and last_tasks[-1].is_heavy:
+                                    coeff += self.HEAVY_TASK_PENALTY
+
+                            # Add to total_score
+                            total_score += coeff * var
+
+        # Balance Desired Working Weeks
+        for physician in self._get_all_physicians():
+            physician_obj = self.physician_manager.get_physician_by_name(physician)
+            assigned_weeks = sum(
+                ((task['end_date'] - task['start_date']).days + 1) / 7
+                for task in self.schedule.get(physician, [])
+            )
+            desired_weeks = physician_obj.desired_working_weeks * 52
+            deviation = abs(assigned_weeks - desired_weeks)
+            total_score += self.DESIRED_WEEKS_SCORE * -deviation
+
+        # Balance Revenue Distribution
+        total_revenue = sum(self.revenue_per_physician.values())
+        num_physicians = len(self._get_all_physicians())
+        average_revenue = total_revenue / num_physicians if num_physicians > 0 else 0
+
+        for physician in self._get_all_physicians():
+            revenue = self.revenue_per_physician[physician]
+            deviation = abs(revenue - average_revenue)
+            total_score += self.REVENUE_BALANCE_SCORE * -deviation
+
+        # Penalty for slack variables
+        total_slack_penalty = sum(self.slack_vars) * -100000
+
+        # Set the objective
+        self.math_model.Maximize(total_score + total_slack_penalty)
 
     def _math_set_solution(self, periods):
         """
         Translate the mathematical solution into a schedule.
-
-        Args:
-            periods:
         """
         solver = self.math_solver
-
-        # init solution schedule
         self.schedule = defaultdict(list)
 
         for week_start, week_periods in periods.items():
             for task in self.task_manager.data['tasks']:
-                task_category = task.category  # for later
-                for index, math_task in enumerate(self.math_tasks[task.name][week_start]):
-                    available_physicians = math_task.available_physicians
+                for math_task in self.math_tasks[task.name][week_start]:
+                    available_physicians = self._get_available_physicians(math_task.days)
                     for physician in available_physicians:
-                        if solver.value(self.y[(task.name, math_task.start_date, math_task.end_date, physician)]) > 0:
+                        if solver.Value(self.y[(task.name, math_task.start_date, math_task.end_date, physician)]) > 0:
                             self._add_to_schedule(
                                 physician=physician,
                                 task=task,
                                 period={"days": math_task.days},
-                                score=0  # TODO: add right score
+                                score=self._calculate_assignment_score(physician, task, math_task)
                             )
+                            self.physician_assignments[physician].append(task)
+                            if task.is_call_task:
+                                self.physician_call_assignments[physician].append(math_task)
+                            self.revenue_per_physician[physician] += task.revenue
 
-    def _handle_extended_tasks(self, extended_end_date: date):
-        for task in self.task_manager.data['tasks']:
-            if task.number_of_weeks > 1:
-                last_assigned = max(
-                    (t['end_date'] for t in self.schedule.values() for t in t if t['task'].name == task),
-                    default=None)
-                if last_assigned and last_assigned < extended_end_date:
-                    remaining_weeks = (extended_end_date - last_assigned).days // 7
-                    for week in range(remaining_weeks):
-                        start_date = last_assigned + timedelta(weeks=week + 1)
-                        end_date = start_date + timedelta(days=6)
-                        period = {'days': [start_date + timedelta(days=i) for i in range(7)], 'month': start_date.month}
-                        available_physicians = self._get_available_physicians(period['days'])
-                        self._assign_main_task(start_date, period, available_physicians, task)
-
-    def _extend_scheduling_period(self) -> date:
-        max_task_duration = max(task.number_of_weeks for task in self.task_manager.data['tasks'])
-        extended_end_date = self.scheduling_period[1] + timedelta(weeks=max_task_duration)
-        return extended_end_date
-    
-    def _filter_relevant_periods(self, periods: Dict[str, List[Dict[str, Any]]], start_date: date, end_date: date) -> \
-    Dict[str, List[Dict[str, Any]]]:
+    def _calculate_assignment_score(self, physician: str, task: Any, math_task: Any) -> float:
         """
-        Filter periods based on the given start and end dates using date.fromisoformat().
-
-        Args:
-            periods (Dict[str, List[Dict[str, Any]]]): Dictionary of periods with week start dates as keys.
-            start_date (date): The start date for filtering.
-            end_date (date): The end date for filtering.
-
-        Returns:
-            Dict[str, List[Dict[str, Any]]]: Filtered periods dictionary.
-
-        Raises:
-            ValueError: If an invalid date format is encountered in the periods dictionary.
+        Calculate a comprehensive score for a task assignment.
         """
-        filtered_periods = {}
+        physician_obj = self.physician_manager.get_physician_by_name(physician)
+        score = 0
 
-        for week_start, week_periods in periods.items():
-            try:
-                week_date = date.fromisoformat(week_start)
-                if start_date <= week_date <= end_date:
-                    filtered_periods[week_start] = week_periods
-            except ValueError:
-                raise ValueError(f"Invalid ISO format date in periods dictionary: {week_start}")
+        # Task Preference Score
+        if task.category.name in physician_obj.preferred_tasks:
+            preference_rank = physician_obj.preferred_tasks.index(task.category.name)
+            score += self.PREFERENCE_SCORE * (len(physician_obj.preferred_tasks) - preference_rank)
 
-        return filtered_periods
+        # Desired Working Weeks Score
+        total_assigned_days = sum(len(t['days']) for t in self.schedule[physician])
+        assigned_weeks = total_assigned_days / 7
+        desired_weeks = physician_obj.desired_working_weeks * 52
+        weeks_deviation = abs(assigned_weeks - desired_weeks)
+        score += self.DESIRED_WEEKS_SCORE * (1 / (weeks_deviation + 1))
 
-    def _assign_tasks_for_period(self, week_start: date, periods: List[Dict[str, Any]]):
-        for task in self.task_manager.data['tasks']:
-            if task.type == TaskType.MAIN:
-                if main_period := self._get_main_candidate(periods):
-                    available_physicians = self._get_available_physicians(main_period['days'])
-                    assigned_physician = self._assign_main_task(week_start, main_period, available_physicians, task)
+        # Revenue Distribution Score
+        avg_revenue = sum(self.revenue_per_physician.values()) / len(self.revenue_per_physician) if self.revenue_per_physician else 0
+        revenue_deviation = abs(self.revenue_per_physician[physician] - avg_revenue)
+        score += self.REVENUE_BALANCE_SCORE * (1 / (revenue_deviation + 1))
 
-                    if assigned_physician:
-                        # Assign linked call task immediately after main task
-                        linked_call_task_name = self.task_manager.data['linkage_manager'].get_linked_call(task)
-                        linked_call_task = next(
-                            (t for t in self.task_manager.data['tasks'] if t.name == linked_call_task_name), None)
+        # Consecutive Category Avoidance
+        last_tasks = self.physician_assignments.get(physician, [])
+        if last_tasks and last_tasks[-1].category.name == task.category.name and task.number_of_weeks <= 1:
+            score += self.CONSECUTIVE_CATEGORY_PENALTY
 
-                        if linked_call_task:
-                            call_period = self._get_call_candidate(periods)
-                            if call_period:
-                                self._assign_linked_call_task(week_start, call_period, assigned_physician,
-                                                              linked_call_task)
+        # Call Distribution
+        if task.is_call_task:
+            last_calls = self.physician_call_assignments.get(physician, [])
+            if last_calls:
+                last_call_date = last_calls[-1].start_date
+                if (math_task.start_date - last_call_date).days <= 28:
+                    score += self.CALL_DISTRIBUTION_PENALTY
 
-        # Handle remaining unassigned call tasks
-        for task in self.task_manager.data['tasks']:
-            if task.type == TaskType.CALL and task.name not in self.task_manager.data['linkage_manager'].links.values():
-                if call_period := self._get_call_candidate(periods):
-                    available_physicians = self._get_available_physicians(call_period['days'])
-                    self._assign_call_task(week_start, call_period, available_physicians, task)
+        # Heavy Task Avoidance
+        if task.is_heavy and task.number_of_weeks <= 1:
+            if last_tasks and last_tasks[-1].is_heavy:
+                score += self.HEAVY_TASK_PENALTY
 
-    def _assign_main_task(self, week_start: date, period: Dict[str, Any], available_physicians: List[str], task):
-        period['month'] = week_start.month
-        physician, score = self.task_matcher.find_best_match(available_physicians, task, period, week_start.month)
-        if physician:
-            for week in range(task.number_of_weeks):
-                current_period = self._get_period_for_date(week_start + timedelta(weeks=week), 'MAIN')
-                if current_period is None:
-                    logging.debug(f"Only CALL periods found for {week_start + timedelta(weeks=week)}")
-                else:
-                    if not self._is_task_already_assigned(task, current_period) and not self._is_physician_already_assigned(physician, current_period):
-                        self._add_to_schedule(physician, task, current_period, score)
-                        self.task_matcher.update_physician_stats(physician, task, current_period)
-                    else:
-                        logging.debug(f"Task {task.name} is already assigned during {current_period['days']} or physician {physician} is already assigned another task")
-            if physician in available_physicians:
-                available_physicians.remove(physician)
-            logging.debug(f"Assigned main task {task.name} to {physician} for {task.number_of_weeks} weeks")
-            return physician
-        else:
-            logging.debug(f"No eligible physician found for main task {task.name}")
-            return None
+        return score
 
-    def _assign_linked_call_task(self, week_start: date, period: Dict[str, Any], physician: str, task):
-        if not self._is_task_already_assigned(task, period) and not self._is_physician_already_assigned(physician, period):
-            if 'month' not in period:
-                period['month'] = period['days'][0].month
-            if self.assigned_calls[physician][period['month']] == 0:
-                self._add_to_schedule(physician, task, period, 0)
-                self.task_matcher.update_physician_stats(physician, task, period)
-                self.assigned_calls[physician][period['month']] += 1
-                logging.debug(f"Assigned linked call task {task.name} to {physician}")
+    def _get_periods_days(self, week_periods):
+        main_periods_days = []
+        call_periods_days = []
+        for period in week_periods:
+            if period['type'] == 'MAIN':
+                main_periods_days.append(period['days'])
+            elif period['type'] == 'CALL':
+                call_periods_days.append(period['days'])
             else:
-                logging.debug(f"Unable to assign linked call task {task.name} to {physician} due to monthly call limit")
-        else:
-            logging.debug(f"Unable to assign linked call task {task.name} to {physician} due to conflicts")
+                raise NotImplementedError(f"Period type {period['type']} not recognized!")
+        return main_periods_days, call_periods_days
 
-    def _assign_call_task(self, week_start: date, period: Dict[str, Any], available_physicians: List[str], task):
-        period['month'] = week_start.month
-        physician, score = self.task_matcher.find_best_match(available_physicians, task, period, week_start.month)
-        if physician:
-            if not self._is_task_already_assigned(task, period) and not self._is_physician_already_assigned(physician, period):
-                if self.assigned_calls[physician][period['month']] == 0:
-                    self._add_to_schedule(physician, task, period, score)
-                    available_physicians.remove(physician)
-                    self.task_matcher.update_physician_stats(physician, task, period)
-                    self.assigned_calls[physician][period['month']] += 1
-                    logging.debug(f"Assigned call task {task.name} to {physician}")
-                else:
-                    logging.debug(f"Unable to assign call task {task.name} to {physician} due to monthly call limit")
-            else:
-                logging.debug(f"Task {task.name} is already assigned during {period['days']} or physician {physician} is already assigned another task")
-        else:
-            logging.debug(f"No eligible physician found for call task {task.name}")
+    def _get_all_math_tasks_per_task(self, week_starts):
+        math_tasks_dict = {}
+        for task in self.task_manager.data['tasks']:
+            math_tasks_dict[task.name] = []
+        for week_start in week_starts:
+            for task in self.task_manager.data['tasks']:
+                math_tasks_dict[task.name].extend(self.math_tasks[task.name][week_start])
+        return math_tasks_dict
 
-    def _is_physician_already_assigned(self, physician: str, period: Dict[str, Any]) -> bool:
-        for assigned_task in self.schedule[physician]:
-            if any(day in period['days'] for day in assigned_task['days']):
-                return True
-        return False
+    def _get_main_math_tasks(self, call_math_task, main_main_task_names, tasks_dict):
+        main_math_tasks_set = set()
+        start_date = call_math_task.start_date
+        end_date = call_math_task.end_date
+        for main_math_task_name in main_main_task_names:
+            main_math_tasks = tasks_dict[main_math_task_name]
+            for main_math_task in main_math_tasks:
+                if abs((main_math_task.start_date - end_date).days) <= 2 or abs((main_math_task.end_date - start_date).days) <= 2:
+                    main_math_tasks_set.add(main_math_task)
+        return list(main_math_tasks_set)
 
-    def _is_task_already_assigned(self, task: Any, period: Dict[str, Any]) -> bool:
-        for physician, tasks in self.schedule.items():
-            for assigned_task in tasks:
-                if assigned_task['task'].name == task.name and any(day in period['days'] for day in assigned_task['days']):
-                    return True
-        return False
-    def _get_period_for_date(self, date: date, type = str) -> Dict[str, Any]:
-        """
-        Returns the period dictionary for a given date.
-        """
-        logging.debug(f"Getting period for date {date}")
-        try:
-            periods = self.calendar.determine_periods()
-            date_string = date.strftime('%Y-%m-%d')
-            candidates = periods[date_string]
-            return self._get_call_candidate(candidates) if type == 'CALL' else self._get_main_candidate(candidates)
-        except:
-            raise ValueError(f"No period found for date: {date}")
+    def _assign_physician_to_call_task(self, main_math_tasks, call_math_task, physicians):
+        for physician in physicians:
+            self.math_model.Add(call_math_task.y_var(physician) <= sum(main_task.y_var(physician) for main_task in main_math_tasks)).WithName("musique")
 
-    def _get_call_candidate(self, candidates):
-        return next((candidate for candidate in candidates if candidate['type'] == 'CALL'), None)
-
-    def _get_main_candidate(self, candidates):
-        return next((candidate for candidate in candidates if candidate['type'] == 'MAIN'), None)
+    def _one_physician_for_main_task_period(self, main_math_tasks, physicians):
+        number_of_math_tasks = len(main_math_tasks)
+        M = main_math_tasks
+        for physician in physicians:
+            for i in range(number_of_math_tasks - 1):
+                self.math_model.Add(M[i].y_var(physician) == M[i + 1].y_var(physician)).WithName("doudoune")
 
     def _get_available_physicians(self, days: List[date]) -> List[str]:
         return [
@@ -1465,14 +577,21 @@ class MathSchedule:
             if all(not self.physician_manager.is_unavailable(physician.name, day) for day in days)
         ]
 
-    def _get_all_physicians(self):
+    def _get_eligible_physicians(self, physicians: List[str], task) -> List[str]:
         return [
-            physician.name
-            for physician in self.physician_manager.data['physicians']
+            physician for physician in physicians
+            if task.category.name not in self.physician_manager.get_physician_by_name(physician).exclusion_tasks
         ]
 
-    def _get_all_tasks(self):
-        return [t for t in self.task_manager.data['tasks']]
+    def _get_all_physicians(self):
+        return [physician.name for physician in self.physician_manager.data['physicians']]
+
+    def _is_physician_available(self, physician: str, days: List[date]) -> bool:
+        return all(not self.physician_manager.is_unavailable(physician, day) for day in days)
+
+    def _is_physician_unavailable(self, physician: str, days: List[date]) -> bool:
+        return any(self.physician_manager.is_unavailable(physician, day) for day in days)
+
     def _add_to_schedule(self, physician: str, task: Any, period: Dict[str, Any], score: float):
         self.schedule[physician].append({
             'task': task,
@@ -1491,16 +610,6 @@ class MathSchedule:
             for task in tasks:
                 print(f"  {task['task'].name}: {task['start_date']} - {task['end_date']} (Score: {task['score']:.2f})")
 
-    def check_conflicts(self):
-        conflicts = []
-        for physician, tasks in self.schedule.items():
-            sorted_tasks = sorted(tasks, key=lambda x: x['start_date'])
-            for i in range(len(sorted_tasks) - 1):
-                if sorted_tasks[i]['end_date'] >= sorted_tasks[i + 1]['start_date']:
-                    conflicts.append(
-                        f"Conflict for {physician}: {sorted_tasks[i]['task'].name} and {sorted_tasks[i + 1]['task'].name} overlap")
-        return conflicts
-
     def save_schedule(self, filename):
         serializable_schedule = {
             physician: [
@@ -1509,47 +618,24 @@ class MathSchedule:
             ]
             for physician, tasks in self.schedule.items()
         }
-
         with open(filename, 'w') as f:
             json.dump(serializable_schedule, f, indent=2, default=str)
 
     def load_schedule(self, filename):
-        """
-        Load schedule from a JSON file.
-
-        Raises:
-            AssertionError is the JSON format is not respected.
-
-        Args:
-            filename:
-        """
-        self.schedule = self._load_schedule_from_file(filename=filename)
-
-    def get_statistics(self):
-        stats = {}
-        for physician, tasks in self.schedule.items():
-            physician_stats = defaultdict(int)
-            total_days = 0
-            for task in tasks:
-                physician_stats[task['task'].name] += 1
-                total_days += (task['end_date'] - task['start_date']).days + 1
-
-            working_weeks = total_days / 7
-            physician_obj = self.physician_manager.get_physician_by_name(physician)
-            desired_weeks_met = working_weeks >= physician_obj.desired_working_weeks * 52
-
-            stats[physician] = {
-                'task_counts': dict(physician_stats),
-                'total_working_days': total_days,
-                'working_weeks': working_weeks,
-                'desired_weeks_met': desired_weeks_met
-            }
-        return stats
-
-    def get_unassigned_tasks(self):
-        all_tasks = set(task.name for task in self.task_manager.data['tasks'])
-        assigned_tasks = set(task['task'].name for tasks in self.schedule.values() for task in tasks)
-        return all_tasks - assigned_tasks
+        with open(filename, 'r') as f:
+            loaded_schedule = json.load(f)
+        self.schedule = defaultdict(list, {
+            k: [
+                {
+                    **t,
+                    'start_date': date.fromisoformat(t['start_date']),
+                    'end_date': date.fromisoformat(t['end_date']),
+                    'task': self.task_manager.get_task(t['task'])
+                }
+                for t in v
+            ]
+            for k, v in loaded_schedule.items()
+        })
 
     def generate_ics_calendar(self, filename):
         cal = IcsCalendar()
@@ -1558,9 +644,38 @@ class MathSchedule:
                 event = Event()
                 event.name = f"{task['task'].name} - {physician}"
                 event.begin = task['start_date'].isoformat()
-                event.end = (task['end_date'] + timedelta(days=1)).isoformat()  # End date should be exclusive
+                event.end = (task['end_date'] + timedelta(days=1)).isoformat()
                 event.description = f"Task: {task['task'].name}\nPhysician: {physician}\nScore: {task['score']}"
                 cal.events.add(event)
-
         with open(filename, 'w') as f:
             f.writelines(cal)
+
+    def save_debug_info(self, filename: str):
+        with open(filename, 'w') as f:
+            json.dump(self.debug_info, f, indent=2, default=str)
+        logging.info(f"Debug information saved to {filename}")
+
+    def verify_physician_availability(self, task_name, start_date, end_date):
+        task_key = f"{task_name}_{start_date}_{end_date}"
+        if task_key in self.debug_info['math_tasks']:
+            initial_candidates = self.debug_info['math_tasks'][task_key]['initial_candidates']
+            available_candidates = self.debug_info['math_tasks'][task_key]['candidates_after_availability']
+            
+            print(f"Availability check for {task_name} from {start_date} to {end_date}:")
+            for physician in initial_candidates:
+                is_available = physician in available_candidates
+                print(f"  {physician}: {'Available' if is_available else 'Unavailable'}")
+                
+                is_unavailable = any(
+                    self.physician_manager.is_unavailable(physician, day)
+                    for day in [start_date + timedelta(days=i) for i in range((end_date - start_date).days + 1)]
+                )
+                if is_available != (not is_unavailable):
+                    print(f"    WARNING: Discrepancy in availability for {physician}")
+                    unavailability_info = self.physician_manager.get_unavailability_info(physician)
+                    print(f"    Unavailability periods: {unavailability_info}")
+        else:
+            print(f"No debug info found for task {task_name} from {start_date} to {end_date}")
+
+    def export_model(self, filename):
+        self.math_model.ExportToFile(filename)

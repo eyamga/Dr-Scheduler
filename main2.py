@@ -64,16 +64,16 @@ def initialize_task_manager():
     task_manager.add_task(Task.create(ambu_category, 'Main', 'AMBU_1', heaviness=5, mandatory=True))
     task_manager.add_task(Task.create(ambu_category, 'Main', 'AMBU_2', heaviness=5, mandatory=True))
 
-    #task_manager.add_task(Task.create(mog_category, 'Main', 'MOG', heaviness=5, mandatory=False))
-    #task_manager.add_task(Task.create(vasc_category, 'Main', 'VASC', heaviness=5, mandatory=False))
+    task_manager.add_task(Task.create(mog_category, 'Main', 'MOG', heaviness=5, mandatory=True))
+    task_manager.add_task(Task.create(vasc_category, 'Main', 'VASC', heaviness=5, mandatory=False))
 
     task_manager.add_task(Task.create(ctu_category, 'Call', 'CTU_AB_CALL', heaviness=5, mandatory=True))
     task_manager.add_task(Task.create(ctu_category, 'Call', 'CTU_CD_CALL', heaviness=5, mandatory=True))
     task_manager.add_task(Task.create(er_category, 'Call', 'ER_CALL', heaviness=5, mandatory=True))
     task_manager.add_task(Task.create(consult_category, 'Call', 'CONSULT_CALL', heaviness=5, mandatory=True))
 
-    #task_manager.add_task(Task.create(mog_category, 'Call', 'MOG_CALL', heaviness=5, mandatory=False))
-    #task_manager.add_task(Task.create(vasc_category, 'Call', 'VASC_CALL', heaviness=5, mandatory=False))
+    task_manager.add_task(Task.create(mog_category, 'Call', 'MOG_CALL', heaviness=5, mandatory=True))
+    # task_manager.add_task(Task.create(vasc_category, 'Call', 'VASC_CALL', heaviness=5, mandatory=False))
 
     # Link tasks
     task_manager.link_tasks('CTU_A', 'CTU_AB_CALL')
@@ -87,8 +87,8 @@ def initialize_task_manager():
     task_manager.link_tasks('CONSULT_1', 'CONSULT_CALL')
     task_manager.link_tasks('CONSULT_2', 'CONSULT_CALL')
 
-    #task_manager.link_tasks('VASC', 'VASC_CALL')
-    #task_manager.link_tasks('MOG', 'MOG_CALL')
+    task_manager.link_tasks('VASC', 'VASC_CALL')
+    task_manager.link_tasks('MOG', 'MOG_CALL')
 
 
     return task_manager
@@ -114,7 +114,6 @@ def initialize_physician_manager(task_manager):
         Physician("Gabriel", "Dion", ["CTU", "PREOP", "CONSULT"], False, 0.70, [], ["MOG", "VASC"]),
         Physician("Justine", "Munger", ["CTU"], True, 0.75, [], ["MOG", "VASC"]),
         Physician("Mikhael", "Laskine", ["CTU", "CONSULT", "ER", "PREOP"], False, 0.8, [], ["AMBU", "VASC"]),
-        Physician("Benoit", "Deligne", ["ER", "CTU"], False, 0.25, [], ["MOG", "VASC"]),
         Physician("Maxime", "Lamarre-Cliche", ["CTU", "ER",  "CONSULT",  "PREOP", "AMBU"], False, 0.80, [], ["MOG", "VASC"]),
         Physician("Julien", "D'Astous", ["CTU", "CONSULT", "PREOP", "ER", "AMBU"], False, 0.75, [], ["MOG", "VASC"]),
         Physician("Jean-Pascal", "Costa", ["CTU", "ER", "AMBU", "PREOP", "CONSULT"], False, 0.70, [], ["MOG", "VASC"]),
@@ -131,6 +130,8 @@ def initialize_physician_manager(task_manager):
                 ["MOG", "CTU", "ER", "PREOP", "AMBU"]),
         Physician("André", "Roussin", ["VASC"], False, 0.35, ["VASC"],
                 ["MOG", "CTU", "CONSULT", "ER", "PREOP", "AMBU"]),
+        Physician("Vasc", "Vasc", [], False, 1.0, [], ["MOG", "CTU", "CONSULT", "ER", "PREOP", "AMBU"]),
+
         Physician("Benoit", "Deligne", ["CTU", "CONSULT", "ER", "PREOP", "AMBU"], False, 0.5, [], ["MOG", "VASC"]),
         Physician("Martial", "Koenig", ["CTU", "CONSULT", "PREOP", "AMBU", "ER"], False, 0.8, [], ["MOG", "VASC"]),
 
@@ -138,6 +139,8 @@ def initialize_physician_manager(task_manager):
         #Physician("Brigitte", "Benard", ["PREOP", "CONSULT", "CTU", "AMBU"], False, 0, [], ["MOG", "VASC"]),
         #Physician("Audrey", "Lacasse", ["CTU", "ER"], False, 0.6, [], ["MOG", "VASC"]),
         ]
+
+
 
     for physician in physicians:
         physician_manager.add_physician(physician)
@@ -173,6 +176,7 @@ def initialize_physician_manager(task_manager):
                 (date(2025, 3, 31), date(2025, 4, 6)),
             ],
             "Michèle Mahone": [
+                (date(2025, 1, 13), date(2025, 1, 26)),
                 (date(2025, 2, 24), date(2025, 3, 2)),
                 (date(2025, 5, 12), date(2025, 5, 18)),
             ],
@@ -331,4 +335,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
 

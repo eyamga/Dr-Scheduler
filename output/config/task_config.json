@@ -155,6 +155,22 @@
       "mandatory": true
     },
     {
+      "category": "MOG",
+      "type": "Main",
+      "name": "MOG",
+      "week_offset": 0,
+      "heaviness": 5,
+      "mandatory": true
+    },
+    {
+      "category": "VASC",
+      "type": "Main",
+      "name": "VASC",
+      "week_offset": 0,
+      "heaviness": 5,
+      "mandatory": false
+    },
+    {
       "category": "CTU",
       "type": "Call",
       "name": "CTU_AB_CALL",
@@ -185,6 +201,14 @@
       "week_offset": 0,
       "heaviness": 5,
       "mandatory": true
+    },
+    {
+      "category": "MOG",
+      "type": "Call",
+      "name": "MOG_CALL",
+      "week_offset": 0,
+      "heaviness": 5,
+      "mandatory": true
     }
   ],
   "linkage_manager": {
@@ -195,6 +219,7 @@
     "ER_1": "ER_CALL",
     "ER_2": "ER_CALL",
     "CONSULT_1": "CONSULT_CALL",
-    "CONSULT_2": "CONSULT_CALL"
+    "CONSULT_2": "CONSULT_CALL",
+    "MOG": "MOG_CALL"
   }
 }

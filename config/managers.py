@@ -157,29 +157,18 @@ class PhysicianManager(ConfigurableManager):
         else:
             raise ValueError(f"Invalid unavailability period: {period}")
 
-    def is_unavailable(self, name, check_date: date) -> bool:
-        '''
-        Check if a physician is unavailable on a given date, note that if unavailable for a single date in a period, the physician is considered unavailable for the whole period.
-        '''
-        #logging.debug(f"Checking unavailability for {name} on {check_date}")
-
+    def is_unavailable(self, name: str, check_date: date) -> bool:
         if name not in self.unavailability_periods:
             return False
-
+        
         for period in self.unavailability_periods[name]:
-            # log period instance
-            # show period instance
-            if isinstance(period, date):
+            if isinstance(period, tuple) and len(period) == 2:
+                start_date, end_date = period
+                if start_date <= check_date <= end_date:
+                    return True
+            elif isinstance(period, date):
                 if period == check_date:
                     return True
-            elif isinstance(period, tuple) and len(period) == 2:
-                start, end = period
-                if start <= check_date <= end:
-                    return True
-            else:
-                logging.warning(f"Unexpected period format for {name}: {period}")
-
-        #logging.debug(f"  {name} is available on {check_date}")
         return False
 
     def get_unavailability_periods(self, name) -> List[Union[date, Tuple[date, date]]]:
@@ -203,3 +192,7 @@ class PhysicianManager(ConfigurableManager):
             manager.add_physician(physician)
 
         return manager
+
+    # Add this new method for debugging
+    def get_unavailability_info(self, name: str) -> List[Union[date, Tuple[date, date]]]:
+        return self.unavailability_periods.get(name, [])
