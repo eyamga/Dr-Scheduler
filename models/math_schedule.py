@@ -154,12 +154,21 @@ class MathSchedule:
             self.math_tasks[task.name] = {}
 
         self.w = {}  # w[(week_start, physician)] = 1 if physician works on correspondant week, 0 otherwise
+        self.z = {}  # adjusting variables to aim at target weeks work percentages to be followed
 
         all_physicians = self._get_all_physicians()
 
+        # Z
+        UB_Z = 100  # this could be computed in advance and depences on the percentages we are aiming at
+        for physician in all_physicians:
+            self.z[(physician)] = self.math_model.NewIntVar(lb=0, ub=UB_Z, name=f"z_{physician}")
+
         for week_start, week_periods in periods.items():
+
+
             main_periods_days, call_periods_days = self._get_periods_days(week_periods)
 
+            # W
             for physician in all_physicians:
                 self.w[(week_start, physician)] = self.math_model.NewBoolVar(f"{week_start}_{physician}")
 
@@ -170,7 +179,6 @@ class MathSchedule:
                     self._create_main_task_variables(task, week_start, main_periods_days, all_physicians)
                 elif task.type == TaskType.CALL:
                     self._create_call_task_variables(task, week_start, call_periods_days, all_physicians)
-
 
 
     def _create_main_task_variables(self, task, week_start, main_periods_days, all_physicians):
@@ -237,6 +245,8 @@ class MathSchedule:
         self._math_create_linked_main_call_tasks_constraints(week_starts, periods)
 
         self._math_create_physician_work_during_specific_week(week_starts, periods)
+        self._math_create_aim_at_percentage_work_per_physician(week_starts, periods)
+
 
     def _math_create_physician_work_during_specific_week(self, week_starts, periods):
         all_tasks_list = self.task_manager.data['tasks']
@@ -254,6 +264,35 @@ class MathSchedule:
                 self.math_model.Add(
                     self.w[(week_start, physician)] <= sum(week_physician_math_tasks_vars)
                 ).WithName(f"physician_work_during_specific_week_{physician}_{week_start}")
+
+    def _math_create_aim_at_percentage_work_per_physician(self, week_starts, periods):
+        """
+        The real constraint is:
+
+                        min(|aimed_percentage - worked_percentage|)
+
+        It is translated into 2 constraints:
+
+            (aimed_percentage - worked_percentage) * 100 <= Z (1)
+            (worked_percentage - aimed_percentage) * 100 <= Z (2)
+
+        and then we try to minimize Z in the objective function.
+
+        Warning:
+            Only use integer coefficients!
+        """
+        nbr_weeks = len(week_starts)
+        all_physicians_data = [(physician.name, physician.desired_working_weeks) for physician in self.physician_manager.data['physicians']]
+
+        for physician, aimed_percentage in all_physicians_data:
+            aimed_percentage_ = int(aimed_percentage * 100)
+            worked_percentage_ = int(100/nbr_weeks) * sum([self.w[(week_start, physician)] for week_start in week_starts])
+            self.math_model.Add(
+                (aimed_percentage_ - worked_percentage_)  <= self.z[(physician)]
+            ).WithName(f"aim_at_percentage_work_per_physician_{physician}_1")
+            self.math_model.Add(
+                (worked_percentage_ - aimed_percentage_) * 100 <= self.z[(physician)]
+            ).WithName(f"aim_at_percentage_work_per_physician_{physician}_2")
 
     def _math_create_physician_availability_constraints(self):
         """
@@ -492,8 +531,13 @@ class MathSchedule:
             for physician in all_physicians:
                 working_weeks_physicians.append(self.w[(week_start, physician)])
 
+        # z vars
+        aimed_percentage_adjusting_vars = []
+        for physician in all_physicians:
+            aimed_percentage_adjusting_vars.append(self.z[(physician)])
+
         # Set the objective
-        self.math_model.Maximize(total_score + total_slack_penalty + sum(working_weeks_physicians))
+        self.math_model.Maximize(total_score + total_slack_penalty + sum(working_weeks_physicians) - sum(aimed_percentage_adjusting_vars))
 
     def _math_set_solution(self, periods):
         """
