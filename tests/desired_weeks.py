@@ -59,4 +59,4 @@ with open(file_path, 'r') as file:
     calendar = json.load(file)
 
 result_df = calculate_weeks_worked(start_date, end_date, calendar)
-print(result)
+print(result_df)
