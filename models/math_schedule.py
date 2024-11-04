@@ -110,9 +110,11 @@ class MathSchedule:
 
         self.math_model = cp_model.CpModel()
 
+        week_starts = sorted(periods.keys())
+
         self._math_create_variables(periods=relevant_periods)
         self._math_create_constraints(periods=relevant_periods)
-        self._math_create_objective_function()
+        self._math_create_objective_function(periods=relevant_periods)
 
         self.save_debug_info("debug_info.json")
 
@@ -151,10 +153,15 @@ class MathSchedule:
         for task in self.task_manager.data['tasks']:
             self.math_tasks[task.name] = {}
 
+        self.w = {}  # w[(week_start, physician)] = 1 if physician works on correspondant week, 0 otherwise
+
         all_physicians = self._get_all_physicians()
 
         for week_start, week_periods in periods.items():
             main_periods_days, call_periods_days = self._get_periods_days(week_periods)
+
+            for physician in all_physicians:
+                self.w[(week_start, physician)] = self.math_model.NewBoolVar(f"{week_start}_{physician}")
 
             for task in self.task_manager.data['tasks']:
                 self.math_tasks[task.name][week_start] = []
@@ -163,6 +170,8 @@ class MathSchedule:
                     self._create_main_task_variables(task, week_start, main_periods_days, all_physicians)
                 elif task.type == TaskType.CALL:
                     self._create_call_task_variables(task, week_start, call_periods_days, all_physicians)
+
+
 
     def _create_main_task_variables(self, task, week_start, main_periods_days, all_physicians):
         for index, main_period_days in enumerate(main_periods_days):
@@ -226,6 +235,25 @@ class MathSchedule:
         self._math_create_mandatory_task_constraints(week_starts, periods)
         self._math_create_non_simultaneous_tasks(week_starts, periods)
         self._math_create_linked_main_call_tasks_constraints(week_starts, periods)
+
+        self._math_create_physician_work_during_specific_week(week_starts, periods)
+
+    def _math_create_physician_work_during_specific_week(self, week_starts, periods):
+        all_tasks_list = self.task_manager.data['tasks']
+        all_physicians = self._get_all_physicians()
+
+        for week_start in week_starts:
+            for physician in all_physicians:
+                week_physician_math_tasks_vars = []
+                for task in all_tasks_list:
+                    for math_task in self.math_tasks[task.name][week_start]:
+                        week_physician_math_tasks_vars.append(
+                            math_task.y_var(physician=physician)
+                        )
+                # create dependence between y and w
+                self.math_model.Add(
+                    self.w[(week_start, physician)] <= sum(week_physician_math_tasks_vars)
+                ).WithName(f"physician_work_during_specific_week_{physician}_{week_start}")
 
     def _math_create_physician_availability_constraints(self):
         """
@@ -391,8 +419,10 @@ class MathSchedule:
                             )
                             one_main_math_tasks_bundled_list = []
 
-    def _math_create_objective_function(self):
+    def _math_create_objective_function(self, periods):
         total_score = 0
+
+        all_physicians = self._get_all_physicians()
 
         for task in self.task_manager.data['tasks']:
             for week_start in self.math_tasks[task.name]:
@@ -456,8 +486,14 @@ class MathSchedule:
         # Penalty for slack variables
         total_slack_penalty = sum(self.slack_vars) * -100000
 
+        # w vars
+        working_weeks_physicians = []
+        for week_start in periods.keys():
+            for physician in all_physicians:
+                working_weeks_physicians.append(self.w[(week_start, physician)])
+
         # Set the objective
-        self.math_model.Maximize(total_score + total_slack_penalty)
+        self.math_model.Maximize(total_score + total_slack_penalty + sum(working_weeks_physicians))
 
     def _math_set_solution(self, periods):
         """
