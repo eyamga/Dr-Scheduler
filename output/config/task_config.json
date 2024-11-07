@@ -209,6 +209,14 @@
       "week_offset": 0,
       "heaviness": 5,
       "mandatory": true
+    },
+    {
+      "category": "VASC",
+      "type": "Call",
+      "name": "VASC_CALL",
+      "week_offset": 0,
+      "heaviness": 5,
+      "mandatory": false
     }
   ],
   "linkage_manager": {
@@ -220,6 +228,7 @@
     "ER_2": "ER_CALL",
     "CONSULT_1": "CONSULT_CALL",
     "CONSULT_2": "CONSULT_CALL",
+    "VASC": "VASC_CALL",
     "MOG": "MOG_CALL"
   }
 }

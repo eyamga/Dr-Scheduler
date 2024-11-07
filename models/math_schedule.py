@@ -159,7 +159,7 @@ class MathSchedule:
         all_physicians = self._get_all_physicians()
 
         # Z
-        UB_Z = 100  # this could be computed in advance and depences on the percentages we are aiming at
+        UB_Z = 50  # this could be computed in advance and depences on the percentages we are aiming at
         for physician in all_physicians:
             self.z[(physician)] = self.math_model.NewIntVar(lb=0, ub=UB_Z, name=f"z_{physician}")
 
@@ -247,6 +247,59 @@ class MathSchedule:
         self._math_create_physician_work_during_specific_week(week_starts, periods)
         self._math_create_aim_at_percentage_work_per_physician(week_starts, periods)
 
+        self._math_no_two_same_consecutive_math_tasks(week_starts, periods)
+
+    def _math_no_two_same_consecutive_math_tasks(self, week_starts, periods):
+        # no two same consecutive math tasks for one physician
+        # math tasks with a linked CALL tasks should be OK because of the constraints on the CALL tasks
+        # see `_math_create_linked_main_call_tasks_constraints`
+
+        all_physicians = self._get_all_physicians()
+        all_tasks_list = self.task_manager.data['tasks']
+
+        # current batch of one or several weeks of the same math tasks for one physician
+        current_batch_physician_math_tasks_vars = []
+        # previous batch
+        previous_batch_physician_math_vars = []
+
+        for task_nbr, task in enumerate(all_tasks_list):
+            if task.is_call_task:
+                continue
+            # TODO: remove this once a feasible instance is given
+            # if task_nbr in [13]:  # 13 -> VASC
+            #     continue
+
+            task_category = task.category
+            week_offset = task.week_offset
+            number_of_weeks = task_category.number_of_weeks
+
+            nbr_batch_weeks = 0
+            first_starting_week_reached = False
+
+            for physician in all_physicians:
+                for week_nbr, week_start in enumerate(week_starts):
+                    if (week_nbr + week_offset) % number_of_weeks == 0:
+                        first_starting_week_reached = True
+                        nbr_batch_weeks = 0  # reset
+
+                    if first_starting_week_reached:
+                        nbr_batch_weeks += 1
+
+                        for math_task in self.math_tasks[task.name][week_start]:
+                            current_batch_physician_math_tasks_vars.append(
+                                math_task.y_var(physician=physician)
+                            )
+
+                        if nbr_batch_weeks == number_of_weeks:
+                            # batch is complete
+                            # no two consecutive math tasks for a physician
+                            for var_i in previous_batch_physician_math_vars:
+                                for var_j in current_batch_physician_math_tasks_vars:
+                                    self.math_model.Add(var_i + var_j <= 1)
+
+                            # update
+                            previous_batch_physician_math_vars = [x for x in current_batch_physician_math_tasks_vars]
+                            current_batch_physician_math_tasks_vars = []
 
     def _math_create_physician_work_during_specific_week(self, week_starts, periods):
         all_tasks_list = self.task_manager.data['tasks']
@@ -289,10 +342,10 @@ class MathSchedule:
             worked_percentage_ = int(100/nbr_weeks) * sum([self.w[(week_start, physician)] for week_start in week_starts])
             self.math_model.Add(
                 (aimed_percentage_ - worked_percentage_)  <= self.z[(physician)]
-            ).WithName(f"aim_at_percentage_work_per_physician_{physician}_1")
+            ).WithName(f"Aim_at_percentage_work_per_physician_{physician}_1")
             self.math_model.Add(
                 (worked_percentage_ - aimed_percentage_) * 100 <= self.z[(physician)]
-            ).WithName(f"aim_at_percentage_work_per_physician_{physician}_2")
+            ).WithName(f"Aim_at_percentage_work_per_physician_{physician}_2")
 
     def _math_create_physician_availability_constraints(self):
         """
@@ -422,7 +475,9 @@ class MathSchedule:
 
             for call_math_task in all_call_math_tasks:
                 self.math_model.Add(
-                    sum(call_math_task.y_var(physician) for physician in all_physicians) <= 1).WithName("tqtq")
+                    sum(call_math_task.y_var(physician) for physician in all_physicians) <= 1).WithName(
+                    "One_call_task"
+                )
 
                 main_math_tasks = self._get_main_math_tasks(
                     call_math_task=call_math_task,

@@ -65,7 +65,7 @@ def initialize_task_manager():
     task_manager.add_task(Task.create(ambu_category, 'Main', 'AMBU_2', heaviness=5, mandatory=True))
 
     task_manager.add_task(Task.create(mog_category, 'Main', 'MOG', heaviness=5, mandatory=True))
-    task_manager.add_task(Task.create(vasc_category, 'Main', 'VASC', heaviness=5, mandatory=False))
+    task_manager.add_task(Task.create(vasc_category, 'Main', 'VASC', heaviness=5, mandatory=False)) # False
 
     task_manager.add_task(Task.create(ctu_category, 'Call', 'CTU_AB_CALL', heaviness=5, mandatory=True))
     task_manager.add_task(Task.create(ctu_category, 'Call', 'CTU_CD_CALL', heaviness=5, mandatory=True))
@@ -73,7 +73,8 @@ def initialize_task_manager():
     task_manager.add_task(Task.create(consult_category, 'Call', 'CONSULT_CALL', heaviness=5, mandatory=True))
 
     task_manager.add_task(Task.create(mog_category, 'Call', 'MOG_CALL', heaviness=5, mandatory=True))
-    # task_manager.add_task(Task.create(vasc_category, 'Call', 'VASC_CALL', heaviness=5, mandatory=False))
+    # This is needed!
+    task_manager.add_task(Task.create(vasc_category, 'Call', 'VASC_CALL', heaviness=5, mandatory=False))
 
     # Link tasks
     task_manager.link_tasks('CTU_A', 'CTU_AB_CALL')
@@ -103,8 +104,6 @@ def initialize_physician_manager(task_manager):
         Physician("Madeleine", "Durand", ["CONSULT", "CTU", "ER", "PREOP"], False, 0.3, [], ["MOG", "VASC", "AMBU"]),
         Physician("Emmanuelle", "Duceppe", ["CTU", "PREOP", "CONSULT"], False, 0.3, [], ["MOG", "VASC", "AMBU", "ER"]),
         Physician("Emmanuel", "Sirdar", ["CTU", "CONSULT", "ER", "PREOP"], False, 0.3, [], ["MOG", "VASC"]),
-
-
         Physician("Florence", "Weber", ["MOG", "ER", "CTU"],False, 0.6, ["MOG"], ["VASC"]),
         Physician("Sophie", "Grandmaison", ["MOG", "CTU", "ER", "AMBU"], False, 0.75, ["MOG"], ["VASC"]),
         Physician("Michèle", "Mahone", ["MOG", "CTU", "ER", "AMBU", "PREOP"], False, 0.75, ["MOG"], ["VASC"]),
@@ -130,10 +129,13 @@ def initialize_physician_manager(task_manager):
                 ["MOG", "CTU", "ER", "PREOP", "AMBU"]),
         Physician("André", "Roussin", ["VASC"], False, 0.35, ["VASC"],
                 ["MOG", "CTU", "CONSULT", "ER", "PREOP", "AMBU"]),
+
+
         Physician("Vasc", "Vasc", [], False, 1.0, [], ["MOG", "CTU", "CONSULT", "ER", "PREOP", "AMBU"]),
 
         Physician("Benoit", "Deligne", ["CTU", "CONSULT", "ER", "PREOP", "AMBU"], False, 0.5, [], ["MOG", "VASC"]),
         Physician("Martial", "Koenig", ["CTU", "CONSULT", "PREOP", "AMBU", "ER"], False, 0.8, [], ["MOG", "VASC"]),
+
 
         #Physician("Christopher Oliver", "Clapperton", ["CTU", "ER", "PREOP", "AMBU", "CONSULT"], False, 0, [], ["MOG", "VASC"]),
         #Physician("Brigitte", "Benard", ["PREOP", "CONSULT", "CTU", "AMBU"], False, 0, [], ["MOG", "VASC"]),
