@@ -1,9 +1,13 @@
 import logging
+import json
+
 from datetime import date
+from datetime import datetime
+
 from models.task import TaskCategory, Task, TaskDaysParameter
 from models.physician import Physician
 from models.calendar import Calendar
-from models.math_schedule import MathSchedule
+from models.o1_schedule import O1Schedule
 from config.managers import TaskManager, PhysicianManager
 
 
@@ -269,51 +273,79 @@ def initialize_physician_manager(task_manager):
 
 
 def initialize_calendar():
-    start_date = date(2024, 1, 6)
-    end_date = date(2025, 6, 30)
+    start_date = date(2025, 1, 13)
+    end_date = date(2025, 7, 6)
     region = 'Canada/QC'
     calendar = Calendar.create_calendar(start_date, end_date, region)
-    calendar.add_holiday(date(2025, 1, 2))
-    calendar.add_holiday(date(2025, 1, 1))
-    calendar.add_holiday(date(2024, 12, 25))
-    calendar.add_holiday(date(2024, 12, 24))
+    #calendar.add_holiday(date(2025, 1, 1))
+    #calendar.add_holiday(date(2025, 1, 2))
+    calendar.add_holiday(date(2025, 3, 3))
+    calendar.add_holiday(date(2025, 4, 18))
+    calendar.add_holiday(date(2025, 4, 21))
+    calendar.add_holiday(date(2025, 6, 24))
+    calendar.add_holiday(date(2025, 7, 1))
+
     return calendar
 
 
 def generate_schedules(physician_manager, task_manager, calendar):
-    start_date = date(2025, 1, 6)
-    end_date = date(2025, 6, 30)
-    task_splits = {
-        "CTU": {"linked": "5:2", "unlinked": "5:2"},
-        "ER": {"linked": "5:2", "unlinked": "5:2"},
-        "CONSULT": {"linked": "5:2", "unlinked": "5:2"},
-        "PREOP": {"linked": "5:2", "unlinked": "5:2"},
-        "AMBU": {"linked": "5:2", "unlinked": "5:2"},
-        "MOG": {"linked": "5:2", "unlinked": "5:2"},
-        "VASC": {"linked": "5:2", "unlinked": "5:2"}
+    start_date = date(2025, 1, 13)
+    end_date = date(2025, 7, 6)  # Adjusted end date
 
-    }
-
-    off_days = {
-        "CTU": [date(2023, 1, 3), date(2023, 12, 25)],
-        "ER": [date(2023, 7, 4)]
-    }
-
-    schedule = MathSchedule(physician_manager, task_manager, calendar)
+    # Instantiate O1Schedule instead of MathSchedule
+    api_key = "your_openrouter_api_key"  # Replace with your actual API key
+    schedule = O1Schedule(physician_manager, task_manager, calendar, api_key)
 
     schedule.set_scheduling_period(start_date, end_date)
-    schedule.set_task_splits(task_splits)
-    schedule.set_off_days(off_days)
 
+    # Generate the schedule using the LLM
+    schedule.generate_schedule()
 
-    # schedule.load_schedule("initial_schedule.json")
-    schedule.generate_schedule(use_initial_schedule=False)
-    schedule.export_model("model.txt")
+    # Output the schedule
     schedule.print_schedule()
-    schedule.generate_ics_calendar(f"output/schedule/math_generated_calendar.ics")
-    schedule.save_schedule(f"output/schedule/math_generated_schedule.json")
+    schedule.save_schedule("output/schedule/o1_generated_schedule.json")
 
 
+def export_periods():
+    calendar = initialize_calendar()
+
+    def convert_to_iso(item):
+        if isinstance(item, datetime):
+            return item.isoformat()
+        elif isinstance(item, dict) and 'date' in item:
+            # Assuming dictionaries contain date information as 'date' key
+            return item['date']
+        else:
+            # Log the item that couldn't be converted
+            print(f"Couldn't convert {item} to ISO format")
+            return str(item)
+
+    def flatten_nested_structure(data):
+        flattened = {}
+        for key, value in data.items():
+            if isinstance(value, dict):
+                # Handle nested dictionaries
+                for subkey, subvalue in value.items():
+                    if isinstance(subvalue, list):
+                        flattened[f"{key}_{subkey}"] = [item for sublist in subvalue for item in
+                                                        (isinstance(item, dict) and item.values()) or [item]]
+                    else:
+                        flattened[f"{key}_{subkey}"] = convert_to_iso(subvalue)
+            elif isinstance(value, list):
+                # Handle lists directly
+                flattened[key] = [convert_to_iso(item) for item in value]
+        return flattened
+
+    # Assuming calendar.determine_periods() returns the data structure you provided
+    data = calendar.determine_periods()
+
+    # Flatten the nested structure
+    flattened_data = flatten_nested_structure(data)
+
+    # Convert the flattened dictionary to JSON string
+    json_string = json.dumps(flattened_data, indent=2)
+
+    print(json_string)
 
 def main():
     setup_logging()
