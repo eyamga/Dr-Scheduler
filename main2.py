@@ -8,6 +8,8 @@ from models.task import TaskCategory, Task, TaskDaysParameter
 from models.physician import Physician
 from models.calendar import Calendar
 from models.math_schedule import MathSchedule
+from models.optimized_schedule import OptimizedSchedule
+
 from config.managers import TaskManager, PhysicianManager
 
 
@@ -77,7 +79,6 @@ def initialize_task_manager():
     task_manager.add_task(Task.create(consult_category, 'Call', 'CONSULT_CALL', heaviness=5, mandatory=True))
 
     task_manager.add_task(Task.create(mog_category, 'Call', 'MOG_CALL', heaviness=5, mandatory=True))
-    # This is needed!
     task_manager.add_task(Task.create(vasc_category, 'Call', 'VASC_CALL', heaviness=5, mandatory=False))
 
     # Link tasks
@@ -138,6 +139,7 @@ def initialize_physician_manager(task_manager):
         Physician("Julien", "Viau", ["MOG"], False, 0.1, [], ["VASC", "CTU", "CONSULT", "ER", "PREOP", "AMBU"]),
 
         Physician("Vasc", "Vasc", [], False, 1.0, [], ["MOG", "CTU", "CONSULT", "ER", "PREOP", "AMBU"]),
+        Physician("Vasc2", "Vasc2", [], False, 1.0, [], ["MOG", "CTU", "CONSULT", "ER", "PREOP", "AMBU"]),
 
         Physician("Benoit", "Deligne", ["CTU", "CONSULT", "ER", "PREOP", "AMBU"], False, 0.5, [], ["MOG", "VASC"]),
         Physician("Martial", "Koenig", ["CTU", "CONSULT", "PREOP", "AMBU", "ER"], False, 0.8, [], ["MOG", "VASC"]),
@@ -430,12 +432,11 @@ def generate_schedules(physician_manager, task_manager, calendar):
     task_splits = {
         "CTU": {"linked": "5:2", "unlinked": "5:2"},
         "ER": {"linked": "5:2", "unlinked": "5:2"},
-        "CONSULT": {"linked": "5:2", "unlinked": "5:2"},
-        "PREOP": {"linked": "5:2", "unlinked": "5:2"},
-        "AMBU": {"linked": "5:2", "unlinked": "5:2"},
-        "MOG": {"linked": "5:2", "unlinked": "5:2"},
+        "CONSULT": {"linked": "4:3", "unlinked": None},
+        "PREOP": {"linked": None, "unlinked": "3:2"},
+        "AMBU": {"linked": None, "unlinked": "3:2"},
+        "MOG": {"linked": "4:3", "unlinked": None},
         "VASC": {"linked": "5:2", "unlinked": "5:2"}
-
     }
 
     off_days = {
@@ -443,20 +444,29 @@ def generate_schedules(physician_manager, task_manager, calendar):
         "ER": [date(2023, 7, 4)]
     }
 
-    schedule = MathSchedule(physician_manager, task_manager, calendar)
+    # Using OptimizedSchedule
 
-    schedule.set_scheduling_period(start_date, end_date)
-    schedule.set_task_splits(task_splits)
-    schedule.set_off_days(off_days)
+    #scheduler = OptimizedSchedule(physician_manager, task_manager, calendar)
+    #scheduler.load_schedule("output/config/initial_schedule.json")
+    #scheduler.generate_schedule()
+
+    scheduler = MathSchedule(physician_manager, task_manager, calendar)
+
+    scheduler.set_scheduling_period(start_date, end_date)
+    scheduler.set_task_splits(task_splits)
+    scheduler.set_off_days(off_days)
+
+    scheduler.load_initial_schedule("output/config/initial_schedule.json")
+    scheduler.generate_schedule(use_initial_schedule=True)
+
+
 
     # Load initial schedule
-    schedule.load_initial_schedule("output/config/initial_schedule.json")
 
-    schedule.generate_schedule(use_initial_schedule=True)
-    schedule.export_model("model.txt")
-    schedule.print_schedule()
-    schedule.generate_ics_calendar(f"output/schedule/math_generated_calendar.ics")
-    schedule.save_schedule(f"output/schedule/math_generated_schedule.json")
+    # Removed: scheduler.export_model("model.txt")  # Not applicable for OptimizedScheduler
+    scheduler.print_schedule()
+    scheduler.generate_ics_calendar(f"output/schedule/optimized_generated_calendar.ics")
+    scheduler.save_schedule(f"output/schedule/optimized_generated_schedule.json")
 
 
 def export_periods():

@@ -159,6 +159,10 @@ class LinkageManager:
         """Returns the linked call task for a given main task."""
         return self.links.get(main_task.name)
 
+    def get_linked_task(self, task: Task) -> Optional[str]:
+        """Returns the linked call task for a given main task."""
+        return self.links.get(task.name)
+
     def remove_task(self, task: Task):
         """Removes a task and its linkages from the manager."""
         self.links.pop(task.name, None)
