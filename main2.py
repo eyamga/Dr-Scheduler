@@ -8,7 +8,7 @@ from models.task import TaskCategory, Task, TaskDaysParameter
 from models.physician import Physician
 from models.calendar import Calendar
 from models.math_schedule import MathSchedule
-from models.optimized_schedule import OptimizedSchedule
+from models.alternative_schedule import AlternativeSchedule
 
 from config.managers import TaskManager, PhysicianManager
 
@@ -139,8 +139,6 @@ def initialize_physician_manager(task_manager):
         Physician("Julien", "Viau", ["MOG"], False, 0.1, [], ["VASC", "CTU", "CONSULT", "ER", "PREOP", "AMBU"]),
 
         Physician("Vasc", "Vasc", [], False, 1.0, [], ["MOG", "CTU", "CONSULT", "ER", "PREOP", "AMBU"]),
-        Physician("Vasc2", "Vasc2", [], False, 1.0, [], ["MOG", "CTU", "CONSULT", "ER", "PREOP", "AMBU"]),
-
         Physician("Benoit", "Deligne", ["CTU", "CONSULT", "ER", "PREOP", "AMBU"], False, 0.5, [], ["MOG", "VASC"]),
         Physician("Martial", "Koenig", ["CTU", "CONSULT", "PREOP", "AMBU", "ER"], False, 0.8, [], ["MOG", "VASC"]),
 
@@ -444,12 +442,6 @@ def generate_schedules(physician_manager, task_manager, calendar):
         "ER": [date(2023, 7, 4)]
     }
 
-    # Using OptimizedSchedule
-
-    #scheduler = OptimizedSchedule(physician_manager, task_manager, calendar)
-    #scheduler.load_schedule("output/config/initial_schedule.json")
-    #scheduler.generate_schedule()
-
     scheduler = MathSchedule(physician_manager, task_manager, calendar)
 
     scheduler.set_scheduling_period(start_date, end_date)
@@ -457,13 +449,10 @@ def generate_schedules(physician_manager, task_manager, calendar):
     scheduler.set_off_days(off_days)
 
     scheduler.load_initial_schedule("output/config/initial_schedule.json")
+
     scheduler.generate_schedule(use_initial_schedule=True)
 
 
-
-    # Load initial schedule
-
-    # Removed: scheduler.export_model("model.txt")  # Not applicable for OptimizedScheduler
     scheduler.print_schedule()
     scheduler.generate_ics_calendar(f"output/schedule/optimized_generated_calendar.ics")
     scheduler.save_schedule(f"output/schedule/optimized_generated_schedule.json")
