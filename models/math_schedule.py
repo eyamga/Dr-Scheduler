@@ -16,7 +16,7 @@ class MathTask:
     Represents a mathematical task that is the basic unit in the mathematical model.
     """
 
-    def __init__(self, name, task_type, y_vars, index, week_start, days, start_date, end_date, number_of_weeks, available_physicians, heaviness, mandatory):
+    def __init__(self, name, task_type, y_vars, index, week_start, days, start_date, end_date, number_of_weeks, available_physicians, heaviness, mandatory, physician_manager):
         self.name = name
         assert isinstance(task_type, TaskType)
         self.task_type = task_type
@@ -32,6 +32,7 @@ class MathTask:
         self.available_physicians = available_physicians
         self.heaviness = heaviness
         self.mandatory = mandatory
+        self.physician_manager = physician_manager
 
     def y_var(self, physician):
         """
@@ -41,7 +42,22 @@ class MathTask:
 
     def is_physician_available(self, physician):
         """
-        Returns if physician is available or not.
+        Returns True if the physician is available and eligible for this task.
+        """
+        return self.is_physician_available_in_days(physician) and self.is_physician_eligible(physician)
+
+    def is_physician_available_in_days(self, physician):
+        """
+        Checks if the physician is available on all days of the task.
+        """
+        return all(
+            not self.physician_manager.is_unavailable(physician, day)
+            for day in self.days
+        )
+
+    def is_physician_eligible(self, physician):
+        """
+        Checks if the physician is eligible for the task (e.g., not excluded).
         """
         return physician in self.available_physicians
 
@@ -217,7 +233,8 @@ class MathSchedule:
                 number_of_weeks=task.number_of_weeks,
                 available_physicians=available_physicians,
                 heaviness=task.heaviness,
-                mandatory=task.mandatory
+                mandatory=task.mandatory,
+                physician_manager=self.physician_manager
             )
         )
 
@@ -814,3 +831,41 @@ class MathSchedule:
 
     def export_model(self, filename):
         self.math_model.ExportToFile(filename)
+
+    def _math_load_initial_schedule(self):
+        """
+        Load initial schedule and set the values of the corresponding variables in the mathematical model.
+        """
+        if not hasattr(self, 'initial_schedule'):
+            raise ValueError("Initial schedule not loaded. Please call 'load_initial_schedule()' before generating the schedule.")
+
+        for physician, tasks in self.initial_schedule.items():
+            for task_info in tasks:
+                task_name = task_info['task']
+                start_date = date.fromisoformat(task_info['start_date'])
+                end_date = date.fromisoformat(task_info['end_date'])
+
+                # Find the corresponding MathTask
+                found = False
+                if task_name in self.math_tasks:
+                    for week_start in self.math_tasks[task_name]:
+                        for math_task in self.math_tasks[task_name][week_start]:
+                            if math_task.start_date == start_date and math_task.end_date == end_date:
+                                if math_task.is_physician_available(physician):
+                                    # Set the variable to be equal to 1 in the initial solution
+                                    var = math_task.y_var(physician)
+                                    self.math_model.Add(var == 1).WithName(f"InitialAssignment_{physician}_{task_name}_{start_date}")
+                                    found = True
+                                    break
+                        if found:
+                            break
+                if not found:
+                    logging.warning(f"Could not find task {task_name} for dates {start_date} - {end_date} in math model or physician {physician} is not available.")
+
+    def load_initial_schedule(self, filename: str):
+        """
+        Load initial schedule from a JSON file.
+        """
+        with open(filename, 'r') as f:
+            self.initial_schedule = json.load(f)
+        logging.debug(f"Initial schedule loaded from {filename}")

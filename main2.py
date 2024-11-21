@@ -7,7 +7,7 @@ from datetime import datetime
 from models.task import TaskCategory, Task, TaskDaysParameter
 from models.physician import Physician
 from models.calendar import Calendar
-from models.o1_schedule import O1Schedule
+from models.math_schedule import MathSchedule
 from config.managers import TaskManager, PhysicianManager
 
 
@@ -109,7 +109,7 @@ def initialize_physician_manager(task_manager):
         Physician("Emmanuelle", "Duceppe", ["CTU", "PREOP", "CONSULT"], False, 0.3, [], ["MOG", "VASC", "AMBU", "ER"]),
         Physician("Emmanuel", "Sirdar", ["CTU", "CONSULT", "ER", "PREOP"], False, 0.3, [], ["MOG", "VASC"]),
         Physician("Florence", "Weber", ["MOG", "ER", "CTU"],False, 0.6, ["MOG"], ["VASC"]),
-        Physician("Sophie", "Grandmaison", ["MOG", "CTU", "ER", "AMBU"], False, 0.75, ["MOG"], ["VASC"]),
+        Physician("Sophie", "Granmaison", ["MOG", "CTU", "ER", "AMBU"], False, 0.75, ["MOG"], ["VASC"]),
         Physician("Michèle", "Mahone", ["MOG", "CTU", "ER", "AMBU", "PREOP"], False, 0.75, ["MOG"], ["VASC"]),
         Physician("Nazila", "Bettache", ["MOG", "ER", "CTU", "AMBU", "CONSULT", "PREOP"], False, 0.5, ["MOG"], ["VASC"]),
         Physician("Vincent", "Williams", ["MOG", "CTU", "ER", "PREOP", "CONSULT", "AMBU"], False, 0.80, [], ["VASC"]),
@@ -118,7 +118,7 @@ def initialize_physician_manager(task_manager):
         Physician("Justine", "Munger", ["CTU"], True, 0.75, [], ["MOG", "VASC"]),
         Physician("Mikhael", "Laskine", ["CTU", "CONSULT", "ER", "PREOP"], False, 0.8, [], ["AMBU", "VASC"]),
         Physician("Maxime", "Lamarre-Cliche", ["CTU", "ER",  "CONSULT",  "PREOP", "AMBU"], False, 0.80, [], ["MOG", "VASC"]),
-        Physician("Julien", "D'Astous", ["CTU", "CONSULT", "PREOP", "ER", "AMBU"], False, 0.75, [], ["MOG", "VASC"]),
+        Physician("Julien", "Dastous", ["CTU", "CONSULT", "PREOP", "ER", "AMBU"], False, 0.75, [], ["MOG", "VASC"]),
         Physician("Jean-Pascal", "Costa", ["CTU", "ER", "AMBU", "PREOP", "CONSULT"], False, 0.70, [], ["MOG", "VASC"]),
         Physician("Camille", "Laflamme", ["ER",  "CONSULT", "CTU", "PREOP", "AMBU"], False, 0.70, [], ["MOG", "VASC"]),
 
@@ -134,15 +134,17 @@ def initialize_physician_manager(task_manager):
         Physician("André", "Roussin", ["VASC"], False, 0.35, ["VASC"],
                 ["MOG", "CTU", "CONSULT", "ER", "PREOP", "AMBU"]),
 
+        Physician("Tal", "Kopel", ["MOG"], False, 0.1, [], ["VASC", "CTU", "CONSULT", "ER", "PREOP", "AMBU"]),
+        Physician("Julien", "Viau", ["MOG"], False, 0.1, [], ["VASC", "CTU", "CONSULT", "ER", "PREOP", "AMBU"]),
 
         Physician("Vasc", "Vasc", [], False, 1.0, [], ["MOG", "CTU", "CONSULT", "ER", "PREOP", "AMBU"]),
 
         Physician("Benoit", "Deligne", ["CTU", "CONSULT", "ER", "PREOP", "AMBU"], False, 0.5, [], ["MOG", "VASC"]),
         Physician("Martial", "Koenig", ["CTU", "CONSULT", "PREOP", "AMBU", "ER"], False, 0.8, [], ["MOG", "VASC"]),
 
+        Physician("Brigitte", "Benard", ["PREOP", "CONSULT", "CTU", "AMBU"], False, 0.2, [], ["MOG", "VASC"]),
 
         #Physician("Christopher Oliver", "Clapperton", ["CTU", "ER", "PREOP", "AMBU", "CONSULT"], False, 0, [], ["MOG", "VASC"]),
-        #Physician("Brigitte", "Benard", ["PREOP", "CONSULT", "CTU", "AMBU"], False, 0, [], ["MOG", "VASC"]),
         #Physician("Audrey", "Lacasse", ["CTU", "ER"], False, 0.6, [], ["MOG", "VASC"]),
         ]
 
@@ -153,119 +155,252 @@ def initialize_physician_manager(task_manager):
 
     # Set unavailability periods
     unavailability_periods = {
-            "Eric Yamga": [
-                (date(2025, 2, 10), date(2025, 2, 23)),
-                (date(2025, 5, 5), date(2025, 5, 11)),
-            ],
-            "Madeleine Durand": [
-                (date(2025, 1, 13), date(2025, 1, 13)),
-                (date(2025, 3, 17), date(2025, 3, 23)),
-                (date(2025, 6, 9), date(2025, 6, 15)),
-            ],
-            "Emmanuelle Duceppe": [
-                (date(2025, 2, 3), date(2025, 2, 9)),
-                (date(2025, 4, 21), date(2025, 4, 21)),
-                (date(2025, 6, 2), date(2025, 6, 15)),
-            ],
-            "Emmanuel Sirdar": [
-                (date(2025, 1, 6), date(2025, 1, 12)),
-                (date(2025, 3, 10), date(2025, 3, 16)),
-                (date(2025, 5, 19), date(2025, 5, 25)),
-            ],
-            "Florence Weber": [
-                (date(2025, 2, 17), date(2025, 2, 23)),
-                (date(2025, 4, 14), date(2025, 4, 20)),
-                (date(2025, 6, 23), date(2025, 6, 29)),
-            ],
-            "Sophie Grandmaison": [
-                (date(2025, 1, 20), date(2025, 1, 26)),
-                (date(2025, 3, 31), date(2025, 4, 6)),
-            ],
-            "Michèle Mahone": [
-                (date(2025, 1, 13), date(2025, 1, 26)),
-                (date(2025, 2, 24), date(2025, 3, 2)),
-                (date(2025, 5, 12), date(2025, 5, 18)),
-            ],
-            "Nazila Bettache": [
-                (date(2025, 1, 27), date(2025, 2, 2)),
-                (date(2025, 4, 7), date(2025, 4, 13)),
-                (date(2025, 6, 16), date(2025, 6, 22)),
-            ],
-            "Vincent Williams": [
-                (date(2025, 3, 3), date(2025, 3, 9)),
-                (date(2025, 5, 26), date(2025, 6, 1)),
-            ],
-            "Gabriel Dion": [
-                (date(2025, 1, 30), date(2025, 1, 31)),
-                (date(2025, 4, 28), date(2025, 5, 4)),
-            ],
-            "Justine Munger": [
-                (date(2025, 1, 1), date(2025, 1, 5)),
-                (date(2025, 3, 24), date(2025, 3, 30)),
-                (date(2025, 6, 9), date(2025, 6, 15)),
-            ],
-            "Mikhael Laskine": [
-                (date(2025, 2, 3), date(2025, 2, 9)),
-                (date(2025, 5, 5), date(2025, 5, 11)),
-            ],
-            "Benoit Deligne": [
-                (date(2025, 1, 13), date(2025, 1, 26)),
-                (date(2025, 3, 31), date(2025, 4, 6)),
-                (date(2025, 6, 2), date(2025, 6, 8)),
-            ],
-            "Maxime Lamarre-Cliche": [
-                (date(2025, 3, 10), date(2025, 3, 16)),
-                (date(2025, 5, 19), date(2025, 5, 25)),
-            ],
-            "Julien D'Astous": [
-                (date(2025, 2, 10), date(2025, 2, 16)),
-                (date(2025, 4, 21), date(2025, 4, 27)),
-            ],
-            "Jean-Pascal Costa": [
-                (date(2025, 1, 27), date(2025, 2, 2)),
-                (date(2025, 4, 7), date(2025, 4, 13)),
-                (date(2025, 6, 16), date(2025, 6, 22)),
-            ],
-            "Camille Laflamme": [
-                (date(2025, 3, 17), date(2025, 3, 23)),
-                (date(2025, 5, 26), date(2025, 6, 1)),
-            ],
-            "Robert Wistaff": [
-                (date(2025, 2, 17), date(2025, 2, 23)),
-                (date(2025, 4, 28), date(2025, 5, 4)),
-            ],
-            "Rene Lecours": [
-                (date(2025, 1, 6), date(2025, 1, 12)),
-                (date(2025, 3, 24), date(2025, 3, 30)),
-                (date(2025, 6, 9), date(2025, 6, 15)),
-            ],
-            "Diem-Quyen Nguyen": [
-                (date(2025, 2, 24), date(2025, 3, 2)),
-                (date(2025, 5, 12), date(2025, 5, 18)),
-            ],
-            "Michel Bertrand": [
-                (date(2025, 1, 20), date(2025, 1, 26)),
-                (date(2025, 4, 14), date(2025, 4, 20)),
-            ],
-            "J.Manuel Dominguez": [
-                (date(2025, 3, 3), date(2025, 3, 9)),
-                (date(2025, 5, 19), date(2025, 5, 25)),
-            ],
-            "Marie-Jose Miron": [
-                (date(2025, 2, 3), date(2025, 2, 9)),
-                (date(2025, 4, 21), date(2025, 4, 27)),
-                (date(2025, 6, 23), date(2025, 6, 29)),
-            ],
-            "André Roussin": [
-                (date(2025, 1, 13), date(2025, 1, 19)),
-                (date(2025, 3, 31), date(2025, 4, 6)),
-                (date(2025, 6, 2), date(2025, 6, 8)),
-            ],
-            "Martial Koenig": [
-                (date(2025, 2, 10), date(2025, 2, 16)),
-                (date(2025, 5, 5), date(2025, 5, 11)),
-            ],
-        }
+        "Michel Bertrand": [
+        (date(2024, 12, 9), date(2024, 12, 13)),
+        (date(2024, 12, 14), date(2024, 12, 15)),
+        (date(2024, 12, 28), date(2024, 12, 30)),
+        (date(2024, 12, 31)),
+        (date(2025, 1, 1), date(2025, 1, 5)),
+        (date(2025, 1, 6), date(2025, 1, 12)),
+        (date(2025, 2, 3), date(2025, 2, 9)),
+        (date(2025, 2, 24), date(2025, 3, 2)),
+        (date(2025, 3, 24), date(2025, 3, 28)),
+        (date(2025, 3, 29), date(2025, 4, 6)),
+        (date(2025, 4, 28), date(2025, 5, 11)),
+        (date(2025, 5, 12), date(2025, 5, 16)),
+        (date(2025, 5, 26), date(2025, 5, 31)),
+        (date(2025, 6, 23), date(2025, 7, 6)),
+        date(2025, 6, 1),
+    ],
+    "Nazila Bettache": [
+        (date(2024, 12, 9), date(2024, 12, 15)),
+        (date(2024, 12, 16), date(2025, 1, 12)),
+        (date(2025, 1, 20), date(2025, 1, 26)),
+        (date(2025, 2, 1), date(2025, 2, 9)),
+        (date(2025, 2, 24), date(2025, 2, 28)),
+        (date(2025, 3, 1), date(2025, 3, 3)),
+        (date(2025, 3, 15), date(2025, 4, 13)),
+        (date(2025, 4, 15), date(2025, 4, 21)),
+        (date(2025, 4, 14)),
+        (date(2025, 5, 12), date(2025, 5, 16)),
+        (date(2025, 5, 17), date(2025, 5, 19)),
+        (date(2025, 6, 2), date(2025, 6, 8)),
+        (date(2025, 6, 21), date(2025, 6, 24)),
+        (date(2025, 6, 25), date(2025, 6, 29)),
+    ],
+    "Brigitte Benard": [
+        (date(2024, 12, 23), date(2025, 2, 9)),
+        (date(2025, 2, 18), date(2025, 3, 30)),
+        (date(2025, 4, 5), date(2025, 5, 18)),
+        (date(2025, 5, 24), date(2025, 5, 25)),
+        (date(2025, 7, 5), date(2025, 7, 6)),
+    ],
+    "Jean-Pascal Costa": [
+        (date(2025, 1, 25), date(2025, 1, 26)),
+        (date(2025, 2, 8), date(2025, 2, 16)),
+        (date(2025, 3, 15), date(2025, 3, 23)),
+        (date(2025, 4, 18), date(2025, 4, 21)),
+        (date(2025, 5, 9), date(2025, 5, 25)),
+        (date(2025, 6, 14), date(2025, 6, 22)),
+    ],
+    "Julien Dastous": [
+        (date(2025, 1, 30)),
+        (date(2025, 2, 13)),
+        (date(2025, 2, 27)),
+        (date(2025, 3, 13)),
+        (date(2025, 4, 12), date(2025, 4, 27)),
+        (date(2025, 4, 3)),
+        (date(2025, 5, 24), date(2025, 6, 1)),
+        (date(2025, 5, 8)),
+        (date(2025, 6, 19)),
+    ],
+    "Benoit Deligne": [
+        (date(2024, 12, 25), date(2025, 1, 7)),
+        (date(2024, 12, 12)),
+        (date(2025, 1, 11), date(2025, 1, 12)),
+        (date(2025, 1, 30)),
+        (date(2025, 2, 27)),
+        (date(2025, 3, 15), date(2025, 3, 16)),
+        (date(2025, 3, 17), date(2025, 3, 23)),
+        (date(2025, 4, 2), date(2025, 4, 6)),
+        (date(2025, 4, 24)),
+        (date(2025, 5, 29)),
+        (date(2025, 6, 25), date(2025, 6, 27)),
+    ],
+    "Gabriel Dion": [
+        (date(2024, 12, 23), date(2024, 12, 27)),
+        (date(2025, 1, 29)),
+        (date(2025, 2, 1), date(2025, 2, 23)),
+        (date(2025, 5, 31), date(2025, 6, 8)),
+    ],
+    "J.Manuel Dominguez": [
+        (date(2024, 12, 16), date(2024, 12, 20)),
+        (date(2024, 12, 30), date(2025, 1, 5)),
+        (date(2025, 1, 20), date(2025, 1, 24)),
+        (date(2025, 2, 17), date(2025, 2, 21)),
+        (date(2025, 3, 3), date(2025, 3, 16)),
+        (date(2025, 4, 14), date(2025, 4, 20)),
+        (date(2025, 5, 19), date(2025, 5, 23)),
+        (date(2025, 6, 16), date(2025, 6, 20)),
+    ],
+    "Emmanuelle Duceppe": [
+        (date(2024, 12, 23), date(2024, 12, 27)),
+        (date(2024, 12, 28), date(2025, 1, 5)),
+        (date(2025, 1, 20), date(2025, 1, 31)),
+        (date(2025, 2, 1), date(2025, 2, 2)),
+        (date(2025, 2, 3), date(2025, 2, 28)),
+        (date(2025, 3, 1), date(2025, 3, 4)),
+        (date(2025, 3, 5), date(2025, 3, 9)),
+        (date(2025, 3, 24), date(2025, 4, 11)),
+        (date(2025, 4, 12), date(2025, 4, 13)),
+        (date(2025, 4, 22), date(2025, 5, 4)),
+        (date(2025, 5, 12), date(2025, 5, 16)),
+        (date(2025, 5, 17), date(2025, 5, 25)),
+        (date(2025, 5, 26), date(2025, 5, 30)),
+        (date(2025, 5, 31), date(2025, 6, 1)),
+        (date(2025, 6, 2), date(2025, 6, 8)),
+        (date(2025, 6, 16), date(2025, 6, 29)),
+        (date(2025, 7, 7), date(2025, 7, 11)),
+        (date(2025, 7, 12), date(2025, 7, 13)),
+        (date(2025, 7, 14), date(2025, 7, 20)),
+    ],
+    "Madeleine Durand": [
+        (date(2024, 12, 2), date(2024, 12, 8)),
+        (date(2024, 12, 16), date(2024, 12, 20)),
+        (date(2025, 1, 6), date(2025, 1, 10)),
+        (date(2025, 1, 20), date(2025, 1, 24)),
+        (date(2025, 1, 27), date(2025, 1, 31)),
+        (date(2025, 2, 3), date(2025, 2, 7)),
+        (date(2025, 2, 24), date(2025, 2, 28)),
+        (date(2025, 2, 12)),
+        (date(2025, 3, 1), date(2025, 3, 9)),
+        (date(2025, 3, 10), date(2025, 3, 16)),
+        (date(2025, 3, 24), date(2025, 3, 28)),
+        (date(2025, 4, 7), date(2025, 4, 11)),
+        (date(2025, 4, 14), date(2025, 4, 17)),
+        (date(2025, 4, 22), date(2025, 4, 25)),
+        (date(2025, 4, 28), date(2025, 4, 29)),
+        (date(2025, 4, 30)),
+        (date(2025, 5, 1), date(2025, 5, 4)),
+        (date(2025, 5, 5), date(2025, 5, 11)),
+        (date(2025, 5, 26), date(2025, 5, 30)),
+        (date(2025, 5, 14)),
+        (date(2025, 6, 9), date(2025, 6, 13)),
+        (date(2025, 6, 16), date(2025, 6, 20)),
+        (date(2025, 7, 5), date(2025, 7, 13)),
+    ],
+    "Martial Koenig": [
+        (date(2025, 3, 15), date(2025, 3, 23)),
+        (date(2025, 4, 21), date(2025, 4, 27)),
+        (date(2025, 5, 19), date(2025, 6, 15)),
+        (date(2025, 7, 21), date(2025, 7, 27)),
+    ],
+    "Camille Laflamme": [
+        (date(2024, 12, 21), date(2024, 12, 27)),
+        (date(2025, 1, 29)),
+        (date(2025, 5, 2), date(2025, 7, 6)),
+    ],
+    "Maxime Lamarre-Cliche": [
+        (date(2025, 1, 16), date(2025, 1, 17)),
+        (date(2025, 3, 1), date(2025, 3, 9)),
+        (date(2025, 4, 12), date(2025, 4, 21)),
+        (date(2025, 5, 22), date(2025, 5, 23)),
+        (date(2025, 6, 21), date(2025, 6, 30)),
+        (date(2025, 7, 1), date(2025, 7, 13)),
+    ],
+    "Mikhael Laskine": [
+        (date(2024, 12, 30), date(2025, 1, 5)),
+        (date(2025, 1, 29)),
+        (date(2025, 4, 12), date(2025, 4, 13)),
+        (date(2025, 4, 2)),
+        (date(2025, 5, 3), date(2025, 5, 4)),
+    ],
+    "Michèle Mahone": [
+        (date(2024, 12, 28), date(2025, 1, 5)),
+        (date(2025, 2, 6)),
+        (date(2025, 3, 1), date(2025, 3, 9)),
+        (date(2025, 3, 23), date(2025, 3, 28)),
+        (date(2025, 3, 22)),
+        (date(2025, 4, 13), date(2025, 4, 23)),
+        (date(2025, 4, 24), date(2025, 4, 27)),
+        (date(2025, 4, 28), date(2025, 5, 4)),
+        (date(2025, 4, 12)),
+        (date(2025, 5, 17), date(2025, 5, 19)),
+        (date(2025, 6, 9), date(2025, 6, 11)),
+        (date(2025, 7, 4), date(2025, 7, 6)),
+    ],
+    "Marie-Jose Miron": [
+        (date(2024, 12, 9), date(2024, 12, 15)),
+        (date(2024, 12, 23), date(2025, 1, 12)),
+        (date(2025, 1, 13), date(2025, 1, 19)),
+        (date(2025, 3, 1), date(2025, 3, 9)),
+    ],
+    "Justine Munger": [
+        (date(2025, 1, 29)),
+        (date(2025, 2, 15), date(2025, 2, 23)),
+        (date(2025, 4, 18), date(2025, 5, 4)),
+    ],
+    "Diem-Quyen Nguyen": [
+        (date(2024, 12, 21), date(2024, 12, 29)),
+        (date(2025, 1, 28), date(2025, 1, 29)),
+        (date(2025, 1, 25)),
+        (date(2025, 1, 26)),
+        (date(2025, 2, 1), date(2025, 2, 2)),
+        (date(2025, 2, 7), date(2025, 3, 2)),
+        (date(2025, 3, 16), date(2025, 3, 22)),
+        (date(2025, 3, 31), date(2025, 4, 6)),
+        (date(2025, 5, 2), date(2025, 5, 18)),
+        (date(2025, 6, 7), date(2025, 6, 15)),
+        (date(2025, 6, 28), date(2025, 7, 6)),
+        (date(2025, 6, 21)),
+        (date(2025, 6, 22)),
+    ],
+    "André Roussin": [
+        (date(2024, 12, 7), date(2024, 12, 15)),
+        (date(2024, 12, 23), date(2025, 1, 5)),
+        (date(2025, 1, 6), date(2025, 1, 12)),
+        (date(2025, 2, 1), date(2025, 2, 9)),
+        (date(2025, 2, 24), date(2025, 3, 9)),
+        #(date(2025, 4, 5), date(2025, 4, 13)),
+        (date(2025, 5, 3), date(2025, 6, 1)),
+        (date(2025, 6, 28), date(2025, 7, 6)),
+    ],
+    "Florence Weber": [
+        (date(2025, 3, 1), date(2025, 3, 9)),
+        (date(2025, 4, 12), date(2025, 5, 4)),
+        (date(2025, 5, 30), date(2025, 6, 1)),
+        (date(2025, 6, 24)),
+        (date(2025, 7, 4), date(2025, 7, 6)),
+    ],
+    "Vincent Williams": [
+        (date(2025, 1, 29)),
+        (date(2025, 2, 1), date(2025, 2, 21)),
+        (date(2025, 4, 18), date(2025, 4, 21)),
+        (date(2025, 5, 17), date(2025, 5, 19)),
+        (date(2025, 5, 31), date(2025, 6, 1)),
+        (date(2025, 6, 24)),
+        (date(2025, 7, 4), date(2025, 7, 6)),
+    ],
+    "Robert Wistaff": [
+        (date(2025, 2, 8)),
+        (date(2025, 2, 9)),
+    ],
+    "Eric Yamga": [
+        (date(2025, 1, 25), date(2025, 2, 5)),
+        (date(2025, 2, 8), date(2025, 2, 24)),
+        (date(2025, 3, 24), date(2025, 3, 31)),
+        (date(2025, 6, 16), date(2025, 6, 29)),
+    ],
+    "Sophie Granmaison":[
+		    (date(2025, 2, 22), date(2025, 2, 23)),
+		    (date(2025, 3, 22), date(2025, 3, 23)),
+		    (date(2025, 4, 5), date(2025, 4, 13)),
+		    (date(2025, 4, 25), date(2025, 4, 26)),
+		    (date(2025, 4, 30), date(2025, 5, 4)),
+		    (date(2025, 5, 10), date(2025, 5, 11)),
+		    (date(2025, 5, 24), date(2025, 5, 25)),
+		]
+    }
         
     physician_manager.set_unavailability_periods(unavailability_periods)
 
@@ -283,27 +418,45 @@ def initialize_calendar():
     calendar.add_holiday(date(2025, 4, 18))
     calendar.add_holiday(date(2025, 4, 21))
     calendar.add_holiday(date(2025, 6, 24))
-    calendar.add_holiday(date(2025, 7, 1))
+    calendar.add_holiday(date(2025, 7, 4))
+    calendar.remove_holiday(date(2025, 7, 1))
 
     return calendar
 
 
 def generate_schedules(physician_manager, task_manager, calendar):
     start_date = date(2025, 1, 13)
-    end_date = date(2025, 7, 6)  # Adjusted end date
+    end_date = date(2025, 7, 6)
+    task_splits = {
+        "CTU": {"linked": "5:2", "unlinked": "5:2"},
+        "ER": {"linked": "5:2", "unlinked": "5:2"},
+        "CONSULT": {"linked": "5:2", "unlinked": "5:2"},
+        "PREOP": {"linked": "5:2", "unlinked": "5:2"},
+        "AMBU": {"linked": "5:2", "unlinked": "5:2"},
+        "MOG": {"linked": "5:2", "unlinked": "5:2"},
+        "VASC": {"linked": "5:2", "unlinked": "5:2"}
 
-    # Instantiate O1Schedule instead of MathSchedule
-    api_key = "your_openrouter_api_key"  # Replace with your actual API key
-    schedule = O1Schedule(physician_manager, task_manager, calendar, api_key)
+    }
+
+    off_days = {
+        "CTU": [date(2023, 1, 3), date(2023, 12, 25)],
+        "ER": [date(2023, 7, 4)]
+    }
+
+    schedule = MathSchedule(physician_manager, task_manager, calendar)
 
     schedule.set_scheduling_period(start_date, end_date)
+    schedule.set_task_splits(task_splits)
+    schedule.set_off_days(off_days)
 
-    # Generate the schedule using the LLM
-    schedule.generate_schedule()
+    # Load initial schedule
+    schedule.load_initial_schedule("output/config/initial_schedule.json")
 
-    # Output the schedule
+    schedule.generate_schedule(use_initial_schedule=True)
+    schedule.export_model("model.txt")
     schedule.print_schedule()
-    schedule.save_schedule("output/schedule/o1_generated_schedule.json")
+    schedule.generate_ics_calendar(f"output/schedule/math_generated_calendar.ics")
+    schedule.save_schedule(f"output/schedule/math_generated_schedule.json")
 
 
 def export_periods():
@@ -351,21 +504,10 @@ def main():
     setup_logging()
 
     task_manager = initialize_task_manager()
-    task_manager.save_config("output/config/task_config.json")
-    #loaded_task_manager = TaskManager.load_config("output/config/task_config.json")
-
     physician_manager = initialize_physician_manager(task_manager)
-    physician_manager.save_config("output/config/physician_config.json")
-    #loaded_physician_manager = PhysicianManager.load_config("output/config/physician_config.json", "output/config/task_config.json")
-
     calendar = initialize_calendar()
-    calendar.save_calendar("output/config/calendar.json")
-    #loaded_calendar = Calendar.load_calendar("output/config/calendar.json")
 
-    # Generate both schedules (default behavior)
-    schedule = generate_schedules(physician_manager, task_manager, calendar)
-
-    schedule
+    generate_schedules(physician_manager, task_manager, calendar)
 
 if __name__ == "__main__":
     main()
