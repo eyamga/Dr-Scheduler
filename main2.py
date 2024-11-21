@@ -442,11 +442,11 @@ def generate_schedules(physician_manager, task_manager, calendar):
         "ER": [date(2023, 7, 4)]
     }
 
-    scheduler = MathSchedule(physician_manager, task_manager, calendar)
+    scheduler = AlternativeSchedule(physician_manager, task_manager, calendar)
 
     scheduler.set_scheduling_period(start_date, end_date)
-    scheduler.set_task_splits(task_splits)
-    scheduler.set_off_days(off_days)
+    #scheduler.set_task_splits(task_splits)
+    #scheduler.set_off_days(off_days)
 
     scheduler.load_initial_schedule("output/config/initial_schedule.json")
 
