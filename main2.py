@@ -317,6 +317,7 @@ def initialize_physician_manager(task_manager):
     ],
     "Michèle Mahone": [
         (date(2024, 12, 28), date(2025, 1, 5)),
+        (date(2025, 1, 18), date(2025, 1, 19)),
         (date(2025, 2, 6)),
         (date(2025, 3, 1), date(2025, 3, 9)),
         (date(2025, 3, 23), date(2025, 3, 28)),
@@ -336,6 +337,7 @@ def initialize_physician_manager(task_manager):
         (date(2025, 3, 1), date(2025, 3, 9)),
     ],
     "Justine Munger": [
+        (date(2025, 1, 18), date(2025, 1, 19)),
         (date(2025, 1, 29)),
         (date(2025, 2, 15), date(2025, 2, 23)),
         (date(2025, 4, 18), date(2025, 5, 4)),
@@ -366,6 +368,7 @@ def initialize_physician_manager(task_manager):
         (date(2025, 6, 28), date(2025, 7, 6)),
     ],
     "Florence Weber": [
+        (date(2025, 1, 18), date(2025, 1, 19)),
         (date(2025, 3, 1), date(2025, 3, 9)),
         (date(2025, 4, 12), date(2025, 5, 4)),
         (date(2025, 5, 30), date(2025, 6, 1)),

@@ -154,6 +154,70 @@ class AlternativeSchedule:
 
         return handled_tasks
 
+    def _is_task_start_week(self, task: Task, week_number: int) -> bool:
+        """Check if this is a valid starting week for this task based on its offset."""
+        return (week_number + task.week_offset) % task.category.number_of_weeks == 0
+
+    def _handle_multi_week_task(self, task: Task, current_week: int, 
+                               periods: List[Dict[str, Any]], pre_assigned_tasks: Set[str]) -> Set[str]:
+        """
+        Handle multi-week task assignment.
+        Returns set of handled task names.
+        """
+        if not self._is_task_start_week(task, current_week):
+            return set()
+
+        handled_tasks = set()
+        num_weeks = task.category.number_of_weeks
+        
+        # Get all required periods
+        main_periods = []
+        call_periods = []
+        
+        for i in range(num_weeks):
+            week_periods = periods[i]
+            main_period = next((p for p in week_periods if p['type'] == 'MAIN'), None)
+            call_period = next((p for p in week_periods if p['type'] == 'CALL'), None)
+            
+            if not (main_period and call_period):
+                self.logger.warning(f"Missing periods for multi-week task {task.name}")
+                return set()
+            
+            main_periods.append(main_period)
+            call_periods.append(call_period)
+
+        # Get all days for availability check
+        all_days = []
+        for period in main_periods + call_periods:
+            all_days.extend(period['days'])
+
+        # Get available physicians
+        available_physicians = self._get_available_physicians(task, all_days)
+        if not available_physicians:
+            self.logger.warning(f"No physicians available for multi-week task {task.name}")
+            return set()
+
+        # Select best physician
+        selected_physician = self._select_best_physician(available_physicians, task)
+        if not selected_physician:
+            return set()
+
+        # Assign main tasks for all weeks
+        for i, main_period in enumerate(main_periods):
+            self._assign_task(task, main_period, selected_physician)
+            handled_tasks.add(task.name)
+
+        # Handle linked call task if exists
+        linked_call = self.task_manager.data['linkage_manager'].get_linked_task(task)
+        if linked_call and linked_call not in pre_assigned_tasks:
+            call_task = self.task_manager.get_task(linked_call)
+            # Assign call task to a period between the weeks or before first week
+            call_period = call_periods[0]  # Default to first call period (before first week)
+            self._assign_task(call_task, call_period, selected_physician)
+            handled_tasks.add(call_task.name)
+
+        return handled_tasks
+
     def generate_schedule(self, use_initial_schedule: bool = False):
         """Generate the schedule."""
         if not self.scheduling_period:
@@ -162,8 +226,11 @@ class AlternativeSchedule:
         # Get periods from calendar
         periods = self.calendar.determine_periods()
         
+        # Convert periods to list for easier week number tracking
+        period_items = sorted(periods.items())
+        
         # Process each week's periods
-        for week_start, week_periods in sorted(periods.items()):
+        for week_number, (week_start, week_periods) in enumerate(period_items):
             if not (self.scheduling_period[0] <= date.fromisoformat(week_start) <= self.scheduling_period[1]):
                 continue
                 
@@ -185,16 +252,29 @@ class AlternativeSchedule:
                     continue
                     
                 if task.type == TaskType.MAIN:
-                    linked_call = self.task_manager.data['linkage_manager'].get_linked_task(task)
-                    if linked_call and linked_call not in pre_assigned_tasks:
-                        call_task = self.task_manager.get_task(linked_call)
-                        self._handle_linked_tasks(task, call_task, main_period, call_period)
-                    elif not linked_call:
-                        available_physicians = self._get_available_physicians(task, main_period['days'])
-                        if available_physicians:
-                            selected_physician = self._select_best_physician(available_physicians, task)
-                            if selected_physician:
-                                self._assign_task(task, main_period, selected_physician)
+                    if task.category.days_parameter == TaskDaysParameter.MULTI_WEEK:
+                        # Get next weeks' periods for multi-week tasks
+                        remaining_weeks = period_items[week_number:week_number + task.category.number_of_weeks]
+                        if len(remaining_weeks) >= task.category.number_of_weeks:
+                            handled_tasks = self._handle_multi_week_task(
+                                task, 
+                                week_number,
+                                [periods for _, periods in remaining_weeks],
+                                pre_assigned_tasks
+                            )
+                            pre_assigned_tasks.update(handled_tasks)
+                    else:
+                        # Handle single-week tasks
+                        linked_call = self.task_manager.data['linkage_manager'].get_linked_task(task)
+                        if linked_call and linked_call not in pre_assigned_tasks:
+                            call_task = self.task_manager.get_task(linked_call)
+                            self._handle_linked_tasks(task, call_task, main_period, call_period)
+                        elif not linked_call:
+                            available_physicians = self._get_available_physicians(task, main_period['days'])
+                            if available_physicians:
+                                selected_physician = self._select_best_physician(available_physicians, task)
+                                if selected_physician:
+                                    self._assign_task(task, main_period, selected_physician)
 
     def print_schedule(self):
         """Print the generated schedule."""
