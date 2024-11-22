@@ -118,7 +118,7 @@ def initialize_physician_manager(task_manager):
 
         Physician("Gabriel", "Dion", ["CTU", "PREOP", "CONSULT"], False, 0.70, [], ["MOG", "VASC"]),
         Physician("Justine", "Munger", ["CTU"], True, 0.75, [], ["MOG", "VASC"]),
-        Physician("Mikhael", "Laskine", ["CTU", "CONSULT", "ER", "PREOP"], False, 0.8, [], ["AMBU", "VASC"]),
+        Physician("Mikhael", "Laskine", ["CTU", "CONSULT", "ER", "PREOP"], False, 0.8, [], ["MOG", "VASC"]),
         Physician("Maxime", "Lamarre-Cliche", ["CTU", "ER",  "CONSULT",  "PREOP", "AMBU"], False, 0.80, [], ["MOG", "VASC"]),
         Physician("Julien", "Dastous", ["CTU", "CONSULT", "PREOP", "ER", "AMBU"], False, 0.75, [], ["MOG", "VASC"]),
         Physician("Jean-Pascal", "Costa", ["CTU", "ER", "AMBU", "PREOP", "CONSULT"], False, 0.70, [], ["MOG", "VASC"]),
@@ -128,7 +128,7 @@ def initialize_physician_manager(task_manager):
         Physician("Rene", "Lecours", ["AMBU", "CTU", "CONSULT", "ER"], False, 0.80, [],
                 ["MOG", "VASC"]),
         Physician("Diem-Quyen", "Nguyen", ["CTU",  "CONSULT", "PREOP", "AMBU", "ER"], False, 0.70, [], ["MOG", "VASC"]),
-        Physician("Michel", "Bertrand", ["CTU", "PREOP", "CONSULT"], False, 0.70, [], ["MOG", "VASC", "AMBU"]),
+        Physician("Michel", "Bertrand", ["CTU", "PREOP", "CONSULT"], False, 0.70, [], ["MOG", "VASC"]),
 
         Physician("J.Manuel", "Dominguez", ["CTU", "CONSULT", "PREOP", "ER"], False, 0.55, ["VASC"], ["MOG"]),
         Physician("Marie-Jose", "Miron", ["VASC"], False, 0.4, ["VASC"],

@@ -1,5 +1,13 @@
 {
   "unassigned_tasks": {
+    "2025-01-13": [
+      {
+        "task": "MOG",
+        "category": "MOG",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      }
+    ],
     "2025-02-03": [
       {
         "task": "MOG",
@@ -8,29 +16,7 @@
         "reason": "No available physicians"
       }
     ],
-    "2025-02-24": [
-      {
-        "task": "CTU_C",
-        "category": "CTU",
-        "type": "MAIN",
-        "reason": "No available physicians"
-      }
-    ],
-    "2025-03-04": [
-      {
-        "task": "CTU_D",
-        "category": "CTU",
-        "type": "MAIN",
-        "reason": "No available physicians"
-      }
-    ],
     "2025-03-17": [
-      {
-        "task": "CTU_B",
-        "category": "CTU",
-        "type": "MAIN",
-        "reason": "No available physicians"
-      },
       {
         "task": "CTU_D",
         "category": "CTU",
@@ -236,11 +222,11 @@
     ]
   },
   "summary": {
-    "total_unassigned": 33,
-    "weeks_with_unassigned": 18,
+    "total_unassigned": 31,
+    "weeks_with_unassigned": 17,
     "categories_affected": [
-      "CTU",
-      "MOG"
+      "MOG",
+      "CTU"
     ]
   }
 }
