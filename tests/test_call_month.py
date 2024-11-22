@@ -57,9 +57,9 @@ def check_call_tasks(start_date, end_date, calendar_data):
 
 
 # Example usage
-start_date = "2025-01-01"
+start_date = "2025-01-13"
 end_date = "2025-06-30"
-file_path = 'output/schedule/math_generated_schedule.json'
+file_path = '/Users/eyamga/Documents/Dev/Dr-Scheduler/output/schedule/optimized_generated_schedule.json'
 with open(file_path, 'r') as file:
     calendar = json.load(file)
 

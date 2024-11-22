@@ -14,7 +14,8 @@ from config.managers import TaskManager, PhysicianManager
 
 
 def setup_logging():
-    logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
 
 
 def initialize_task_manager():
@@ -402,7 +403,19 @@ def initialize_physician_manager(task_manager):
 		    (date(2025, 4, 30), date(2025, 5, 4)),
 		    (date(2025, 5, 10), date(2025, 5, 11)),
 		    (date(2025, 5, 24), date(2025, 5, 25)),
-		]
+		],
+        "Julien Viau": [
+            (date(2025, 1, 6), date(2025, 1, 19)),
+            (date(2025, 1, 25), date(2025, 3, 16)),
+            (date(2025, 3, 22), date(2025, 6, 15)),
+            (date(2025, 6, 21), date(2025, 7, 6))
+        ],
+        "Tal Kopel": [
+            (date(2025, 1, 6), date(2025, 1, 26)),
+            (date(2025, 2, 1), date(2025, 4, 21)),
+            (date(2025, 4, 26), date(2025, 6, 1)),
+            (date(2025, 6, 7), date(2025, 7, 6))
+        ]
     }
         
     physician_manager.set_unavailability_periods(unavailability_periods)
