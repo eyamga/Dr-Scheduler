@@ -9,6 +9,7 @@ from models.physician import Physician
 from models.calendar import Calendar
 from models.math_schedule import MathSchedule
 from models.alternative_schedule import AlternativeSchedule
+from models.modular_scheduler import ModularScheduler
 
 from config.managers import TaskManager, PhysicianManager
 
@@ -443,35 +444,26 @@ def initialize_calendar():
 def generate_schedules(physician_manager, task_manager, calendar):
     start_date = date(2025, 1, 13)
     end_date = date(2025, 7, 6)
-    task_splits = {
-        "CTU": {"linked": "5:2", "unlinked": "5:2"},
-        "ER": {"linked": "5:2", "unlinked": "5:2"},
-        "CONSULT": {"linked": "4:3", "unlinked": None},
-        "PREOP": {"linked": None, "unlinked": "3:2"},
-        "AMBU": {"linked": None, "unlinked": "3:2"},
-        "MOG": {"linked": "4:3", "unlinked": None},
-        "VASC": {"linked": "5:2", "unlinked": "5:2"}
-    }
 
-    off_days = {
-        "CTU": [date(2023, 1, 3), date(2023, 12, 25)],
-        "ER": [date(2023, 7, 4)]
-    }
-
-    scheduler = AlternativeSchedule(physician_manager, task_manager, calendar)
-
+    # Initialize scheduler
+    scheduler = ModularScheduler(physician_manager, task_manager, calendar)
+    
+    # Set scheduling period
     scheduler.set_scheduling_period(start_date, end_date)
-    #scheduler.set_task_splits(task_splits)
-    #scheduler.set_off_days(off_days)
-
-    scheduler.load_initial_schedule("output/config/initial_schedule.json")
-
+    
+    # Load initial schedule if exists
+    try:
+        scheduler.load_initial_schedule("output/config/initial_schedule.json")
+    except FileNotFoundError:
+        logging.info("No initial schedule found, starting from scratch")
+    
+    # Generate schedule
     scheduler.generate_schedule(use_initial_schedule=True)
-
-
+    
+    # Save outputs
     scheduler.print_schedule()
-    scheduler.generate_ics_calendar(f"output/schedule/optimized_generated_calendar.ics")
-    scheduler.save_schedule(f"output/schedule/optimized_generated_schedule.json")
+    scheduler.generate_ics_calendar("output/schedule/modular_generated_calendar.ics")
+    scheduler.save_schedule("output/schedule/modular_generated_schedule.json")
 
 
 def export_periods():
