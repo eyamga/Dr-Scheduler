@@ -146,9 +146,10 @@ def initialize_physician_manager(task_manager):
 
         Physician("Brigitte", "Benard", ["PREOP", "CONSULT", "CTU", "AMBU"], False, 0.2, [], ["MOG", "VASC"]),
 
-        #Physician("Christopher Oliver", "Clapperton", ["CTU", "ER", "PREOP", "AMBU", "CONSULT"], False, 0, [], ["MOG", "VASC"]),
+        #Physician("Christopher Oliver", "Clapperton", ["CTU", "ER", "PREOP", "AMBU", "CONSULT"], False, 0.2, [], ["MOG", "VASC"]),
         #Physician("Audrey", "Lacasse", ["CTU", "ER"], False, 0.6, [], ["MOG", "VASC"]),
-        ]
+
+    ]
 
 
 
@@ -397,26 +398,26 @@ def initialize_physician_manager(task_manager):
         (date(2025, 6, 16), date(2025, 6, 29)),
     ],
     "Sophie Granmaison":[
-		    (date(2025, 2, 22), date(2025, 2, 23)),
-		    (date(2025, 3, 22), date(2025, 3, 23)),
-		    (date(2025, 4, 5), date(2025, 4, 13)),
-		    (date(2025, 4, 25), date(2025, 4, 26)),
-		    (date(2025, 4, 30), date(2025, 5, 4)),
-		    (date(2025, 5, 10), date(2025, 5, 11)),
-		    (date(2025, 5, 24), date(2025, 5, 25)),
-		],
+        (date(2025, 2, 22), date(2025, 2, 23)),
+        (date(2025, 3, 22), date(2025, 3, 23)),
+        (date(2025, 4, 5), date(2025, 4, 13)),
+        (date(2025, 4, 25), date(2025, 4, 26)),
+        (date(2025, 4, 30), date(2025, 5, 4)),
+        (date(2025, 5, 10), date(2025, 5, 11)),
+        (date(2025, 5, 24), date(2025, 5, 25)),
+    ],
         "Julien Viau": [
-            (date(2025, 1, 6), date(2025, 1, 19)),
-            (date(2025, 1, 25), date(2025, 3, 16)),
-            (date(2025, 3, 22), date(2025, 6, 15)),
-            (date(2025, 6, 21), date(2025, 7, 6))
-        ],
+        (date(2025, 1, 6), date(2025, 1, 19)),
+        (date(2025, 1, 25), date(2025, 3, 16)),
+        (date(2025, 3, 22), date(2025, 6, 15)),
+        (date(2025, 6, 21), date(2025, 7, 6))
+    ],
         "Tal Kopel": [
-            (date(2025, 1, 6), date(2025, 1, 26)),
-            (date(2025, 2, 1), date(2025, 4, 21)),
-            (date(2025, 4, 26), date(2025, 6, 1)),
-            (date(2025, 6, 7), date(2025, 7, 6))
-        ]
+        (date(2025, 1, 6), date(2025, 1, 26)),
+        (date(2025, 2, 1), date(2025, 4, 21)),
+        (date(2025, 4, 26), date(2025, 6, 1)),
+        (date(2025, 6, 7), date(2025, 7, 6))
+    ]
     }
         
     physician_manager.set_unavailability_periods(unavailability_periods)
@@ -446,8 +447,8 @@ def generate_schedules(physician_manager, task_manager, calendar):
     end_date = date(2025, 7, 6)
 
     # Initialize scheduler
-    scheduler = ModularScheduler(physician_manager, task_manager, calendar)
-    
+    scheduler = AlternativeSchedule(physician_manager, task_manager, calendar)
+
     # Set scheduling period
     scheduler.set_scheduling_period(start_date, end_date)
     

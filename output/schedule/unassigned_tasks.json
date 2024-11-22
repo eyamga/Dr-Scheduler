@@ -5,99 +5,7 @@
         "task": "MOG",
         "category": "MOG",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "ExclusionConstraint",
-          "OverlapConstraint",
-          "AvailabilityConstraint"
-        ]
-      },
-      {
-        "task": "MOG",
-        "category": "MOG",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "ExclusionConstraint",
-          "OverlapConstraint",
-          "AvailabilityConstraint"
-        ]
-      }
-    ],
-    "2025-01-20": [
-      {
-        "task": "CTU_A",
-        "category": "CTU",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "OverlapConstraint",
-          "AvailabilityConstraint",
-          "MultiWeekContinuityConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "CTU_C",
-        "category": "CTU",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "OverlapConstraint",
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "MOG_CALL",
-        "category": "MOG",
-        "type": "CALL",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "ExclusionConstraint",
-          "OverlapConstraint",
-          "CallSpacingConstraint",
-          "AvailabilityConstraint"
-        ]
-      }
-    ],
-    "2025-01-27": [
-      {
-        "task": "CTU_B",
-        "category": "CTU",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "MultiWeekContinuityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "CTU_D",
-        "category": "CTU",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "MultiWeekContinuityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "MOG_CALL",
-        "category": "MOG",
-        "type": "CALL",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "ExclusionConstraint",
-          "CallSpacingConstraint",
-          "OverlapConstraint"
-        ]
+        "reason": "No available physicians"
       }
     ],
     "2025-02-03": [
@@ -105,950 +13,264 @@
         "task": "MOG",
         "category": "MOG",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "ExclusionConstraint",
-          "OverlapConstraint"
-        ]
-      },
-      {
-        "task": "CTU_A",
-        "category": "CTU",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "MultiWeekContinuityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "CTU_C",
-        "category": "CTU",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "MultiWeekContinuityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "MOG",
-        "category": "MOG",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "ExclusionConstraint",
-          "OverlapConstraint"
-        ]
-      }
-    ],
-    "2025-02-10": [
-      {
-        "task": "CTU_B",
-        "category": "CTU",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "MultiWeekContinuityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "CTU_D",
-        "category": "CTU",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "MultiWeekContinuityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "CONSULT_1",
-        "category": "CONSULT",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
+        "reason": "No available physicians"
       }
     ],
     "2025-02-17": [
       {
-        "task": "CTU_A",
+        "task": "CTU_D",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "MultiWeekContinuityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "CTU_C",
-        "category": "CTU",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "MultiWeekContinuityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "MOG_CALL",
-        "category": "MOG",
-        "type": "CALL",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "ExclusionConstraint",
-          "CallSpacingConstraint",
-          "OverlapConstraint"
-        ]
+        "reason": "No available physicians"
       }
     ],
     "2025-02-24": [
       {
-        "task": "CTU_B",
-        "category": "CTU",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "MultiWeekContinuityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "CTU_D",
-        "category": "CTU",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "MultiWeekContinuityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "ER_CALL",
-        "category": "ER",
-        "type": "CALL",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "CallSpacingConstraint",
-          "ExclusionConstraint",
-          "OverlapConstraint"
-        ]
-      }
-    ],
-    "2025-03-03": [
-      {
         "task": "CTU_A",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
+        "reason": "No available physicians"
       },
       {
         "task": "CTU_C",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
-      },
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-03-04": [
       {
-        "task": "ER_CALL",
-        "category": "ER",
-        "type": "CALL",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "CallSpacingConstraint",
-          "AvailabilityConstraint",
-          "ExclusionConstraint",
-          "OverlapConstraint"
-        ]
-      },
-      {
-        "task": "CONSULT_CALL",
-        "category": "CONSULT",
-        "type": "CALL",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "CallSpacingConstraint",
-          "AvailabilityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "MOG_CALL",
-        "category": "MOG",
-        "type": "CALL",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "ExclusionConstraint",
-          "CallSpacingConstraint",
-          "AvailabilityConstraint",
-          "OverlapConstraint"
-        ]
-      },
-      {
-        "task": "VASC_CALL",
-        "category": "VASC",
-        "type": "CALL",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "ExclusionConstraint",
-          "CallSpacingConstraint",
-          "AvailabilityConstraint",
-          "OverlapConstraint"
-        ]
+        "task": "CTU_D",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
       }
     ],
     "2025-03-10": [
       {
-        "task": "CTU_B",
+        "task": "CTU_C",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "OverlapConstraint",
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "CTU_D",
-        "category": "CTU",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "OverlapConstraint",
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "ExclusionConstraint"
-        ]
+        "reason": "No available physicians"
       }
     ],
     "2025-03-17": [
       {
-        "task": "CTU_A",
+        "task": "CTU_D",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "OverlapConstraint",
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "CTU_C",
-        "category": "CTU",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "OverlapConstraint",
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "MOG_CALL",
-        "category": "MOG",
-        "type": "CALL",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "ExclusionConstraint",
-          "OverlapConstraint",
-          "CallSpacingConstraint",
-          "AvailabilityConstraint"
-        ]
+        "reason": "No available physicians"
       }
     ],
     "2025-03-24": [
       {
-        "task": "MOG",
-        "category": "MOG",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "ExclusionConstraint",
-          "OverlapConstraint"
-        ]
-      },
-      {
-        "task": "CTU_B",
+        "task": "CTU_A",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "MultiWeekContinuityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
+        "reason": "No available physicians"
       },
       {
-        "task": "CTU_D",
+        "task": "CTU_C",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "MultiWeekContinuityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "MOG",
-        "category": "MOG",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "ExclusionConstraint",
-          "OverlapConstraint"
-        ]
+        "reason": "No available physicians"
       }
     ],
     "2025-03-31": [
       {
-        "task": "CTU_A",
+        "task": "CTU_B",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "MultiWeekContinuityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
+        "reason": "No available physicians"
       },
       {
-        "task": "CTU_C",
+        "task": "CTU_D",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "MultiWeekContinuityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "MOG_CALL",
-        "category": "MOG",
-        "type": "CALL",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "ExclusionConstraint",
-          "CallSpacingConstraint",
-          "OverlapConstraint"
-        ]
+        "reason": "No available physicians"
       }
     ],
     "2025-04-07": [
       {
-        "task": "CTU_B",
+        "task": "CTU_A",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "OverlapConstraint",
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "ExclusionConstraint"
-        ]
+        "reason": "No available physicians"
       },
       {
-        "task": "CTU_D",
+        "task": "CTU_C",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "OverlapConstraint",
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "ExclusionConstraint"
-        ]
+        "reason": "No available physicians"
       }
     ],
     "2025-04-14": [
       {
-        "task": "CTU_A",
-        "category": "CTU",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "OverlapConstraint",
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "CTU_C",
-        "category": "CTU",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "OverlapConstraint",
-          "AvailabilityConstraint",
-          "MultiWeekContinuityConstraint",
-          "ExclusionConstraint"
-        ]
-      }
-    ],
-    "2025-04-21": [
-      {
         "task": "CTU_B",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "OverlapConstraint",
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "ExclusionConstraint"
-        ]
+        "reason": "No available physicians"
       },
       {
         "task": "CTU_D",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "OverlapConstraint",
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "ExclusionConstraint"
-        ]
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-04-22": [
+      {
+        "task": "CTU_A",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
       },
       {
-        "task": "ER_CALL",
-        "category": "ER",
-        "type": "CALL",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "OverlapConstraint",
-          "CallSpacingConstraint",
-          "ExclusionConstraint",
-          "AvailabilityConstraint"
-        ]
-      },
-      {
-        "task": "CONSULT_CALL",
-        "category": "CONSULT",
-        "type": "CALL",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "OverlapConstraint",
-          "CallSpacingConstraint",
-          "AvailabilityConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "MOG_CALL",
-        "category": "MOG",
-        "type": "CALL",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "ExclusionConstraint",
-          "OverlapConstraint",
-          "CallSpacingConstraint",
-          "AvailabilityConstraint"
-        ]
-      },
-      {
-        "task": "VASC_CALL",
-        "category": "VASC",
-        "type": "CALL",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "ExclusionConstraint",
-          "OverlapConstraint",
-          "CallSpacingConstraint",
-          "AvailabilityConstraint"
-        ]
+        "task": "CTU_C",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
       }
     ],
     "2025-04-28": [
       {
-        "task": "MOG",
-        "category": "MOG",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "ExclusionConstraint",
-          "OverlapConstraint",
-          "AvailabilityConstraint"
-        ]
-      },
-      {
-        "task": "CTU_A",
+        "task": "CTU_B",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "OverlapConstraint",
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "ExclusionConstraint"
-        ]
+        "reason": "No available physicians"
       },
       {
-        "task": "CTU_C",
+        "task": "CTU_D",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "OverlapConstraint",
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "MOG",
-        "category": "MOG",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "ExclusionConstraint",
-          "OverlapConstraint",
-          "AvailabilityConstraint"
-        ]
+        "reason": "No available physicians"
       }
     ],
     "2025-05-05": [
       {
-        "task": "CTU_B",
+        "task": "CTU_A",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "OverlapConstraint",
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "ExclusionConstraint"
-        ]
+        "reason": "No available physicians"
       },
       {
-        "task": "CTU_D",
+        "task": "CTU_C",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "OverlapConstraint",
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "ExclusionConstraint"
-        ]
+        "reason": "No available physicians"
+      },
+      {
+        "task": "MOG",
+        "category": "MOG",
+        "type": "MAIN",
+        "reason": "No available physicians"
       }
     ],
     "2025-05-12": [
       {
-        "task": "CTU_A",
-        "category": "CTU",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "CTU_C",
-        "category": "CTU",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "VASC_CALL",
-        "category": "VASC",
-        "type": "CALL",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "ExclusionConstraint",
-          "CallSpacingConstraint",
-          "AvailabilityConstraint",
-          "OverlapConstraint"
-        ]
-      }
-    ],
-    "2025-05-19": [
-      {
         "task": "CTU_B",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
+        "reason": "No available physicians"
       },
       {
         "task": "CTU_D",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-05-20": [
+      {
+        "task": "CTU_A",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
       },
       {
-        "task": "ER_CALL",
-        "category": "ER",
-        "type": "CALL",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "CallSpacingConstraint",
-          "AvailabilityConstraint",
-          "ExclusionConstraint",
-          "OverlapConstraint"
-        ]
-      },
-      {
-        "task": "CONSULT_CALL",
-        "category": "CONSULT",
-        "type": "CALL",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "CallSpacingConstraint",
-          "AvailabilityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "MOG_CALL",
-        "category": "MOG",
-        "type": "CALL",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "ExclusionConstraint",
-          "CallSpacingConstraint",
-          "AvailabilityConstraint",
-          "OverlapConstraint"
-        ]
-      },
-      {
-        "task": "VASC_CALL",
-        "category": "VASC",
-        "type": "CALL",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "ExclusionConstraint",
-          "CallSpacingConstraint",
-          "AvailabilityConstraint",
-          "OverlapConstraint"
-        ]
+        "task": "CTU_C",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
       }
     ],
     "2025-05-26": [
       {
-        "task": "MOG",
-        "category": "MOG",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "ExclusionConstraint",
-          "AvailabilityConstraint",
-          "OverlapConstraint"
-        ]
-      },
-      {
-        "task": "CTU_A",
+        "task": "CTU_B",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
+        "reason": "No available physicians"
       },
       {
-        "task": "CTU_C",
+        "task": "CTU_D",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "MOG",
-        "category": "MOG",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "ExclusionConstraint",
-          "AvailabilityConstraint",
-          "OverlapConstraint"
-        ]
+        "reason": "No available physicians"
       }
     ],
     "2025-06-02": [
       {
-        "task": "CTU_B",
+        "task": "CTU_A",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "MultiWeekContinuityConstraint",
-          "OverlapConstraint",
-          "AvailabilityConstraint",
-          "ExclusionConstraint"
-        ]
+        "reason": "No available physicians"
       },
       {
-        "task": "CTU_D",
+        "task": "CTU_C",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "MultiWeekContinuityConstraint",
-          "OverlapConstraint",
-          "AvailabilityConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "MOG_CALL",
-        "category": "MOG",
-        "type": "CALL",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "ExclusionConstraint",
-          "CallSpacingConstraint",
-          "OverlapConstraint",
-          "AvailabilityConstraint"
-        ]
+        "reason": "No available physicians"
       }
     ],
     "2025-06-09": [
       {
-        "task": "CTU_A",
+        "task": "CTU_B",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
+        "reason": "No available physicians"
       },
       {
-        "task": "CTU_C",
+        "task": "CTU_D",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
+        "reason": "No available physicians"
       }
     ],
     "2025-06-16": [
       {
-        "task": "CTU_B",
+        "task": "CTU_A",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "MultiWeekContinuityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
+        "reason": "No available physicians"
       },
       {
-        "task": "CTU_D",
+        "task": "CTU_C",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "MultiWeekContinuityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "MOG_CALL",
-        "category": "MOG",
-        "type": "CALL",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "ExclusionConstraint",
-          "CallSpacingConstraint",
-          "OverlapConstraint"
-        ]
+        "reason": "No available physicians"
       }
     ],
     "2025-06-23": [
       {
-        "task": "CTU_A",
-        "category": "CTU",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "MultiWeekContinuityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "CTU_C",
-        "category": "CTU",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "AvailabilityConstraint",
-          "MultiWeekContinuityConstraint",
-          "OverlapConstraint",
-          "ExclusionConstraint"
-        ]
-      }
-    ],
-    "2025-06-30": [
-      {
-        "task": "CTU_A",
-        "category": "CTU",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "OverlapConstraint",
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
         "task": "CTU_B",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "OverlapConstraint",
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "CTU_C",
-        "category": "CTU",
-        "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "OverlapConstraint",
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "ExclusionConstraint"
-        ]
+        "reason": "No available physicians"
       },
       {
         "task": "CTU_D",
         "category": "CTU",
         "type": "MAIN",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "OverlapConstraint",
-          "MultiWeekContinuityConstraint",
-          "AvailabilityConstraint",
-          "ExclusionConstraint"
-        ]
-      },
-      {
-        "task": "MOG_CALL",
-        "category": "MOG",
-        "type": "CALL",
-        "reason": "No available physicians",
-        "constraints_failed": [
-          "ExclusionConstraint",
-          "OverlapConstraint",
-          "CallSpacingConstraint",
-          "AvailabilityConstraint"
-        ]
+        "reason": "No available physicians"
       }
     ]
   },
   "summary": {
-    "total_unassigned": 83,
-    "weeks_with_unassigned": 25,
-    "categories_affected": {
-      "MOG": 21,
-      "CTU": 50,
-      "CONSULT": 4,
-      "ER": 4,
-      "VASC": 4
-    },
-    "period": {
-      "start": "2025-01-13",
-      "end": "2025-07-06"
-    }
+    "total_unassigned": 37,
+    "weeks_with_unassigned": 21,
+    "categories_affected": [
+      "CTU",
+      "MOG"
+    ]
   }
 }

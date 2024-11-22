@@ -461,6 +461,54 @@ class AlternativeSchedule:
 
         return handled_tasks
 
+    def _handle_all_ctu_tasks(self, periods, period_items, pre_assigned_tasks):
+        """Handle all CTU tasks across the entire scheduling period at once."""
+        handled_tasks = set()
+        
+        # Get all CTU tasks
+        ctu_tasks = [
+            task for task in self.task_manager.data['tasks']
+            if task.category.name == "CTU" and task.type == TaskType.MAIN
+            and task.name not in pre_assigned_tasks
+        ]
+        
+        # Group CTU tasks by their offset
+        offset_groups = {}
+        for task in ctu_tasks:
+            if task.week_offset not in offset_groups:
+                offset_groups[task.week_offset] = []
+            offset_groups[task.week_offset].append(task)
+        
+        # Handle each offset group separately
+        for week_offset, tasks in offset_groups.items():
+            week_number = 0
+            while week_number < len(period_items):
+                if (week_number + week_offset) % 2 == 0:  # CTU tasks are 2-week tasks
+                    week_start, week_periods = period_items[week_number]
+                    if week_number + 1 < len(period_items):  # Ensure we have both weeks available
+                        next_week_start, next_week_periods = period_items[week_number + 1]
+                        
+                        # Get periods for both weeks
+                        main_period1 = next((p for p in week_periods if p['type'] == 'MAIN'), None)
+                        main_period2 = next((p for p in next_week_periods if p['type'] == 'MAIN'), None)
+                        call_period = next((p for p in week_periods if p['type'] == 'CALL'), None)
+                        
+                        if main_period1 and main_period2 and call_period:
+                            for task in tasks:
+                                if task.name not in handled_tasks and task.name not in pre_assigned_tasks:
+                                    # Try to assign both weeks and the call
+                                    handled = self._handle_multi_week_task(
+                                        task, 
+                                        week_number,
+                                        [week_periods, next_week_periods],
+                                        pre_assigned_tasks
+                                    )
+                                    handled_tasks.update(handled)
+                
+                week_number += 1
+        
+        return handled_tasks
+
     def generate_schedule(self, use_initial_schedule: bool = False):
         """Generate the schedule."""
         if not self.scheduling_period:
@@ -470,7 +518,27 @@ class AlternativeSchedule:
         periods = self.calendar.determine_periods()
         period_items = sorted(periods.items())
         
-        # Process each week's periods
+        # Handle pre-assigned tasks first
+        pre_assigned_tasks = set()
+        if use_initial_schedule and self.initial_schedule:
+            for week_start, week_periods in period_items:
+                week_start_date = date.fromisoformat(week_start)
+                if not (self.scheduling_period[0] <= week_start_date <= self.scheduling_period[1]):
+                    continue
+                
+                main_period = next((p for p in week_periods if p['type'] == 'MAIN'), None)
+                call_period = next((p for p in week_periods if p['type'] == 'CALL'), None)
+                
+                if main_period and call_period:
+                    pre_assigned_tasks.update(
+                        self._handle_initial_assignments(week_start, main_period, call_period)
+                    )
+
+        # First handle all CTU tasks for the entire schedule
+        handled_ctu_tasks = self._handle_all_ctu_tasks(periods, period_items, pre_assigned_tasks)
+        pre_assigned_tasks.update(handled_ctu_tasks)
+
+        # Then handle remaining tasks week by week as before
         for week_number, (week_start, week_periods) in enumerate(period_items):
             week_start_date = date.fromisoformat(week_start)
             if not (self.scheduling_period[0] <= week_start_date <= self.scheduling_period[1]):
