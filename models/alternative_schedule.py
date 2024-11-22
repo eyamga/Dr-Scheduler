@@ -27,6 +27,9 @@ class AlternativeSchedule:
         # Add new tracking for assigned call periods
         self.assigned_call_periods = set()  # Track which call periods have been assigned
         
+        # Add tracking for unassigned tasks
+        self.unassigned_tasks = defaultdict(list)  # {week_start: [(task_name, period_type)]}
+        
         logging.basicConfig(level=logging.INFO)
         self.logger = logging.getLogger(__name__)
 
@@ -111,41 +114,40 @@ class AlternativeSchedule:
             
         return False
 
+    def _track_unassigned_task(self, task: Task, week_start: date, period_type: str):
+        """Track tasks that couldn't be assigned."""
+        self.unassigned_tasks[week_start.isoformat()].append({
+            'task': task.name,
+            'category': task.category.name,
+            'type': period_type,
+            'reason': "No available physicians"
+        })
+
     def _get_available_physicians(self, task: Task, period_days: List[date]) -> List[str]:
         """Get list of physicians available and eligible for a task in a period."""
         available_physicians = []
-        period = {'days': period_days}  # Create period dict for overlap check
+        period = {'days': period_days}
         period_start = period_days[0]
         period_end = period_days[-1]
         
         for physician in self.physician_manager.data['physicians']:
             name = physician.name
             
-            # First check eligibility (faster check)
             if not self._is_physician_eligible(name, task):
-                self.logger.debug(f"Physician {name} not eligible for task {task.name}")
                 continue
             
-            # Check call spacing constraint for call tasks and multi-week tasks with calls
             if (task.is_call_task or 
                 (task.category.days_parameter == TaskDaysParameter.MULTI_WEEK and 
                  self.task_manager.data['linkage_manager'].get_linked_task(task))):
                 if self._has_recent_call(name, period_start, period_end):
-                    self.logger.debug(
-                        f"Physician {name} has another call too close to {period_start}"
-                    )
                     continue
             
-            # Then check availability and overlapping
             if (self._is_physician_available(name, period_days) and 
                 not self._has_overlapping_assignment(name, period)):
                 available_physicians.append(name)
             
         if not available_physicians:
-            self.logger.warning(
-                f"No physicians available for task {task.name}. "
-                f"Period: {period_days[0]} - {period_days[-1]}"
-            )
+            self._track_unassigned_task(task, period_start, 'MAIN' if task.type == TaskType.MAIN else 'CALL')
             
         return available_physicians
 
@@ -532,6 +534,9 @@ class AlternativeSchedule:
                     )
                     pre_assigned_tasks.update(handled_tasks)
 
+        # After generating schedule, save unassigned tasks
+        self.save_unassigned_tasks("output/schedule/unassigned_tasks.json")
+
     def print_schedule(self):
         """Print the generated schedule."""
         for physician, tasks in self.schedule.items():
@@ -564,3 +569,31 @@ class AlternativeSchedule:
                 cal.events.add(event)
         with open(filename, 'w') as f:
             f.writelines(cal)
+
+    def save_unassigned_tasks(self, filename: str):
+        """Save unassigned tasks to JSON file."""
+        if not self.unassigned_tasks:
+            self.logger.info("All tasks were successfully assigned")
+            return
+        
+        with open(filename, 'w') as f:
+            json.dump(
+                {
+                    'unassigned_tasks': dict(self.unassigned_tasks),
+                    'summary': {
+                        'total_unassigned': sum(len(tasks) for tasks in self.unassigned_tasks.values()),
+                        'weeks_with_unassigned': len(self.unassigned_tasks),
+                        'categories_affected': list(set(
+                            task['category'] 
+                            for tasks in self.unassigned_tasks.values() 
+                            for task in tasks
+                        ))
+                    }
+                }, 
+                f, 
+                indent=2
+            )
+        self.logger.warning(
+            f"Found {sum(len(tasks) for tasks in self.unassigned_tasks.values())} "
+            f"unassigned tasks. Details saved to {filename}"
+        )

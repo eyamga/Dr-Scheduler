@@ -1,0 +1,246 @@
+{
+  "unassigned_tasks": {
+    "2025-02-03": [
+      {
+        "task": "MOG",
+        "category": "MOG",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-02-24": [
+      {
+        "task": "CTU_C",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-03-04": [
+      {
+        "task": "CTU_D",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-03-17": [
+      {
+        "task": "CTU_B",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_D",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-03-24": [
+      {
+        "task": "CTU_A",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_C",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-03-31": [
+      {
+        "task": "CTU_B",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_D",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-04-07": [
+      {
+        "task": "CTU_A",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_C",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-04-14": [
+      {
+        "task": "CTU_B",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_D",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-04-22": [
+      {
+        "task": "CTU_A",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_C",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-04-28": [
+      {
+        "task": "CTU_B",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_D",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-05-05": [
+      {
+        "task": "CTU_A",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_C",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-05-12": [
+      {
+        "task": "CTU_B",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_D",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-05-20": [
+      {
+        "task": "CTU_A",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_C",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-05-26": [
+      {
+        "task": "CTU_B",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_D",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-06-02": [
+      {
+        "task": "CTU_A",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_C",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-06-09": [
+      {
+        "task": "CTU_B",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_D",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-06-16": [
+      {
+        "task": "CTU_A",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_C",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-06-23": [
+      {
+        "task": "CTU_B",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_D",
+        "category": "CTU",
+        "type": "MAIN",
+        "reason": "No available physicians"
+      }
+    ]
+  },
+  "summary": {
+    "total_unassigned": 33,
+    "weeks_with_unassigned": 18,
+    "categories_affected": [
+      "CTU",
+      "MOG"
+    ]
+  }
+}
