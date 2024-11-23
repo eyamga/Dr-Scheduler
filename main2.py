@@ -118,7 +118,7 @@ def initialize_physician_manager(task_manager):
         Physician("Vincent", "Williams", ["MOG", "CTU", "ER", "PREOP", "CONSULT", "AMBU"], False, 0.80, [], ["VASC"]),
 
         Physician("Gabriel", "Dion", ["CTU", "PREOP", "CONSULT"], False, 0.70, [], ["MOG", "VASC"]),
-        Physician("Justine", "Munger", ["CTU"], True, 0.75, [], ["MOG", "VASC"]),
+        Physician("Justine", "Munger", ["CTU", "ER", "AMBU"], True, 0.75, [], ["MOG", "VASC"]),
         Physician("Mikhael", "Laskine", ["CTU", "CONSULT", "ER", "PREOP"], False, 0.8, [], ["MOG", "VASC"]),
         Physician("Maxime", "Lamarre-Cliche", ["CTU", "ER",  "CONSULT",  "PREOP", "AMBU"], False, 0.80, [], ["MOG", "VASC"]),
         Physician("Julien", "Dastous", ["CTU", "CONSULT", "PREOP", "ER", "AMBU"], False, 0.75, [], ["MOG", "VASC"]),
@@ -460,11 +460,12 @@ def generate_schedules(physician_manager, task_manager, calendar):
     
     # Generate schedule
     scheduler.generate_schedule(use_initial_schedule=True)
+
     
     # Save outputs
     scheduler.print_schedule()
-    scheduler.generate_ics_calendar("output/schedule/modular_generated_calendar.ics")
-    scheduler.save_schedule("output/schedule/modular_generated_schedule.json")
+    scheduler.generate_ics_calendar("output/schedule/alternative_generated_calendar.ics")
+    scheduler.save_schedule("output/schedule/alternative_generated_schedule.json")
 
 
 def export_periods():
@@ -514,6 +515,11 @@ def main():
     task_manager = initialize_task_manager()
     physician_manager = initialize_physician_manager(task_manager)
     calendar = initialize_calendar()
+
+
+    task_manager.save_config("output/config/task_config.json")
+    physician_manager.save_config("output/config/physician_config.json")
+    calendar.save_calendar("output/config/calendar.json")
 
     generate_schedules(physician_manager, task_manager, calendar)
 

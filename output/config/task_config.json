@@ -136,7 +136,7 @@
       "name": "PREOP_2",
       "week_offset": 0,
       "heaviness": 5,
-      "mandatory": true
+      "mandatory": false
     },
     {
       "category": "AMBU",

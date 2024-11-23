@@ -8,6 +8,15 @@ from ics import Calendar as IcsCalendar, Event
 from models.task import TaskType, TaskDaysParameter, Task
 
 class AlternativeSchedule:
+    # Add scoring weights as class constants that can be easily modified
+    WEIGHTS = {
+        'WORKING_WEEKS': 100,
+        'HEAVINESS': 50,
+        'PREFERRED_TASKS': 30,
+        'CATEGORY_DIVERSITY': 100,
+        'CALL_DISTRIBUTION': 60
+    }
+
     def __init__(self, physician_manager, task_manager, calendar):
         self.physician_manager = physician_manager
         self.task_manager = task_manager
@@ -30,8 +39,20 @@ class AlternativeSchedule:
         # Add tracking for unassigned tasks
         self.unassigned_tasks = defaultdict(list)  # {week_start: [(task_name, period_type)]}
         
+        # Add global task tracking
+        self.assigned_tasks_by_period = defaultdict(set)  # {(task_name, start_date): physician}
+        
         logging.basicConfig(level=logging.INFO)
         self.logger = logging.getLogger(__name__)
+        
+        # Add flags to toggle constraints
+        self.constraints_enabled = {
+            'working_weeks': True,
+            'heaviness': True,
+            'preferred_tasks': True,
+            'category_diversity': True,
+            'call_distribution': True
+        }
 
     def set_scheduling_period(self, start_date: date, end_date: date):
         """Set the scheduling period."""
@@ -160,14 +181,42 @@ class AlternativeSchedule:
             'end_date': period['days'][-1]
         }
         
+        # Check if task is already assigned for this period
+        task_period_key = (task.name, assignment['start_date'])
+        if task_period_key in self.assigned_tasks_by_period:
+            existing_physician = self.assigned_tasks_by_period[task_period_key]
+            self.logger.warning(
+                f"Task {task.name} for period starting {assignment['start_date']} "
+                f"is already assigned to {existing_physician}"
+            )
+            return False
+        
+        # Check for overlapping assignments for this physician
+        for existing_assignment in self.schedule[physician]:
+            if (max(existing_assignment['start_date'], assignment['start_date']) <= 
+                min(existing_assignment['end_date'], assignment['end_date'])):
+                self.logger.warning(
+                    f"Overlapping assignment prevented: {task.name} for {physician} "
+                    f"would overlap with {existing_assignment['task'].name}"
+                )
+                return False
+        
+        # Add to global task tracking
+        self.assigned_tasks_by_period[task_period_key] = physician
+        
+        # Add to physician's schedule
         self.schedule[physician].append(assignment)
         self.physician_assignments[physician].append(task)
         self.physician_categories[physician].append(task.category.name)
         
         if task.is_call_task:
             self.physician_calls[physician].append(assignment)
-
-        self.logger.info(f"Assigned {task.name} to {physician} for period {period['days'][0]} - {period['days'][-1]}")
+        
+        self.logger.info(
+            f"Assigned {task.name} to {physician} for period "
+            f"{period['days'][0]} - {period['days'][-1]}"
+        )
+        return True
 
     def _get_linked_main_tasks(self, call_task: Task) -> List[Task]:
         """Get all main tasks linked to a call task."""
@@ -191,10 +240,7 @@ class AlternativeSchedule:
     def _handle_linked_tasks(self, main_task: Task, call_task: Task, 
                            main_period: Dict[str, Any], call_period: Dict[str, Any],
                            week_start: date) -> Set[str]:
-        """
-        Handle assignment of linked main and call tasks.
-        Returns set of handled task names.
-        """
+        """Handle assignment of linked main and call tasks."""
         handled_tasks = set()
         
         # First assign the main task
@@ -206,80 +252,247 @@ class AlternativeSchedule:
         # Select and assign physician for main task
         main_physician = self._select_best_physician(available_for_main, main_task, main_period['days'][0])
         if main_physician:
-            self._assign_task(main_task, main_period, main_physician)
-            handled_tasks.add(main_task.name)
-            
-            # Get all linked main tasks for this call
-            linked_mains = self._get_linked_main_tasks(call_task)
-            all_main_tasks_assigned = True
-            
-            # Check if all linked main tasks for this week are already assigned
-            for linked_main in linked_mains:
-                if not any(a['task'].name == linked_main.name and 
-                          a['start_date'] == week_start 
-                          for assignments in self.schedule.values() 
-                          for a in assignments):
-                    all_main_tasks_assigned = False
-                    break
-            
-            # Only handle call task if all linked main tasks are assigned
-            if all_main_tasks_assigned:
-                # Get all physicians doing linked main tasks this week who don't have overlapping assignments
-                linked_physicians = []
-                for physician, assignments in self.schedule.items():
-                    for assignment in assignments:
-                        if (assignment['start_date'] == week_start and 
-                            assignment['task'].name in [t.name for t in linked_mains] and
-                            not self._has_overlapping_assignment(physician, call_period)):
-                            linked_physicians.append(physician)
+            if self._assign_task(main_task, main_period, main_physician):
+                handled_tasks.add(main_task.name)
                 
-                # Filter for physicians available for call period
-                available_for_call = [
-                    p for p in linked_physicians 
-                    if self._is_physician_available(p, call_period['days'])
-                ]
+                # Get all linked main tasks for this call
+                linked_mains = self._get_linked_main_tasks(call_task)
+                all_main_tasks_assigned = True
                 
-                if available_for_call:
-                    call_physician = self._select_best_physician(
-                        available_for_call, 
-                        call_task,
-                        call_period['days'][0]
-                    )
-                    if call_physician:
-                        self._assign_task(call_task, call_period, call_physician)
-                        handled_tasks.add(call_task.name)
-                else:
-                    self.logger.warning(
-                        f"No physicians doing linked main tasks available for call {call_task.name}"
-                    )
+                for linked_main in linked_mains:
+                    if not any(a['task'].name == linked_main.name and 
+                              a['start_date'] == week_start 
+                              for assignments in self.schedule.values() 
+                              for a in assignments):
+                        all_main_tasks_assigned = False
+                        break
+                
+                if all_main_tasks_assigned:
+                    linked_physicians = self._get_physicians_doing_linked_mains(call_task, week_start)
+                    available_for_call = [
+                        p for p in linked_physicians 
+                        if self._is_physician_available(p, call_period['days'])
+                    ]
+                    
+                    if available_for_call:
+                        call_physician = self._select_best_physician(
+                            available_for_call, 
+                            call_task,
+                            call_period['days'][0]
+                        )
+                        if call_physician:
+                            if self._assign_task(call_task, call_period, call_physician):
+                                handled_tasks.add(call_task.name)
     
         return handled_tasks
 
+    def _calculate_available_weeks(self, physician: str) -> int:
+        """Calculate number of available weeks for a physician within scheduling period."""
+        if not self.scheduling_period:
+            return 0
+            
+        total_weeks = 0
+        current_date = self.scheduling_period[0]
+        while current_date <= self.scheduling_period[1]:
+            week_available = False
+            for i in range(7):
+                check_date = current_date + timedelta(days=i)
+                if not self.physician_manager.is_unavailable(physician, check_date):
+                    week_available = True
+                    break
+            if week_available:
+                total_weeks += 1
+            current_date += timedelta(weeks=1)
+        return total_weeks
+
     def _select_best_physician(self, available_physicians: List[str], task: Task, 
-                              period_start: date = None) -> Optional[str]:
+                             period_start: date = None) -> Optional[str]:
         """
-        Select the best physician for a task based on constraints.
-        
-        Args:
-            available_physicians: List of available physicians
-            task: Task to be assigned
-            period_start: Start date of the period for call spacing checks
+        Select the best physician based on enabled soft constraints.
         """
         best_physician = None
-        min_score = float('inf')
+        min_score = float('inf')  # Lower score is better
         
         for physician in available_physicians:
             score = 0
             
-            # Count category assignments
-            category_count = self.physician_categories[physician].count(task.category.name)
-            score += category_count * 10
+            # Working Weeks Percentage Constraint
+            if self.constraints_enabled['working_weeks']:
+                score += self._calculate_working_weeks_score(physician, task, period_start)
+            
+            # Task Heaviness Constraint
+            if self.constraints_enabled['heaviness']:
+                score += self._calculate_heaviness_score(physician, task)
+            
+            # Preferred Tasks Optimization
+            if self.constraints_enabled['preferred_tasks']:
+                score += self._calculate_preferred_tasks_score(physician, task)
+            
+            # Category Diversity
+            if self.constraints_enabled['category_diversity']:
+                score += self._calculate_category_diversity_score(physician, task)
+            
+            # Call Distribution
+            if self.constraints_enabled['call_distribution'] and task.is_call_task:
+                score += self._calculate_call_distribution_score(physician, period_start)
             
             if score < min_score:
                 min_score = score
                 best_physician = physician
                 
         return best_physician
+
+    def _calculate_working_weeks_score(self, physician: str, task: Task, period_start: date = None) -> float:
+        """
+        Calculate score based on working weeks percentage with focus on distribution.
+        """
+        physician_obj = self.physician_manager.get_physician_by_name(physician)
+        available_weeks = self._calculate_available_weeks(physician)
+        target_weeks = int(physician_obj.desired_working_weeks * available_weeks)
+        
+        # Calculate current assigned weeks
+        current_assignments = self.schedule[physician]
+        if not current_assignments:
+            return 0  # No penalty for first assignment
+        
+        # Calculate weeks per month distribution
+        months_distribution = defaultdict(int)
+        
+        # Calculate number of months in scheduling period
+        total_months = (self.scheduling_period[1].year - self.scheduling_period[0].year) * 12 + \
+                       self.scheduling_period[1].month - self.scheduling_period[0].month + 1
+        
+        target_per_month = target_weeks / total_months
+        
+        # Add existing assignments to distribution
+        for assignment in current_assignments:
+            month_key = (assignment['start_date'].year, assignment['start_date'].month)
+            weeks = (assignment['end_date'] - assignment['start_date']).days // 7 + 1
+            months_distribution[month_key] += weeks
+        
+        # Add potential new assignment
+        task_weeks = task.number_of_weeks if task.category.days_parameter == TaskDaysParameter.MULTI_WEEK else 1
+        if period_start:
+            new_month_key = (period_start.year, period_start.month)
+        else:
+            new_month_key = (self.scheduling_period[0].year, self.scheduling_period[0].month)
+        months_distribution[new_month_key] += task_weeks
+        
+        # Calculate distribution penalty
+        distribution_penalty = 0
+        
+        # Get all months in scheduling period
+        current_date = self.scheduling_period[0]
+        end_date = self.scheduling_period[1]
+        months_in_period = []
+        
+        while current_date <= end_date:
+            month_key = (current_date.year, current_date.month)
+            months_in_period.append(month_key)
+            # Move to next month
+            if current_date.month == 12:
+                current_date = date(current_date.year + 1, 1, 1)
+            else:
+                current_date = date(current_date.year, current_date.month + 1, 1)
+        
+        # Calculate standard deviation of distribution
+        values = [months_distribution[month_key] for month_key in months_in_period]
+        if values:
+            mean = sum(values) / len(values)
+            variance = sum((x - mean) ** 2 for x in values) / len(values)
+            std_dev = variance ** 0.5
+            distribution_penalty += std_dev * 15  # Penalize uneven distribution
+        
+        # Penalize months over target
+        for month_key in months_distribution:
+            if months_distribution[month_key] > target_per_month:
+                distribution_penalty += (months_distribution[month_key] - target_per_month) * 20
+        
+        # Calculate overall workload penalty
+        total_weeks = sum(months_distribution.values())
+        if total_weeks > target_weeks:
+            distribution_penalty += (total_weeks - target_weeks) * 30
+        
+        return distribution_penalty
+
+    def _calculate_heaviness_score(self, physician: str, task: Task) -> float:
+        """Calculate score based on task heaviness."""
+        if not task.is_heavy:
+            return 0
+            
+        recent_assignments = self.physician_assignments[physician]
+        
+        # For multi-week tasks, look beyond the task's duration
+        if task.category.days_parameter == TaskDaysParameter.MULTI_WEEK:
+            look_back = -3  # Look at last 3 assignments
+        else:
+            look_back = -1  # Look at last assignment only
+            
+        recent_heavy_tasks = [
+            t for t in recent_assignments[look_back:]
+            if t.is_heavy
+        ]
+        
+        return len(recent_heavy_tasks) * self.WEIGHTS['HEAVINESS']
+
+    def _calculate_preferred_tasks_score(self, physician: str, task: Task) -> float:
+        """Calculate score based on physician's task preferences."""
+        physician_obj = self.physician_manager.get_physician_by_name(physician)
+        if task.category.name in physician_obj.preferred_tasks:
+            # Better score (lower) for higher ranked preferences
+            rank = physician_obj.preferred_tasks.index(task.category.name)
+            return -self.WEIGHTS['PREFERRED_TASKS'] * (len(physician_obj.preferred_tasks) - rank)
+        return 0
+
+    def _calculate_category_diversity_score(self, physician: str, task: Task) -> float:
+        """
+        Calculate score based on category diversity and consecutive assignments.
+        """
+        recent_assignments = self.physician_assignments[physician]
+        if not recent_assignments:
+            return 0
+        
+        score = 0
+        
+        # Check recent categories (last 3 assignments)
+        recent_categories = [
+            t.category.name for t in recent_assignments[-3:]
+        ]
+        category_count = recent_categories.count(task.category.name)
+        score += category_count * self.WEIGHTS['CATEGORY_DIVERSITY']
+        
+        # Add penalty for consecutive same-category tasks (excluding multi-week)
+        if (recent_assignments and 
+            task.category.days_parameter != TaskDaysParameter.MULTI_WEEK and
+            recent_assignments[-1].category.name == task.category.name):
+            score += self.WEIGHTS['CATEGORY_DIVERSITY'] * 3
+        
+        return score
+
+    def _calculate_call_distribution_score(self, physician: str, period_start: date) -> float:
+        """Calculate score based on call distribution."""
+        if not period_start:
+            return 0
+            
+        recent_calls = [
+            call for call in self.physician_calls[physician]
+            if (period_start - call['end_date']).days <= 28
+        ]
+        return len(recent_calls) * self.WEIGHTS['CALL_DISTRIBUTION']
+
+    def set_constraint_enabled(self, constraint_name: str, enabled: bool):
+        """Enable or disable specific constraints."""
+        if constraint_name in self.constraints_enabled:
+            self.constraints_enabled[constraint_name] = enabled
+        else:
+            raise ValueError(f"Unknown constraint: {constraint_name}")
+
+    def set_weight(self, constraint_name: str, weight: float):
+        """Adjust the weight of a specific constraint."""
+        if constraint_name in self.WEIGHTS:
+            self.WEIGHTS[constraint_name] = weight
+        else:
+            raise ValueError(f"Unknown weight parameter: {constraint_name}")
 
     def _handle_initial_assignments(self, week_start: str, main_period: Dict[str, Any], 
                                   call_period: Dict[str, Any]) -> Set[str]:
@@ -368,17 +581,39 @@ class AlternativeSchedule:
 
         return handled_tasks
 
-    def _is_task_start_week(self, task: Task, week_number: int) -> bool:
-        """Check if this is a valid starting week for this task based on its offset."""
+    def _is_task_start_week(self, task: Task, week_start_date: date) -> bool:
+        """
+        Check if this is a valid starting week for this task based on its offset.
+        
+        Args:
+            task: The task to check
+            week_start_date: The start date of the week
+        
+        Returns:
+            bool: True if this is a valid starting week for this task
+        """
+        # Calculate week number since start of scheduling period
+        days_since_start = (week_start_date - self.scheduling_period[0]).days
+        week_number = days_since_start // 7
+        
+        # Check if this week is a valid start week for this task
         return (week_number + task.week_offset) % task.category.number_of_weeks == 0
 
-    def _handle_multi_week_task(self, task: Task, current_week: int, 
+    def _handle_multi_week_task(self, task: Task, week_number: int, 
                                periods: List[Dict[str, Any]], pre_assigned_tasks: Set[str]) -> Set[str]:
         """
         Handle multi-week task assignment.
         Returns set of handled task names.
         """
-        if not self._is_task_start_week(task, current_week):
+        # Get the start date of the first period
+        first_period = periods[0]
+        first_main_period = next((p for p in first_period if p['type'] == 'MAIN'), None)
+        if not first_main_period:
+            return set()
+        
+        week_start_date = first_main_period['days'][0]
+        
+        if not self._is_task_start_week(task, week_start_date):
             return set()
 
         handled_tasks = set()
@@ -412,16 +647,19 @@ class AlternativeSchedule:
             return set()
 
         # Select best physician for main periods
-        selected_physician = self._select_best_physician(available_physicians, task)
+        selected_physician = self._select_best_physician(available_physicians, task, week_start_date)
         if not selected_physician:
             return set()
 
         # Assign main tasks for all weeks
         for i, main_period in enumerate(main_periods):
-            self._assign_task(task, main_period, selected_physician)
-            handled_tasks.add(task.name)
-            instance_key = f"{task.name}_{main_period['days'][0]}"
-            handled_tasks.add(instance_key)
+            if self._assign_task(task, main_period, selected_physician):
+                handled_tasks.add(task.name)
+                instance_key = f"{task.name}_{main_period['days'][0]}"
+                handled_tasks.add(instance_key)
+            else:
+                self.logger.warning(f"Failed to assign {task.name} to {selected_physician}")
+                return set()  # If we can't assign one part, we shouldn't assign any
 
         # Handle linked call task if exists
         linked_call = self.task_manager.data['linkage_manager'].get_linked_task(task)
@@ -438,26 +676,26 @@ class AlternativeSchedule:
                 
                 # Try to assign call to same physician if available
                 if self._is_physician_available(selected_physician, call_period['days']):
-                    self._assign_task(call_task, call_period, selected_physician)
-                    self.assigned_call_periods.add(multi_week_call_key)
-                    handled_tasks.add(call_task.name)
-                    # Mark all potential call periods as handled
-                    for other_call_period in call_periods:
-                        instance_key = f"{call_task.name}_{other_call_period['days'][0]}"
-                        handled_tasks.add(instance_key)
+                    if self._assign_task(call_task, call_period, selected_physician):
+                        self.assigned_call_periods.add(multi_week_call_key)
+                        handled_tasks.add(call_task.name)
+                        # Mark all potential call periods as handled
+                        for other_call_period in call_periods:
+                            instance_key = f"{call_task.name}_{other_call_period['days'][0]}"
+                            handled_tasks.add(instance_key)
                 else:
                     # Try to find another physician for the call
                     available_for_call = self._get_available_physicians(call_task, call_period['days'])
                     if available_for_call:
-                        call_physician = self._select_best_physician(available_for_call, call_task)
+                        call_physician = self._select_best_physician(available_for_call, call_task, call_period['days'][0])
                         if call_physician:
-                            self._assign_task(call_task, call_period, call_physician)
-                            self.assigned_call_periods.add(multi_week_call_key)
-                            handled_tasks.add(call_task.name)
-                            # Mark all potential call periods as handled
-                            for other_call_period in call_periods:
-                                instance_key = f"{call_task.name}_{other_call_period['days'][0]}"
-                                handled_tasks.add(instance_key)
+                            if self._assign_task(call_task, call_period, call_physician):
+                                self.assigned_call_periods.add(multi_week_call_key)
+                                handled_tasks.add(call_task.name)
+                                # Mark all potential call periods as handled
+                                for other_call_period in call_periods:
+                                    instance_key = f"{call_task.name}_{other_call_period['days'][0]}"
+                                    handled_tasks.add(instance_key)
 
         return handled_tasks
 
@@ -644,24 +882,92 @@ class AlternativeSchedule:
             self.logger.info("All tasks were successfully assigned")
             return
         
+        # Get all tasks that should be assigned for each week
+        all_tasks = defaultdict(list)
+        periods = self.calendar.determine_periods()
+        
+        for week_start, week_periods in periods.items():
+            week_start_date = date.fromisoformat(week_start)
+            if not (self.scheduling_period[0] <= week_start_date <= self.scheduling_period[1]):
+                continue
+            
+            # Get the MAIN and CALL periods for this week
+            main_period = next((p for p in week_periods if p['type'] == 'MAIN'), None)
+            call_period = next((p for p in week_periods if p['type'] == 'CALL'), None)
+            
+            if main_period and call_period:
+                # Handle main tasks for MAIN period
+                for task in self.task_manager.data['tasks']:
+                    if task.type == TaskType.MAIN:
+                        if (task.category.days_parameter != TaskDaysParameter.MULTI_WEEK or 
+                            self._is_task_start_week(task, week_start_date)):
+                            all_tasks[week_start].append({
+                                'task': task.name,
+                                'category': task.category.name,
+                                'type': 'MAIN',
+                                'period': main_period
+                            })
+                
+                    # Handle call tasks only for CALL period
+                    elif task.type == TaskType.CALL:
+                        linked_mains = self._get_linked_main_tasks(task)
+                        if any(self._is_task_start_week(main_task, week_start_date) 
+                              for main_task in linked_mains):
+                            all_tasks[week_start].append({
+                                'task': task.name,
+                                'category': task.category.name,
+                                'type': 'CALL',
+                                'period': call_period
+                            })
+        
+        # Compare with actually assigned tasks
+        unassigned = defaultdict(list)
+        for week_start, expected_tasks in all_tasks.items():
+            for task_info in expected_tasks:
+                period_start = task_info['period']['days'][0]
+                task_period_key = (task_info['task'], period_start)
+                
+                if task_period_key not in self.assigned_tasks_by_period:
+                    unassigned[week_start].append({
+                        'task': task_info['task'],
+                        'category': task_info['category'],
+                        'type': task_info['type'],
+                        'period_type': task_info['period']['type'],
+                        'period_days': [d.isoformat() for d in task_info['period']['days']],
+                        'reason': "No available physicians"
+                    })
+        
+        # Save to file
         with open(filename, 'w') as f:
             json.dump(
                 {
-                    'unassigned_tasks': dict(self.unassigned_tasks),
+                    'unassigned_tasks': dict(unassigned),
                     'summary': {
-                        'total_unassigned': sum(len(tasks) for tasks in self.unassigned_tasks.values()),
-                        'weeks_with_unassigned': len(self.unassigned_tasks),
+                        'total_unassigned': sum(len(tasks) for tasks in unassigned.values()),
+                        'weeks_with_unassigned': len(unassigned),
                         'categories_affected': list(set(
                             task['category'] 
-                            for tasks in self.unassigned_tasks.values() 
+                            for tasks in unassigned.values() 
+                            for task in tasks
+                        )),
+                        'types_affected': list(set(
+                            task['type']
+                            for tasks in unassigned.values() 
+                            for task in tasks
+                        )),
+                        'period_types_affected': list(set(
+                            task['period_type']
+                            for tasks in unassigned.values() 
                             for task in tasks
                         ))
                     }
                 }, 
                 f, 
-                indent=2
+                indent=2,
+                default=str
             )
+        
         self.logger.warning(
-            f"Found {sum(len(tasks) for tasks in self.unassigned_tasks.values())} "
+            f"Found {sum(len(tasks) for tasks in unassigned.values())} "
             f"unassigned tasks. Details saved to {filename}"
         )

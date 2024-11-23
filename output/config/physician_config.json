@@ -97,8 +97,8 @@
     },
     {
       "first_name": "Sophie",
-      "last_name": "Grandmaison",
-      "name": "Sophie Grandmaison",
+      "last_name": "Granmaison",
+      "name": "Sophie Granmaison",
       "initials": "SG",
       "preferred_tasks": [
         "MOG",
@@ -193,7 +193,9 @@
       "name": "Justine Munger",
       "initials": "JM",
       "preferred_tasks": [
-        "CTU"
+        "CTU",
+        "ER",
+        "AMBU"
       ],
       "discontinuity_preference": true,
       "desired_working_weeks": 0.75,
@@ -217,7 +219,7 @@
       "desired_working_weeks": 0.8,
       "restricted_tasks": [],
       "exclusion_tasks": [
-        "AMBU",
+        "MOG",
         "VASC"
       ]
     },
@@ -241,8 +243,8 @@
     },
     {
       "first_name": "Julien",
-      "last_name": "D'Astous",
-      "name": "Julien D'Astous",
+      "last_name": "Dastous",
+      "name": "Julien Dastous",
       "initials": "JD",
       "preferred_tasks": [
         "CTU",
@@ -362,8 +364,7 @@
       "restricted_tasks": [],
       "exclusion_tasks": [
         "MOG",
-        "VASC",
-        "AMBU"
+        "VASC"
       ]
     },
     {
@@ -429,6 +430,46 @@
       ]
     },
     {
+      "first_name": "Tal",
+      "last_name": "Kopel",
+      "name": "Tal Kopel",
+      "initials": "TK",
+      "preferred_tasks": [
+        "MOG"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.1,
+      "restricted_tasks": [],
+      "exclusion_tasks": [
+        "VASC",
+        "CTU",
+        "CONSULT",
+        "ER",
+        "PREOP",
+        "AMBU"
+      ]
+    },
+    {
+      "first_name": "Julien",
+      "last_name": "Viau",
+      "name": "Julien Viau",
+      "initials": "JV",
+      "preferred_tasks": [
+        "MOG"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.1,
+      "restricted_tasks": [],
+      "exclusion_tasks": [
+        "VASC",
+        "CTU",
+        "CONSULT",
+        "ER",
+        "PREOP",
+        "AMBU"
+      ]
+    },
+    {
       "first_name": "Vasc",
       "last_name": "Vasc",
       "name": "Vasc Vasc",
@@ -476,6 +517,24 @@
       ],
       "discontinuity_preference": false,
       "desired_working_weeks": 0.8,
+      "restricted_tasks": [],
+      "exclusion_tasks": [
+        "MOG",
+        "VASC"
+      ]
+    },
+    {
+      "first_name": "Brigitte",
+      "last_name": "Benard",
+      "name": "Brigitte Benard",
+      "initials": "BB",
+      "preferred_tasks": [
+        "PREOP",
+        "CONSULT",
+        "CTU"
+      ],
+      "discontinuity_preference": false,
+      "desired_working_weeks": 0.2,
       "restricted_tasks": [],
       "exclusion_tasks": [
         "MOG",

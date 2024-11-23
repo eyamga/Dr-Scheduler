@@ -1,0 +1,412 @@
+{
+  "unassigned_tasks": {
+    "2025-04-21": [
+      {
+        "task": "ER_CALL",
+        "category": "ER",
+        "type": "CALL",
+        "period_type": "CALL",
+        "period_days": [
+          "2025-04-26",
+          "2025-04-27"
+        ],
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CONSULT_CALL",
+        "category": "CONSULT",
+        "type": "CALL",
+        "period_type": "CALL",
+        "period_days": [
+          "2025-04-26",
+          "2025-04-27"
+        ],
+        "reason": "No available physicians"
+      },
+      {
+        "task": "MOG_CALL",
+        "category": "MOG",
+        "type": "CALL",
+        "period_type": "CALL",
+        "period_days": [
+          "2025-04-26",
+          "2025-04-27"
+        ],
+        "reason": "No available physicians"
+      },
+      {
+        "task": "VASC_CALL",
+        "category": "VASC",
+        "type": "CALL",
+        "period_type": "CALL",
+        "period_days": [
+          "2025-04-26",
+          "2025-04-27"
+        ],
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-04-28": [
+      {
+        "task": "MOG",
+        "category": "MOG",
+        "type": "MAIN",
+        "period_type": "MAIN",
+        "period_days": [
+          "2025-04-28",
+          "2025-04-29",
+          "2025-04-30",
+          "2025-05-01",
+          "2025-05-02"
+        ],
+        "reason": "No available physicians"
+      },
+      {
+        "task": "MOG_CALL",
+        "category": "MOG",
+        "type": "CALL",
+        "period_type": "CALL",
+        "period_days": [
+          "2025-05-03",
+          "2025-05-04"
+        ],
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-05-12": [
+      {
+        "task": "CTU_C",
+        "category": "CTU",
+        "type": "MAIN",
+        "period_type": "MAIN",
+        "period_days": [
+          "2025-05-12",
+          "2025-05-13",
+          "2025-05-14",
+          "2025-05-15",
+          "2025-05-16"
+        ],
+        "reason": "No available physicians"
+      },
+      {
+        "task": "VASC_CALL",
+        "category": "VASC",
+        "type": "CALL",
+        "period_type": "CALL",
+        "period_days": [
+          "2025-05-17",
+          "2025-05-18",
+          "2025-05-19"
+        ],
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-05-19": [
+      {
+        "task": "ER_CALL",
+        "category": "ER",
+        "type": "CALL",
+        "period_type": "CALL",
+        "period_days": [
+          "2025-05-24",
+          "2025-05-25"
+        ],
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CONSULT_CALL",
+        "category": "CONSULT",
+        "type": "CALL",
+        "period_type": "CALL",
+        "period_days": [
+          "2025-05-24",
+          "2025-05-25"
+        ],
+        "reason": "No available physicians"
+      },
+      {
+        "task": "MOG_CALL",
+        "category": "MOG",
+        "type": "CALL",
+        "period_type": "CALL",
+        "period_days": [
+          "2025-05-24",
+          "2025-05-25"
+        ],
+        "reason": "No available physicians"
+      },
+      {
+        "task": "VASC_CALL",
+        "category": "VASC",
+        "type": "CALL",
+        "period_type": "CALL",
+        "period_days": [
+          "2025-05-24",
+          "2025-05-25"
+        ],
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-05-26": [
+      {
+        "task": "CTU_A",
+        "category": "CTU",
+        "type": "MAIN",
+        "period_type": "MAIN",
+        "period_days": [
+          "2025-05-26",
+          "2025-05-27",
+          "2025-05-28",
+          "2025-05-29",
+          "2025-05-30"
+        ],
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_C",
+        "category": "CTU",
+        "type": "MAIN",
+        "period_type": "MAIN",
+        "period_days": [
+          "2025-05-26",
+          "2025-05-27",
+          "2025-05-28",
+          "2025-05-29",
+          "2025-05-30"
+        ],
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-06-02": [
+      {
+        "task": "MOG_CALL",
+        "category": "MOG",
+        "type": "CALL",
+        "period_type": "CALL",
+        "period_days": [
+          "2025-06-07",
+          "2025-06-08"
+        ],
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-06-09": [
+      {
+        "task": "CTU_A",
+        "category": "CTU",
+        "type": "MAIN",
+        "period_type": "MAIN",
+        "period_days": [
+          "2025-06-09",
+          "2025-06-10",
+          "2025-06-11",
+          "2025-06-12",
+          "2025-06-13"
+        ],
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_C",
+        "category": "CTU",
+        "type": "MAIN",
+        "period_type": "MAIN",
+        "period_days": [
+          "2025-06-09",
+          "2025-06-10",
+          "2025-06-11",
+          "2025-06-12",
+          "2025-06-13"
+        ],
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-06-16": [
+      {
+        "task": "CTU_B",
+        "category": "CTU",
+        "type": "MAIN",
+        "period_type": "MAIN",
+        "period_days": [
+          "2025-06-16",
+          "2025-06-17",
+          "2025-06-18",
+          "2025-06-19",
+          "2025-06-20"
+        ],
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_D",
+        "category": "CTU",
+        "type": "MAIN",
+        "period_type": "MAIN",
+        "period_days": [
+          "2025-06-16",
+          "2025-06-17",
+          "2025-06-18",
+          "2025-06-19",
+          "2025-06-20"
+        ],
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_AB_CALL",
+        "category": "CTU",
+        "type": "CALL",
+        "period_type": "CALL",
+        "period_days": [
+          "2025-06-21",
+          "2025-06-22"
+        ],
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_CD_CALL",
+        "category": "CTU",
+        "type": "CALL",
+        "period_type": "CALL",
+        "period_days": [
+          "2025-06-21",
+          "2025-06-22"
+        ],
+        "reason": "No available physicians"
+      },
+      {
+        "task": "MOG_CALL",
+        "category": "MOG",
+        "type": "CALL",
+        "period_type": "CALL",
+        "period_days": [
+          "2025-06-21",
+          "2025-06-22"
+        ],
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-06-23": [
+      {
+        "task": "CTU_A",
+        "category": "CTU",
+        "type": "MAIN",
+        "period_type": "MAIN",
+        "period_days": [
+          "2025-06-23"
+        ],
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_C",
+        "category": "CTU",
+        "type": "MAIN",
+        "period_type": "MAIN",
+        "period_days": [
+          "2025-06-23"
+        ],
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_AB_CALL",
+        "category": "CTU",
+        "type": "CALL",
+        "period_type": "CALL",
+        "period_days": [
+          "2025-06-24"
+        ],
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_CD_CALL",
+        "category": "CTU",
+        "type": "CALL",
+        "period_type": "CALL",
+        "period_days": [
+          "2025-06-24"
+        ],
+        "reason": "No available physicians"
+      }
+    ],
+    "2025-06-30": [
+      {
+        "task": "CTU_B",
+        "category": "CTU",
+        "type": "MAIN",
+        "period_type": "MAIN",
+        "period_days": [
+          "2025-06-30",
+          "2025-07-01",
+          "2025-07-02",
+          "2025-07-03"
+        ],
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_D",
+        "category": "CTU",
+        "type": "MAIN",
+        "period_type": "MAIN",
+        "period_days": [
+          "2025-06-30",
+          "2025-07-01",
+          "2025-07-02",
+          "2025-07-03"
+        ],
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_AB_CALL",
+        "category": "CTU",
+        "type": "CALL",
+        "period_type": "CALL",
+        "period_days": [
+          "2025-07-04",
+          "2025-07-05",
+          "2025-07-06"
+        ],
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_CD_CALL",
+        "category": "CTU",
+        "type": "CALL",
+        "period_type": "CALL",
+        "period_days": [
+          "2025-07-04",
+          "2025-07-05",
+          "2025-07-06"
+        ],
+        "reason": "No available physicians"
+      },
+      {
+        "task": "MOG_CALL",
+        "category": "MOG",
+        "type": "CALL",
+        "period_type": "CALL",
+        "period_days": [
+          "2025-07-04",
+          "2025-07-05",
+          "2025-07-06"
+        ],
+        "reason": "No available physicians"
+      }
+    ]
+  },
+  "summary": {
+    "total_unassigned": 31,
+    "weeks_with_unassigned": 10,
+    "categories_affected": [
+      "ER",
+      "VASC",
+      "CTU",
+      "MOG",
+      "CONSULT"
+    ],
+    "types_affected": [
+      "CALL",
+      "MAIN"
+    ],
+    "period_types_affected": [
+      "CALL",
+      "MAIN"
+    ]
+  }
+}
