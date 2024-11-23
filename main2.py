@@ -10,6 +10,7 @@ from models.calendar import Calendar
 from models.math_schedule import MathSchedule
 from models.alternative_schedule import AlternativeSchedule
 from models.modular_scheduler import ModularScheduler
+from models.constraint_schedule import ConstraintSchedule
 
 from config.managers import TaskManager, PhysicianManager
 
@@ -442,12 +443,29 @@ def initialize_calendar():
     return calendar
 
 
-def generate_schedules(physician_manager, task_manager, calendar):
+def generate_schedules(physician_manager, task_manager, calendar, use_constraint=False):
+    """
+    Generate schedules using either the heuristic-based or constraint-based approach.
+    
+    Args:
+        physician_manager: The physician manager instance
+        task_manager: The task manager instance
+        calendar: The calendar instance
+        use_constraint: If True, uses constraint programming approach, otherwise uses heuristic approach
+    """
     start_date = date(2025, 1, 13)
     end_date = date(2025, 7, 6)
 
-    # Initialize scheduler
-    scheduler = AlternativeSchedule(physician_manager, task_manager, calendar)
+    if use_constraint:
+        logging.info("Using constraint programming scheduler")
+        # Initialize constraint-based scheduler
+        scheduler = ConstraintSchedule(physician_manager, task_manager, calendar)
+        output_prefix = "constraint"
+    else:
+        logging.info("Using heuristic-based scheduler")
+        # Initialize heuristic-based scheduler
+        scheduler = AlternativeSchedule(physician_manager, task_manager, calendar)
+        output_prefix = "alternative"
 
     # Set scheduling period
     scheduler.set_scheduling_period(start_date, end_date)
@@ -459,55 +477,22 @@ def generate_schedules(physician_manager, task_manager, calendar):
         logging.info("No initial schedule found, starting from scratch")
     
     # Generate schedule
-    scheduler.generate_schedule(use_initial_schedule=True)
-
-    
-    # Save outputs
-    scheduler.print_schedule()
-    scheduler.generate_ics_calendar("output/schedule/alternative_generated_calendar.ics")
-    scheduler.save_schedule("output/schedule/alternative_generated_schedule.json")
-
-
-def export_periods():
-    calendar = initialize_calendar()
-
-    def convert_to_iso(item):
-        if isinstance(item, datetime):
-            return item.isoformat()
-        elif isinstance(item, dict) and 'date' in item:
-            # Assuming dictionaries contain date information as 'date' key
-            return item['date']
+    try:
+        if use_constraint:
+            scheduler.generate_schedule()
         else:
-            # Log the item that couldn't be converted
-            print(f"Couldn't convert {item} to ISO format")
-            return str(item)
-
-    def flatten_nested_structure(data):
-        flattened = {}
-        for key, value in data.items():
-            if isinstance(value, dict):
-                # Handle nested dictionaries
-                for subkey, subvalue in value.items():
-                    if isinstance(subvalue, list):
-                        flattened[f"{key}_{subkey}"] = [item for sublist in subvalue for item in
-                                                        (isinstance(item, dict) and item.values()) or [item]]
-                    else:
-                        flattened[f"{key}_{subkey}"] = convert_to_iso(subvalue)
-            elif isinstance(value, list):
-                # Handle lists directly
-                flattened[key] = [convert_to_iso(item) for item in value]
-        return flattened
-
-    # Assuming calendar.determine_periods() returns the data structure you provided
-    data = calendar.determine_periods()
-
-    # Flatten the nested structure
-    flattened_data = flatten_nested_structure(data)
-
-    # Convert the flattened dictionary to JSON string
-    json_string = json.dumps(flattened_data, indent=2)
-
-    print(json_string)
+            scheduler.generate_schedule(use_initial_schedule=True)
+        
+        # Save outputs
+        scheduler.print_schedule()
+        scheduler.generate_ics_calendar(f"output/schedule/{output_prefix}_generated_calendar.ics")
+        scheduler.save_schedule(f"output/schedule/{output_prefix}_generated_schedule.json")
+        
+        logging.info(f"Schedule generation completed using {output_prefix} approach")
+        
+    except Exception as e:
+        logging.error(f"Error generating schedule: {str(e)}", exc_info=True)
+        raise
 
 def main():
     setup_logging()
@@ -516,12 +501,14 @@ def main():
     physician_manager = initialize_physician_manager(task_manager)
     calendar = initialize_calendar()
 
-
     task_manager.save_config("output/config/task_config.json")
     physician_manager.save_config("output/config/physician_config.json")
     calendar.save_calendar("output/config/calendar.json")
 
-    generate_schedules(physician_manager, task_manager, calendar)
+    try:
+        generate_schedules(physician_manager, task_manager, calendar, use_constraint=False)
+    except Exception as e:
+        logging.error(f"Schedule generation failed: {str(e)}", exc_info=True)
 
 if __name__ == "__main__":
     main()
