@@ -59,24 +59,6 @@
       ]
     },
     {
-      "first_name": "Emmanuel",
-      "last_name": "Sirdar",
-      "name": "Emmanuel Sirdar",
-      "initials": "ES",
-      "preferred_tasks": [
-        "CTU",
-        "CONSULT",
-        "ER"
-      ],
-      "discontinuity_preference": false,
-      "desired_working_weeks": 0.3,
-      "restricted_tasks": [],
-      "exclusion_tasks": [
-        "MOG",
-        "VASC"
-      ]
-    },
-    {
       "first_name": "Florence",
       "last_name": "Weber",
       "name": "Florence Weber",

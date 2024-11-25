@@ -111,7 +111,7 @@ def initialize_physician_manager(task_manager):
         Physician("Eric", "Yamga", ["CTU", "ER", "PREOP", "CONSULT"], True, 0.45, [], ["MOG", "VASC", "AMBU"]),
         Physician("Madeleine", "Durand", ["CONSULT", "CTU", "ER", "PREOP"], False, 0.3, [], ["MOG", "VASC", "AMBU"]),
         Physician("Emmanuelle", "Duceppe", ["CTU", "PREOP", "CONSULT"], False, 0.3, [], ["MOG", "VASC", "AMBU", "ER"]),
-        Physician("Emmanuel", "Sirdar", ["CTU", "CONSULT", "ER", "PREOP"], False, 0.3, [], ["MOG", "VASC"]),
+        #Physician("Emmanuel", "Sirdar", ["CTU", "CONSULT", "ER", "PREOP"], False, 0.3, [], ["MOG", "VASC"]),
         Physician("Florence", "Weber", ["MOG", "ER", "CTU"],False, 0.6, ["MOG"], ["VASC"]),
         Physician("Sophie", "Granmaison", ["MOG", "CTU", "ER", "AMBU"], False, 0.75, ["MOG"], ["VASC"]),
         Physician("Michèle", "Mahone", ["MOG", "CTU", "ER", "AMBU", "PREOP"], False, 0.75, ["MOG"], ["VASC"]),
@@ -393,10 +393,9 @@ def initialize_physician_manager(task_manager):
         (date(2025, 2, 9)),
     ],
     "Eric Yamga": [
-        (date(2025, 1, 25), date(2025, 2, 5)),
-        (date(2025, 2, 8), date(2025, 2, 24)),
+        (date(2025, 1, 18), date(2025, 2, 16)),
         (date(2025, 3, 24), date(2025, 3, 31)),
-        (date(2025, 6, 16), date(2025, 6, 29)),
+        (date(2025, 6, 16), date(2025, 7, 6)),
     ],
     "Sophie Granmaison":[
         (date(2025, 2, 22), date(2025, 2, 23)),
@@ -443,7 +442,7 @@ def initialize_calendar():
     return calendar
 
 
-def generate_schedules(physician_manager, task_manager, calendar, use_constraint=False):
+def generate_schedules(physician_manager, task_manager, calendar, use_constraint=False, use_math=False):
     """
     Generate schedules using either the heuristic-based or constraint-based approach.
     
@@ -461,6 +460,11 @@ def generate_schedules(physician_manager, task_manager, calendar, use_constraint
         # Initialize constraint-based scheduler
         scheduler = ConstraintSchedule(physician_manager, task_manager, calendar)
         output_prefix = "constraint"
+    elif use_math:
+        logging.info("Using constraint programming scheduler")
+        # Initialize constraint-based scheduler
+        scheduler = MathSchedule(physician_manager, task_manager, calendar)
+        output_prefix = "math"
     else:
         logging.info("Using heuristic-based scheduler")
         # Initialize heuristic-based scheduler
@@ -506,7 +510,7 @@ def main():
     calendar.save_calendar("output/config/calendar.json")
 
     try:
-        generate_schedules(physician_manager, task_manager, calendar, use_constraint=False)
+        generate_schedules(physician_manager, task_manager, calendar, use_constraint=False, use_math=True)
     except Exception as e:
         logging.error(f"Schedule generation failed: {str(e)}", exc_info=True)
 

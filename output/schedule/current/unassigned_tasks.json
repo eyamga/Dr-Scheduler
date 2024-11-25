@@ -28,8 +28,8 @@
     ],
     "2025-02-03": [
       {
-        "task": "MOG",
-        "category": "MOG",
+        "task": "CTU_D",
+        "category": "CTU",
         "type": "MAIN",
         "period_type": "MAIN",
         "period_days": [
@@ -38,17 +38,6 @@
           "2025-02-05",
           "2025-02-06",
           "2025-02-07"
-        ],
-        "reason": "No available physicians"
-      },
-      {
-        "task": "MOG_CALL",
-        "category": "MOG",
-        "type": "CALL",
-        "period_type": "CALL",
-        "period_days": [
-          "2025-02-08",
-          "2025-02-09"
         ],
         "reason": "No available physicians"
       }
@@ -70,20 +59,6 @@
       }
     ],
     "2025-02-17": [
-      {
-        "task": "CTU_B",
-        "category": "CTU",
-        "type": "MAIN",
-        "period_type": "MAIN",
-        "period_days": [
-          "2025-02-17",
-          "2025-02-18",
-          "2025-02-19",
-          "2025-02-20",
-          "2025-02-21"
-        ],
-        "reason": "No available physicians"
-      },
       {
         "task": "CTU_D",
         "category": "CTU",
@@ -111,6 +86,46 @@
       }
     ],
     "2025-02-24": [
+      {
+        "task": "CTU_A",
+        "category": "CTU",
+        "type": "MAIN",
+        "period_type": "MAIN",
+        "period_days": [
+          "2025-02-24",
+          "2025-02-25",
+          "2025-02-26",
+          "2025-02-27",
+          "2025-02-28"
+        ],
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_C",
+        "category": "CTU",
+        "type": "MAIN",
+        "period_type": "MAIN",
+        "period_days": [
+          "2025-02-24",
+          "2025-02-25",
+          "2025-02-26",
+          "2025-02-27",
+          "2025-02-28"
+        ],
+        "reason": "No available physicians"
+      },
+      {
+        "task": "CTU_CD_CALL",
+        "category": "CTU",
+        "type": "CALL",
+        "period_type": "CALL",
+        "period_days": [
+          "2025-03-01",
+          "2025-03-02",
+          "2025-03-03"
+        ],
+        "reason": "No available physicians"
+      },
       {
         "task": "VASC_CALL",
         "category": "VASC",
@@ -219,23 +234,20 @@
           "2025-03-16"
         ],
         "reason": "No available physicians"
+      },
+      {
+        "task": "MOG_CALL",
+        "category": "MOG",
+        "type": "CALL",
+        "period_type": "CALL",
+        "period_days": [
+          "2025-03-15",
+          "2025-03-16"
+        ],
+        "reason": "No available physicians"
       }
     ],
     "2025-03-17": [
-      {
-        "task": "CTU_B",
-        "category": "CTU",
-        "type": "MAIN",
-        "period_type": "MAIN",
-        "period_days": [
-          "2025-03-17",
-          "2025-03-18",
-          "2025-03-19",
-          "2025-03-20",
-          "2025-03-21"
-        ],
-        "reason": "No available physicians"
-      },
       {
         "task": "CTU_D",
         "category": "CTU",
@@ -303,17 +315,6 @@
         "reason": "No available physicians"
       },
       {
-        "task": "CTU_AB_CALL",
-        "category": "CTU",
-        "type": "CALL",
-        "period_type": "CALL",
-        "period_days": [
-          "2025-03-29",
-          "2025-03-30"
-        ],
-        "reason": "No available physicians"
-      },
-      {
         "task": "CTU_CD_CALL",
         "category": "CTU",
         "type": "CALL",
@@ -368,6 +369,17 @@
       {
         "task": "CTU_CD_CALL",
         "category": "CTU",
+        "type": "CALL",
+        "period_type": "CALL",
+        "period_days": [
+          "2025-04-05",
+          "2025-04-06"
+        ],
+        "reason": "No available physicians"
+      },
+      {
+        "task": "MOG_CALL",
+        "category": "MOG",
         "type": "CALL",
         "period_type": "CALL",
         "period_days": [
@@ -1187,8 +1199,8 @@
         "reason": "No available physicians"
       },
       {
-        "task": "MOG_CALL",
-        "category": "MOG",
+        "task": "CONSULT_CALL",
+        "category": "CONSULT",
         "type": "CALL",
         "period_type": "CALL",
         "period_days": [
@@ -1201,22 +1213,22 @@
     ]
   },
   "summary": {
-    "total_unassigned": 95,
+    "total_unassigned": 96,
     "weeks_with_unassigned": 24,
     "categories_affected": [
       "CTU",
+      "ER",
       "VASC",
-      "MOG",
       "CONSULT",
-      "ER"
+      "MOG"
     ],
     "types_affected": [
-      "MAIN",
-      "CALL"
+      "CALL",
+      "MAIN"
     ],
     "period_types_affected": [
-      "MAIN",
-      "CALL"
+      "CALL",
+      "MAIN"
     ]
   }
 }
